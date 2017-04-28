@@ -37,4 +37,18 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		<div class="col l1 m1 s4"></div>
 		<div class="col l1 m1 s4"></div>
 	</div>
+	<div class="row">
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+		<div class="col l6 m4 s3"></div>
+	</div>
 <?php get_footer(); // This fxn gets the footer.php file and renders it ?>

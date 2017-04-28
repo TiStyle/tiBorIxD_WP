@@ -1,74 +1,55 @@
 @import '_config';
 
 // Grid Classes
-
-@while $grid-number > 0 {
-    @each $size, $query, $colors in   (s, $small-and-down, green),
-                                      (m, $medium-only, red),
-                                      (l, $large-and-up, blue) {
-        @media #{$query} {
-          .col{
-            &.#{$size}#{$grid-number} {
-                @media #{$medium-and-up}{
-                    .row > &{
-                        &:first-child{
-                            margin-left: 0;
-                            width: calc((100% / (#{$grid} / #{$grid-number})) - (#{$spacing} / 2) - .1px);
-                        }
-                        &:last-child{
-                            margin-right: 0;
-                            width: calc((100% / (#{$grid} / #{$grid-number})) - (#{$spacing} / 2) - .1px);
-                        }
-                        &:only-child{
-                            margin: ($spacing / 2) 0;
-                            width: calc((100% / (#{$grid} / #{$grid-number})) - .1px);
-                        }
-                    }
+.col{
+    margin: $spacing / 2;
+    @while $grid-number > 0 {
+        @each $size, $query, $colors in   (s, $small-and-down, green),
+                                        (m, $medium-only, red),
+                                        (l, $large-and-up, blue) {
+            @media #{$query} {
+                &.#{$size}#{$grid-number} {
+                    min-height: 1rem;
+                    // .1px compensation for IE11
+                    width: calc((100% / (#{$grid} / #{$grid-number})) - #{$spacing} - .1px);
+                    background-color: $colors;
+                    float: left;
+                    padding: 0 $padding;
+                    box-sizing: border-box;
                 }
-                min-height: 1rem;
-                // .1px compensation for IE11
-                width: calc((100% / (#{$grid} / #{$grid-number})) - #{$spacing} - .1px);
-                background-color: $colors;
-                float: left;
-                padding: 0 $padding;
-                margin: $spacing / 2;
-                box-sizing: border-box;
+                // &.#{$size}#{$grid / $grid-number}{
+                // // @debug 'test' #{$size}#{$grid / $grid-number} '-' #{$grid-number};              
+                //     &:nth-child(#{$grid-number}n+#{$grid-number}){
+                //         background-color: $overlay-background;
+                //         // margin-right: 0;
+                //     }
+                //     &:nth-child(#{$grid-number}n+1){
+                //         background-color: $overlay-background;
+                //         // margin-left: 0;
+                //     }
+                // }
+                &.offset-#{$size}#{$grid-number} {
+                    margin-left: calc((100% / (#{$grid} / #{$grid-number})) + (#{$spacing} / 2 )) !important;
+                }
             }
-            .#{$size}#{$grid / $grid-number}{
-              &:nth-child(#{$grid-number}n+#{$grid-number}),
-              &:nth-child(#{$grid-number}n+1){
-                margin-top:10px;
-              }
-            }
-            &.offset-#{$size}#{$grid-number} {
-                margin-left: calc((100% / (#{$grid} / #{$grid-number})) + (#{$spacing} / 2 )) !important;
-            }
-          }
         }
+        $grid-number: $grid-number - 1;
     }
-    $grid-number: $grid-number - 1;
 }
-// .s4{
-//   &:nth-child(4n+4),
-//   &:nth-child(4n+1){
-//     margin-top:10px;
-//   }
-// }
 
 .row{
-    width: 100%; 
-    display: table;
     box-sizing: border-box;
+    margin: 0 -#{$spacing};
+    margin-bottom: $spacing / 2;
     @media #{$small-and-down}{
         padding:0;
         margin-bottom: $spacing / 2;
     }
-}
-.main-container{
-    .row{
-        margin: 0;
-        padding: 0;
-        width: 100%;
+    &:before,
+    &:after{
+        content: " ";
+        clear: both;
+        display: table;
     }
 }
 
@@ -78,12 +59,6 @@
     width: 100%;
     .container{
         padding: ($padding / 2) 0;
-    }
-    &:before,
-    &:after{
-        box-sizing: border-box;
-        content: " ";
-        display: table;
     }
 }
 

@@ -12,6 +12,10 @@ wp-content/plugins/hello.php
 
 node_modules
 
+.vscode
+
+wwwroot
+
 /.htaccess
 /license.txt
 /readme.html
