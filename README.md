@@ -1,4 +1,5 @@
-naked-wordpress
-===============
+tiBor
+interAction deSign
+------------------
 
-A well-commented blank Wordpress theme.
+A WP portfolio site.
