@@ -1,0 +1,14 @@
+﻿@import '../../sass/_config';
+
+button#go-to-top{
+    background-color: $secondary-color;
+    bottom: $spacing;
+    height: $spacing * 3;
+    padding: .7rem 0;
+    position: fixed;
+    right: 0;
+    width: $spacing * 3;
+    svg{
+        fill: $secondary-text-color;
+    }
+}

@@ -11,9 +11,9 @@ var autoprefixer = require('gulp-autoprefixer');
 
 var filesToWatch = [
     "sass/*.scss",
-    "js/*.js" //,
-    //"Components/**/*.scss",
-    //"Components/**/*.js"
+    "js/*.js",
+    "Components/**/*.scss",
+    "Components/**/*.js"
 ];
 
 var filesToClean = [
@@ -34,14 +34,15 @@ gulp.task('clean', function () {
 gulp.task('js', function () {
     console.log('js');
    
-    // return gulp
-    //     .src(['App/js/HtmlExtensions.js', 'App/js/stringUtil.js', 'App/js/fileLoader.js', 'App/js/styleHelper.js', 'App/js/dateUtil.js', 'Components/**/*.js'])
-    //     .pipe(sourcemaps.init())
-    //     .pipe(concat('huiskamer.js'))
-    //     .pipe(babel({ presets: ['es2015'] }))
-    //     //.pipe(babelminify({unsafe:false}))
-    //     .pipe(sourcemaps.write('.'))
-    //     .pipe(gulp.dest('wwwroot/js'));
+    return gulp
+        .src([//'App/js/HtmlExtensions.js', 'App/js/stringUtil.js', 'App/js/fileLoader.js', 'App/js/styleHelper.js', 'App/js/dateUtil.js', 
+        'Components/**/*.js'])
+        .pipe(sourcemaps.init())
+        .pipe(concat('tiborIxD.js'))
+        .pipe(babel({ presets: ['es2015'] }))
+        //.pipe(babelminify({unsafe:false}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('wwwroot/js'));
 });
 
 gulp.task('scss', function () {

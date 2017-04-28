@@ -16,6 +16,8 @@
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=String.prototype.endsWith,String.prototype.startsWith,Element.prototype.prepend,Element.prototype.append,Array.from,Element.prototype.remove,Promise,fetch,HTMLPictureElement"></script>
+
 <?php // We are loading our theme directory style.css by queuing scripts in our functions.php file, 
 	// so if you want to load other stylesheets,
 	// I would load them with an @import call in your style.css

@@ -17,6 +17,12 @@
 	</div><!-- .site-info -->
 </footer><!-- #colophon .site-footer -->
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var a = new ScrollToTop(10);
+    });
+</script>
+
 <?php wp_footer(); 
 // This fxn allows plugins to insert themselves/scripts/css/files (right here) into the footer of your website. 
 // Removing this fxn call will disable all kinds of plugins. 
