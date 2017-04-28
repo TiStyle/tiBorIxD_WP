@@ -1,4 +1,4 @@
-#[tiBor](http://ti-bor.nl)
+# [tiBor](http://ti-bor.nl)
 ### interAction deSign
 
 _Based on [Naked Theme](http://naked-wordpress.bckmn.com/) - Joshua Beckman_
