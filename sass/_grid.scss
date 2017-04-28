@@ -17,17 +17,6 @@
                     padding: 0 $padding;
                     box-sizing: border-box;
                 }
-                // &.#{$size}#{$grid / $grid-number}{
-                // // @debug 'test' #{$size}#{$grid / $grid-number} '-' #{$grid-number};              
-                //     &:nth-child(#{$grid-number}n+#{$grid-number}){
-                //         background-color: $overlay-background;
-                //         // margin-right: 0;
-                //     }
-                //     &:nth-child(#{$grid-number}n+1){
-                //         background-color: $overlay-background;
-                //         // margin-left: 0;
-                //     }
-                // }
                 &.offset-#{$size}#{$grid-number} {
                     margin-left: calc((100% / (#{$grid} / #{$grid-number})) + (#{$spacing} / 2 )) !important;
                 }
@@ -39,7 +28,7 @@
 
 .row{
     box-sizing: border-box;
-    margin: 0 -#{$spacing};
+    margin: 0 -#{$spacing / 2};
     margin-bottom: $spacing / 2;
     @media #{$small-and-down}{
         padding:0;
