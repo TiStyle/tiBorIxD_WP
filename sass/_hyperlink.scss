@@ -1,0 +1,118 @@
+﻿@import '_config';
+
+button:not(.pswp__button),
+.primary-action{
+    background-color:$secondary-color;
+    border:none;
+    color:white;
+    cursor: pointer;
+    display: table;
+    font-family: $font-family;
+    line-height: 1.2rem;
+    padding:($spacing / 1.6) ($spacing * 1.6);
+    transition: background-color .3s ease-in-out;
+    white-space: nowrap;
+    &:hover{
+        background-color:darken($secondary-color, 10%);
+        transition: background-color .3s ease-in-out;
+    }
+    &.add{
+        background-color:transparent;
+        color:$secondary-color;
+        padding-left: 0;
+        padding-right: 0;
+        transition: color .3s ease-in-out;
+        &:visited{
+            color:$secondary-color;
+        }
+        &:hover{
+            background-color: transparent;
+            color:darken($secondary-color, 10%);
+            transition: color .3s ease-in-out;
+        }
+    }
+    &.right{
+        margin-left: $spacing;
+    }
+    &.left{
+        margin-right: $spacing;
+    }
+}
+.secondary-action{
+    @extend .primary-action;
+    background-color:transparent;
+    color:$secondary-color;
+    padding-left: 0;
+    padding-right: 0;
+    transition: color .3s ease-in-out;
+    white-space: nowrap;
+    &:visited{
+        color:$secondary-color;
+    }
+    &:hover{
+        background-color: transparent;
+        color:darken($secondary-color, 10%);
+        transition: color .3s ease-in-out;
+    }
+}
+
+
+a.primary-action{
+    color:white;
+    text-decoration: none;
+    &:visited{
+        color:white;
+    }
+    &:hover{
+        color:white;
+    }
+}
+a.secondary-action{
+    color:$secondary-color;
+    text-decoration: none;
+    &:visited{
+        color:$secondary-color;
+    }
+    &:hover{
+        color:darken($secondary-color, 10%);
+    }
+}
+
+a{
+    color:$secondary-color;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+    &:visited{
+        color:$secondary-color;
+        transition: color .3s ease-in-out;
+    }
+    &:hover{
+        color:darken($secondary-color, 10%);
+        transition: color .3s ease-in-out;
+    }
+}
+
+.back-home{
+    background-color: transparentize($kring-header, .5);
+    height: 100%;
+    left: -1.5rem;
+    position: absolute;
+    @media only screen and (min-width : 1247px){
+        svg{
+            width: 1.2rem;
+            padding: .2rem;
+        }
+    }
+    svg{
+        fill: $secondary-text-color;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width : 1247px){
+    .back-home{
+        background-color: transparentize($container-color, .5);
+        left: 0;
+        & ~ div{
+            padding-left: $padding * 1.5;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+﻿@import '_config';
+
+.huiskamer-header{
+    background-color: $kring-header;
+    display: table;
+    position: relative;
+    width: 100%;
+    z-index: 9;
+    @media #{$small-and-down}{
+        margin: 0;
+        margin-bottom: $spacing;
+        width:calc(100% - #{$menu-size});
+        h3{
+            font-size: 1rem;
+        }
+    }
+    .huiskamer-header-content{
+        width: 100%;
+        float: left;
+        padding-bottom: $padding;
+        box-sizing: border-box;
+        @media #{$small-and-down}{
+            padding-bottom: 0;
+            h1{
+                height: 4rem;
+                line-height: 4rem;
+                margin: 0 !important;
+            }
+        }
+        h1{
+            color: $secondary-text-color;
+
+            font-size:1.6667rem;
+            line-height:3.3333rem;
+            margin: 0.33333rem 0;
+            font-weight: bold;
+        }
+        .huiskamer-adres{
+            span{
+                color: $secondary-text-color;
+            }
+        }
+        @media #{$small-and-down}{
+            h1,
+            span{
+                line-height: 4rem;
+            }
+        }
+    }
+}

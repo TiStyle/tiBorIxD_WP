@@ -1,0 +1,52 @@
+@import '_config';
+
+.icon{
+    &-add,
+    &-edit,
+    &-delete,
+    &-coverphoto{
+        align-items: center;
+        display: inline-flex;
+        height: 1rem;
+        line-height: 1rem;
+        width: 1rem;
+        .secondary-action:hover &{
+            svg{
+                fill: darken($secondary-color, 20%);
+                transition: .3s fill ease-in-out;
+            }
+        }
+        svg{
+            fill:$secondary-color;
+            height: 1rem;
+            width: 1rem;
+            transition: .3s fill ease-in-out;
+            
+        }
+    }      
+    &-correct{
+        svg{
+            fill:$correct-color;
+        }
+    }
+    &-error{
+        svg{
+            fill:$error-color;
+        }
+    }
+}
+
+.remove{
+    &:hover{
+        svg{
+            fill: darken($secondary-color, 20%);
+            transition: fill .3s ease-in-out;
+        }
+    }
+    svg{
+        cursor: pointer;
+        fill: $secondary-color;
+        height: 1.5rem;
+        transition: fill .3s ease-in-out;
+    }
+}

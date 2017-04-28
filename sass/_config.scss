@@ -1,0 +1,114 @@
+/*********************
+  FLEXI-FRAMEWORK
+
+  Created by: Tibor Dujmovic
+  Date of creation: 9/25/2016
+**********************/
+
+// COLORS
+$primary-color: #e39e54;
+$secondary-color: #003E7E;
+
+$container-color: white;
+$background-color: #f2f2f2;
+$separator-color: #dadada;
+$heading-text-color: #e2e2e2;
+
+$image-default-background-color: #dadada;
+
+$correct-color: #64dd17;
+$error-color: #f44336;
+
+$kring-color: #DB5C1E;
+
+// DOCHTER COLORS
+$company-color-alliade:#b2d235;
+$company-color-meriant:#319bd1;
+$company-color-talant:#eb008b;
+$company-color-reik:#003e7e;
+
+$company-color-alliade-secundair: #013e7d;
+
+// APPLICATION COLORS
+$application-color-kennr:#209B97;
+$application-color-webop:#EB008B;
+$application-color-zorgleefplan:#00ADEE;
+
+
+// GENERAL COLORS
+$kring-header: #DB5C1E;
+$chat-color: #7CB55C;
+$mededeling-color: #630662;
+$betrokkenen-color: #D71345;
+$photoalbum-color: #546F9F;
+$agenda-color: #724A93;
+$agenda-color-light: transparentize($agenda-color, .5);
+$agenda-color-lighter: transparentize($agenda-color, .9);
+
+// GENERAL SETTINGS
+$overlay-background: transparentize(black, .7);
+$select-color: transparentize(black, .95);
+$header-height: 50vh;
+
+$dark-gray: #333333;
+
+// GRID SETTINGS
+$container: 1200px;
+$grid: 12;
+$grid-number: $grid;
+
+// SPACING SETTINGS
+$padding: 1rem;
+$spacing: 1rem;
+$spacing-bottom: 1rem;
+
+// SHADOW SETTINGS
+$z-levels: 5;
+$z-level: $z-levels;
+
+// FONT SETTINGS
+$font-family: Verdana, sans-serif, Geneva;
+$base-font-size: 1rem;
+
+$primary-text-color: $dark-gray;
+$secondary-text-color: white;
+$disabled-text-color: transparentize($dark-gray, .7);
+
+
+// PROFILE IMAGE SETTINGS
+$profile-image-width: 3rem;
+$profile-image-height: 3rem;
+$profile-image-header-width: 1.8rem;
+$profile-image-header-height: 1.8rem;
+$profile-image-mobile-width: 2.5rem;
+$profile-image-mobile-height: 2.5rem;
+
+
+// STATUS SETTINGS
+$available: $correct-color;
+$disabled-background-color: rgba(0,0,0,.05);
+$kring-disabled-color: $disabled-background-color;
+
+// MENU SETTINGS
+$menu-size: $spacing * 4;
+
+
+// CONTEXT MENU SETTINGS
+$header-height: 2.8rem;
+
+// MODAL SETTINGS
+$modal-background:$overlay-background;
+
+// Media Query SETTINGS
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;

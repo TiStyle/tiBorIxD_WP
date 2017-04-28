@@ -1,0 +1,35 @@
+@import '_config';
+
+@each $pos in left, right{
+    .#{$pos}{
+        float:$pos;
+    }
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.sticky{
+    position:fixed;
+}
+
+.verticle-align-wrapper{
+    display: flex;
+    align-items: center;
+    &-both{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.nopadding { 
+    padding:0
+}

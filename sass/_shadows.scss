@@ -1,0 +1,11 @@
+@import '_config';
+
+@while $z-level > 0{
+    .shadow-z#{$z-level}{
+        box-shadow: 0 0 ($z-level / 5) + rem  0rem transparentize(black, .7);
+        transition: .3s box-shadow ease-in-out, .3s transform ease-in-out;
+        cursor:default;
+    }
+
+    $z-level: $z-level - 1;
+}
