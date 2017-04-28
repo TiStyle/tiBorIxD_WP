@@ -34,12 +34,12 @@
                 margin: $spacing / 2;
                 box-sizing: border-box;
             }
-            // .#{$size}#{$grid-number}{
-            //   &:nth-child(#{$grid-number}n+#{$grid-number}),
-            //   &:nth-child(#{$grid-number}n+1){
-            //     margin-top:10px;
-            //   }
-            // }
+            .#{$size}#{$grid / $grid-number}{
+              &:nth-child(#{$grid-number}n+#{$grid-number}),
+              &:nth-child(#{$grid-number}n+1){
+                margin-top:10px;
+              }
+            }
             &.offset-#{$size}#{$grid-number} {
                 margin-left: calc((100% / (#{$grid} / #{$grid-number})) + (#{$spacing} / 2 )) !important;
             }
@@ -48,12 +48,12 @@
     }
     $grid-number: $grid-number - 1;
 }
-.s4{
-  &:nth-child(4n+4),
-  &:nth-child(4n+1){
-    margin-top:10px;
-  }
-}
+// .s4{
+//   &:nth-child(4n+4),
+//   &:nth-child(4n+1){
+//     margin-top:10px;
+//   }
+// }
 
 .row{
     width: 100%; 
