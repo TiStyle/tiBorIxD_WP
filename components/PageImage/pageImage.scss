@@ -1,0 +1,19 @@
+@import '../../sass/_config';
+
+header{
+    .page-image{
+        position: absolute;
+        top: 0;
+        z-index: -1;
+    }
+}
+
+.page-image{
+    height: $header-height;
+    overflow: hidden;
+    width: 100%;
+    img{
+        min-height: 100%;
+        width: auto;
+    }
+}

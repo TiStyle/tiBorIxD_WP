@@ -46,7 +46,7 @@
 	?>
 >
 
-<header id="masthead" class="site-header">
+<header class="shadow-z5-inset">
 	<div class="container center">
 	
 		<nav class="site-navigation main-navigation">
@@ -66,7 +66,9 @@
 		
 		<div class="clear"></div>
 	</div><!--/container -->
-		
+    <div class="page-image">
+        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+    </div>
 </header><!-- #masthead .site-header -->
 
 <main class="main-container"><!-- start the page containter -->

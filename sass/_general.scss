@@ -39,6 +39,8 @@ html{
 
 // CONTAINERS
 header{
+    height: $header-height;
+    position: relative;
     &.card{
         padding: 0;
         @media #{$small-and-down}{
@@ -84,119 +86,28 @@ $head-number: 5;
     h#{$head-number}{
         color: $primary-text-color;
         font-size: 1rem + (2rem / $head-number);
-        line-height: ((1rem + (2rem / $head-number)) * 2 );
+        line-height: ((1rem + (2rem / $head-number)) * $golden-ratio );
         font-weight:normal;
         margin: 0;
     }
     $head-number: $head-number - 1;
 }
-.page-title,
-.block-title{
-    color: $secondary-color;
-    font-size: 1.4rem;
-    line-height: $header-height;
-    margin: 0 ($spacing / 2);
-    @media #{$small-and-down}{
-        font-size: 1.2rem;
-    }
-}
-.block-title{
-    background-color: transparentize($secondary-color, .9);
-    margin: 0 (-$spacing);
-    padding: 0 ($padding * 1.5) 0 $padding;
-}
 
 
 // SEE ALL
-.see-all,
-.see-all-left{
-    line-height: 2.8rem;
-    background-color: rgba(0,62,126,0.5);
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    span{
-        top: .3rem;
-        svg{
-            fill: $secondary-text-color;
-            position: relative;
-            top: .3rem;
-        }
-    }
-}
-.see-all{
-    right: 0;
-}
-.see-all-left{
-    left: -$spacing * 1.5;
-    @media only screen and (max-width : 1247px){
-        left: 0;
-        & ~ .block-title{
-            padding: 0 $padding * 2;
-        }
-    }
-}
 
 
 // PARAGRAPHS
-p{
-    margin:($spacing / 2) auto;
-}
-.intro-text{
-    background-color: $primary-color;
-    color: $secondary-text-color;
-    font-size: .95rem;
-    margin:0;
-    @media #{$medium-and-up}{
-        max-width: 100%;
-        padding: $padding 15%;
-    }
-    @media #{$small-and-down}{
-        font-size: .9rem;
-        line-height: 1.8rem;
-        padding: $padding;
-    }
-}
-.content-empty{
-    color: lighten($primary-text-color, 50%);
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    padding: $padding ($padding * 2);
-    text-align: center;
-}
+
 
 // IMAGES
-.image{
-    width:100%;
-    display: table;
-}
+
 
 // LISTS
-div.row{
-    ul{
-        li{
-            list-style: none;
-        }
-    }
-}
-
-
-// ERROR PAGES
-.error-page{
-    @media #{$small-and-down}{
-        margin-top: $spacing * 5;
-    }
-    .block-title.center{
-        margin: 0 (-$spacing);
-    }
-    p{
-        font-weight: bold;
-    }
+ul{
+    margin: #{$spacing / 2} 0;
+    padding: 0;
     li{
-        font-size: .8rem;
-        margin-bottom: .5rem;
-    }
-    a{
-        text-decoration: underline;
+        list-style: none;
     }
 }

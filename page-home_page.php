@@ -2,13 +2,10 @@
 /**
  * 	Template Name: Main Homepage
  *
- *	This page template has a sidebar built into it, 
- * 	and can be used as a home page, in which case the title will not show up.
- *
 */
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<div class="row">
-		<div class="col l12 m12 s12">
+		<div class="col l6 m6 s12 offset-l1 offset-m1">
 			Hoi
 		</div>
 	</div>
@@ -51,4 +48,5 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		<div class="col l6 m4 s3"></div>
 		<div class="col l6 m4 s3"></div>
 	</div>
+    
 <?php get_footer(); // This fxn gets the footer.php file and renders it ?>

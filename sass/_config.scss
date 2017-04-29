@@ -46,9 +46,10 @@ $agenda-color-light: transparentize($agenda-color, .5);
 $agenda-color-lighter: transparentize($agenda-color, .9);
 
 // GENERAL SETTINGS
+$golden-ratio: 1.61803398875;
 $overlay-background: transparentize(black, .7);
 $select-color: transparentize(black, .95);
-$header-height: 50vh;
+$header-height: 20rem;
 
 $dark-gray: #333333;
 
@@ -94,7 +95,6 @@ $menu-size: $spacing * 4;
 
 
 // CONTEXT MENU SETTINGS
-$header-height: 2.8rem;
 
 // MODAL SETTINGS
 $modal-background:$overlay-background;
