@@ -50,12 +50,15 @@
 	<div class="container center">
 	
 		<nav id="menu">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>
-            <div id="menu-icon" class="menu-icon right">
+            <?php if (function_exists(clean_custom_menus())) clean_custom_menus(); ?>
+
+			<!--<?php wp_nav_menu( array( 
+            'theme_location'    => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>-->
+            <!--<div id="menu-icon" class="menu-icon right">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
-            </div>
+            </div>-->
         </nav><!-- .site-navigation .main-navigation -->
 	</div>
 	<div class="center">

@@ -1,15 +1,18 @@
 ﻿@import "../../sass/config";
 
 nav{
-    background-color: $container-color;
-    display: table;
-    height:100%;
-    margin:0 auto;
-    max-width: $container;
-    min-height:100%;
-    position: relative;
+    position: fixed;
     transform: translateY(-3.5rem); 
+    transition: transform .3s cubic-bezier(.27,.79,.28,.97);
     width: 100%;
+    .menu{
+        background-color: $container-color;
+        display: table;
+        margin:0 auto;
+        max-width: $container;
+        position: relative;
+        width: 100%;
+    }
     ul{
         list-style: none;
         margin: 0;
@@ -27,11 +30,15 @@ nav{
     }
     &.open{
         transform: translateY(0);
+        transition: transform .3s cubic-bezier(.27,.79,.28,.97);
         width:100%;
         z-index: 10;
-        ul{
-        }
         .overlay{
+            background-color: $overlay-background;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            width: 100vw;
             z-index: -1;
         }
         .menu-icon{
@@ -55,19 +62,19 @@ nav{
     }
 }
 .menu-icon{
-    background-color: $secondary-color;
+    background-color: $container-color;
     box-sizing: border-box;
     cursor: pointer;
-    height: $spacing * 4;
-    padding: $spacing * 1.4;
+    height: $menu-size;
+    padding: $spacing * .4;
     position: absolute;
     right: 0;
     transition: .25s background-color ease-in-out;
-    width: $spacing  * 4;
+    width: $menu-size;
     .bar1,
     .bar2,
     .bar3{
-        background-color: $container-color;
+        background-color: $secondary-color;
         display:block;
         height: 2px;
         position:relative;

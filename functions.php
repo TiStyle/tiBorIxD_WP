@@ -33,6 +33,32 @@ register_nav_menus(
 	)
 );
 
+
+/*-----------------------------------------------------------------------------------*/
+/* Custom menu markup
+/*-----------------------------------------------------------------------------------*/
+function clean_custom_menus() {
+    $menu_name = 'primary'; // specify custom menu slug
+    if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+        $menu = wp_get_nav_menu_object($locations[$menu_name]);
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+
+		$menu_list = '<div class="menu">' ."\n";
+        $menu_list .= "\t\t\t\t". '<ul>' ."\n";
+        foreach ((array) $menu_items as $key => $menu_item) {
+            $title = $menu_item->title;
+            $url = $menu_item->url;
+            $menu_list .= "\t\t\t\t\t". '<li><a href="'. $url .'">'. $title .'</a></li>' ."\n";
+        }
+        $menu_list .= "\t\t\t\t". '</ul>' ."\n";
+        $menu_list .= "\t\t\t\t". '<div id="menu-icon" class="menu-icon right"><div class="bar1"></div><div class="bar2"></div><div class="bar3"></div></div>' ."\n";
+        $menu_list .= "\t\t\t". '</div>' ."\n";
+    } else {
+        $menu_list = '<!-- no list defined -->';
+    }
+    echo $menu_list;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* Activate sidebar for Wordpress use
 /*-----------------------------------------------------------------------------------*/

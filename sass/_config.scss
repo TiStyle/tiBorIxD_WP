@@ -76,25 +76,14 @@ $secondary-text-color: white;
 $disabled-text-color: transparentize($dark-gray, .7);
 
 
-// PROFILE IMAGE SETTINGS
-$profile-image-width: 3rem;
-$profile-image-height: 3rem;
-$profile-image-header-width: 1.8rem;
-$profile-image-header-height: 1.8rem;
-$profile-image-mobile-width: 2.5rem;
-$profile-image-mobile-height: 2.5rem;
-
-
 // STATUS SETTINGS
 $available: $correct-color;
 $disabled-background-color: rgba(0,0,0,.05);
 $kring-disabled-color: $disabled-background-color;
 
 // MENU SETTINGS
-$menu-size: $spacing * 4;
+$menu-size: $spacing * 2;
 
-
-// CONTEXT MENU SETTINGS
 
 // MODAL SETTINGS
 $modal-background:$overlay-background;
