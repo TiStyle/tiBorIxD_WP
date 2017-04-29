@@ -111,3 +111,12 @@ ul{
         list-style: none;
     }
 }
+
+// FOOTER
+footer{
+    position: relative;
+    max-width: $container;
+    width: 100%;
+    display: table;
+    margin:0 auto;
+}
