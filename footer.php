@@ -20,6 +20,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var a = new ScrollToTop(10);
+        var b = new Menu();
     });
 </script>
 

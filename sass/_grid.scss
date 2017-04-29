@@ -4,15 +4,14 @@
 .col{
     margin: $spacing / 2;
     @while $grid-number > 0 {
-        @each $size, $query, $colors in   (s, $small-and-down, green),
-                                        (m, $medium-only, red),
-                                        (l, $large-and-up, blue) {
+        @each $size, $query in      (s, $small-and-down),
+                                    (m, $medium-only),
+                                    (l, $large-and-up) {
             @media #{$query} {
                 &.#{$size}#{$grid-number} {
                     min-height: 1rem;
                     // .1px compensation for IE11
                     width: calc((100% / (#{$grid} / #{$grid-number})) - #{$spacing} - .1px);
-                    background-color: $colors;
                     float: left;
                     padding: 0 $padding;
                     box-sizing: border-box;
