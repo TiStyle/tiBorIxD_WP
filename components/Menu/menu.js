@@ -14,12 +14,8 @@
             listitem.addEventListener('click', this.toggleMenuVisibility.bind(this));
         });
 
-        window.addEventListener('hashchange', this.hashChanged.bind(this));
-
         window.addEventListener('resize',this.bindMenuOpener.bind(this));
         this.bindMenuOpener();
-
-        this.hashChanged();
     }
 
     bindMenuOpener() {
