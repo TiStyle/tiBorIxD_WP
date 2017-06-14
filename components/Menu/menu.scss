@@ -1,24 +1,41 @@
 ﻿@import "../../sass/config";
 
 nav{
+    background-color: transparentize($container-color, .05);
     position: fixed;
-    transform: translateY(-3.5rem); 
+    height: 100vh;
+    transform: translateY(-100vh); 
     transition: transform .3s cubic-bezier(.27,.79,.28,.97);
     width: 100%;
     .menu{
-        background-color: transparentize($container-color, .05);
-        display: table;
+        align-items: center;
+        border: 1px solid $dark-gray;
+        box-sizing: border-box;
+        display: flex;
+        height: 100%;
         margin:0 auto;
-        max-width: $container;
+        padding: $padding;
+        padding-top: $padding * 2;
         position: relative;
         width: 100%;
     }
     ul{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
         list-style: none;
         margin: 0;
-        padding: ($spacing / 2) 0;
+        padding: 0 $padding;
+        width: 50%;
+        &:first-child{
+            border-right: 1px solid $dark-gray;
+            li{
+                text-align: right;
+            }
+        }
         li{
-            display: inline-block;
+            display: block;
             padding: ($spacing / 2) 0;
             &.right{
                 line-height: 1.8rem;
@@ -29,11 +46,16 @@ nav{
         }
     }
     &.open{
+        box-sizing: border-box;
+        height: calc(100vh - 2rem);
+        padding: $padding;
         transform: translateY(0);
         transition: transform .3s cubic-bezier(.27,.79,.28,.97);
-        width:100%;
+        width: 100vw;
         z-index: 1000;
         .menu-icon{
+            bottom: auto;
+            top: 0;
             .bar1,
             .bar2,
             .bar3{
@@ -54,19 +76,22 @@ nav{
     }
 }
 .menu-icon{
-    background-color: $container-color;
+    bottom: -$menu-size;
     box-sizing: border-box;
     cursor: pointer;
     height: $menu-size;
+    left: 0;
+    margin: 0 auto;
     padding: $spacing * .4;
     position: absolute;
     right: 0;
+    top: auto;
     transition: .25s background-color ease-in-out;
     width: $menu-size;
     .bar1,
     .bar2,
     .bar3{
-        background-color: $secondary-color;
+        background-color: $dark-gray;
         display:block;
         height: 2px;
         position:relative;

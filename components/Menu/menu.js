@@ -55,14 +55,19 @@
         this.removeOverlay();
     }
 
+
+
+// TODO: refactor naar eigen Component
     createOverlay() {
         var overlay = document.createElement('div');
         overlay.className = 'overlay';  
         document.body.appendChild(overlay);
         document.body.querySelector('.overlay').addEventListener('click', this.toggleMenuVisibility.bind(this));
+        document.documentElement.style.overflow = 'hidden';
     }
 
     removeOverlay() {
         document.body.querySelector('.overlay').remove();
+        document.documentElement.style.overflow = '';
     }
 }

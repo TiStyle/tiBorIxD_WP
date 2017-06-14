@@ -47,7 +47,7 @@
 >
 
 <header>
-	<div class="container center">
+	<div class="container">
 	
 		<nav id="menu">
             <?php if (function_exists(clean_custom_menus())) clean_custom_menus(); ?>

@@ -13,23 +13,23 @@ html{
     @media only screen and (max-width : $container + 47){
         overflow-x: hidden;
     }
-    &:after{
-        background-position: 70vw 60vh;
-        background-repeat: no-repeat;
-        background-size: 500px 500px;
-        content: ' ';
-        height: 100vh;
-        left: 0;
-        opacity: .1;
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        z-index: -1;
-        @media #{$small-and-down}{
-            background-position: 60vw 60vh;
-            background-size: 350px;
-        }
-    }
+    // &:after{
+    //     background-position: 70vw 60vh;
+    //     background-repeat: no-repeat;
+    //     background-size: 500px 500px;
+    //     content: ' ';
+    //     height: 100vh;
+    //     left: 0;
+    //     opacity: .1;
+    //     position: fixed;
+    //     top: 0;
+    //     width: 100vw;
+    //     z-index: -1;
+    //     @media #{$small-and-down}{
+    //         background-position: 60vw 60vh;
+    //         background-size: 350px;
+    //     }
+    // }
     body{
         padding:0;
         margin: 0;
