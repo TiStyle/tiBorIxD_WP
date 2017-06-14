@@ -1,12 +1,15 @@
 ﻿@import "../../sass/config";
 
 nav{
+    box-sizing: border-box;
+    height: 100vh;
     background-color: transparentize($container-color, .05);
     position: fixed;
-    height: 100vh;
+    padding: $padding;
     transform: translateY(-100vh); 
     transition: transform .3s cubic-bezier(.27,.79,.28,.97);
     width: 100%;
+    z-index: 1000;
     .menu{
         align-items: center;
         border: 1px solid $dark-gray;
@@ -46,13 +49,10 @@ nav{
         }
     }
     &.open{
-        box-sizing: border-box;
         height: calc(100vh - 2rem);
-        padding: $padding;
         transform: translateY(0);
         transition: transform .3s cubic-bezier(.27,.79,.28,.97);
         width: 100vw;
-        z-index: 1000;
         .menu-icon{
             bottom: auto;
             top: 0;
@@ -76,7 +76,7 @@ nav{
     }
 }
 .menu-icon{
-    bottom: -$menu-size;
+    bottom: -#{$menu-size + 1};
     box-sizing: border-box;
     cursor: pointer;
     height: $menu-size;
