@@ -103,7 +103,8 @@ $head-number: 5;
 
 // LISTS
 ul{
-    margin: #{$spacing / 2} 0;
+    // margin: #{$spacing / 2} 0;
+    margin: 0;
     padding: 0;
     li{
         list-style: none;
