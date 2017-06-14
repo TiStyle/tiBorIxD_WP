@@ -19,18 +19,18 @@
     }
 
     bindMenuOpener() {
-        if (window.innerWidth <= 600 && !this.headerClickOpensMenu && document.querySelector("header")) {
-            document.querySelector("header")
-                .addEventListener('click', this.toggleMenuVisibility.bind(this))
+        // if (window.innerWidth <= 600 && !this.headerClickOpensMenu && document.querySelector("header")) {
+            // document.querySelector("header")
+            //     .addEventListener('click', this.toggleMenuVisibility.bind(this))
 
-            this.headerClickOpensMenu = true;
-        }
+            // this.headerClickOpensMenu = true;
+        // }
       
-        if (window.innerWidth > 600 && this.headerClickOpensMenu) {
+        // if (window.innerWidth > 600 && this.headerClickOpensMenu) {
             document.querySelector("header")
                 .removeEventListener('click', this.toggleMenuVisibility)
             this.headerClickOpensMenu = false;
-        }
+        // }
     }
 
     toggleMenuVisibility() {
@@ -58,11 +58,11 @@
     createOverlay() {
         var overlay = document.createElement('div');
         overlay.className = 'overlay';  
-        this.menu.appendChild(overlay);
-        this.menu.querySelector('.overlay').addEventListener('click', this.toggleMenuVisibility.bind(this));
+        document.body.appendChild(overlay);
+        document.body.querySelector('.overlay').addEventListener('click', this.toggleMenuVisibility.bind(this));
     }
 
     removeOverlay() {
-        this.menu.querySelector('.overlay').remove();
+        document.body.querySelector('.overlay').remove();
     }
 }

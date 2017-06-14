@@ -39,9 +39,6 @@ html{
 
 // CONTAINERS
 header{
-    height: $header-height;
-    position: relative;
-    background-color: transparentize($primary-color, .25);
     &.card{
         padding: 0;
         @media #{$small-and-down}{
@@ -73,11 +70,9 @@ header{
     display: table;
     height:100%;
     margin:0 auto;
-    margin-bottom: -3rem;
     max-width: $container;
     min-height:100%;
     position: relative;
-    top: -3rem;
     width: 100%;
 }
 
@@ -114,6 +109,18 @@ ul{
         list-style: none;
     }
 }
+
+
+// OVERLAY
+.overlay{
+    background-color: $overlay-background;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 999;
+}
+
 
 // FOOTER
 footer{

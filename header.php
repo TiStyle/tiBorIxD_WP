@@ -46,7 +46,7 @@
 	?>
 >
 
-<header class="shadow-z5-inset">
+<header>
 	<div class="container center">
 	
 		<nav id="menu">
@@ -75,11 +75,11 @@
 		<div class="clear"></div>
 	</div><!--/container -->
     
-    <?php if ( has_post_thumbnail() ) : ?>
+    <!--<?php if ( has_post_thumbnail() ) : ?>
         <div class="page-image">
             <?php { the_post_thumbnail(); } ?> 
         </div>
-    <?php endif; ?>
+    <?php endif; ?>-->
 
 </header><!-- #masthead .site-header -->
 

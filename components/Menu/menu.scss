@@ -6,7 +6,7 @@ nav{
     transition: transform .3s cubic-bezier(.27,.79,.28,.97);
     width: 100%;
     .menu{
-        background-color: $container-color;
+        background-color: transparentize($container-color, .05);
         display: table;
         margin:0 auto;
         max-width: $container;
@@ -32,15 +32,7 @@ nav{
         transform: translateY(0);
         transition: transform .3s cubic-bezier(.27,.79,.28,.97);
         width:100%;
-        z-index: 10;
-        .overlay{
-            background-color: $overlay-background;
-            height: 100vh;
-            position: absolute;
-            top: 0;
-            width: 100vw;
-            z-index: -1;
-        }
+        z-index: 1000;
         .menu-icon{
             .bar1,
             .bar2,
