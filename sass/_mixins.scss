@@ -17,3 +17,8 @@
         bottom: 0;
     }
 }
+
+// READABILITY SENTANCE
+@mixin readability-ratio($font-size, $golden-ratio) {
+    max-width: $font-size * ($golden-ratio * 21);
+}

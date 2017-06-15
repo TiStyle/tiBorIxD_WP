@@ -33,6 +33,12 @@ $slide-controll-size: $spacing * 1.5;
                     transition: .3s font-size cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 }
             }
+            p{
+                color: $secondary-text-color;
+                font-family: $font-family-medium;
+                font-size: 1.5rem;
+                @include readability-ratio(1.5rem, $golden-ratio)
+            }
         }
     }
 }
