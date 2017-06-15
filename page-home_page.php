@@ -6,17 +6,17 @@
 get_header(); // This fxn gets the header.php file and renders it ?>
 
 	<div class="container-full">
-		<ul>
+		<ul id="slider">
 			<?php
 			$recent_posts = wp_get_recent_posts(array(
 				'numberposts' => 5, // Number of recent posts thumbnails to display
 				'post_status' => 'publish' // Show only the published posts
 			));
 			foreach($recent_posts as $post) : ?>
-				<li>
-					<a href="<?php echo get_permalink($post['ID']) ?>">
-						<?php echo get_the_post_thumbnail($post['ID'], 'full'); ?>
-						<p><?php echo $post['post_title'] ?></p>
+				<li class="slide" style="background-image:url('<?php echo get_the_post_thumbnail_url($post['ID'], 'full'); ?>')">
+					<a href="<?php echo get_permalink($post['ID']) ?>" title="<?php echo $post['post_title'] ?>">
+						
+						<h2><?php echo $post['post_title'] ?></h2>
 					</a>
 				</li>
 			<?php endforeach; wp_reset_query(); ?>

@@ -1,9 +1,10 @@
 ﻿@import "../../sass/config";
 
 nav{
+    box-shadow: 0rem 1rem 6rem -1rem $overlay-background;
     box-sizing: border-box;
     height: 100vh;
-    background-color: transparentize($container-color, .05);
+    background-color: transparentize($container-color, .1);
     position: fixed;
     padding: $padding;
     transform: translateY(-100vh); 
@@ -49,7 +50,7 @@ nav{
         }
     }
     &.open{
-        height: calc(100vh - 2rem);
+        height: 100vh;
         transform: translateY(0);
         transition: transform .3s cubic-bezier(.27,.79,.28,.97);
         width: 100vw;

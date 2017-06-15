@@ -48,6 +48,7 @@ $agenda-color-lighter: transparentize($agenda-color, .9);
 // GENERAL SETTINGS
 $golden-ratio: 1.61803398875;
 $overlay-background: transparentize(black, .7);
+$dark-overlay-background: transparentize(black, .3);
 $select-color: transparentize(black, .95);
 $header-height: 20rem;
 
@@ -68,7 +69,12 @@ $z-levels: 5;
 $z-level: $z-levels;
 
 // FONT SETTINGS
+$font-family-thin: 'Kelson-Thin', Verdana, sans-serif, Geneva;
+$font-family-light: 'Kelson-Light', Verdana, sans-serif, Geneva;
 $font-family: 'Kelson', Verdana, sans-serif, Geneva;
+$font-family-medium: 'Kelson-Medium', Verdana, sans-serif, Geneva;
+$font-family-bold: 'Kelson-Bold', Verdana, sans-serif, Geneva;
+$font-family-extra-bold: 'Kelson-ExtraBold', Verdana, sans-serif, Geneva;
 $base-font-size: 1rem;
 
 $primary-text-color: $dark-gray;
