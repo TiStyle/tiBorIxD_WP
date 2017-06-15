@@ -16,5 +16,6 @@
     "gulp-rimraf": "0.2.1"
   },
   "dependencies": {
+    "swiper": "^3.4.2"
   }
 }

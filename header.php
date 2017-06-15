@@ -14,6 +14,10 @@
 	<?php is_front_page() ? bloginfo('description') : wp_title(''); // if we're on the home page, show the description, from the site's settings - otherwise, show the title of the post or page ?>
 </title>
 
+<!-- SWIPER -->
+<link rel="stylesheet" href="wp-content/themes/tiBorIxD_WP/wwwroot/css/swiper.min.css">
+
+
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=String.prototype.endsWith,String.prototype.startsWith,Element.prototype.prepend,Element.prototype.append,Array.from,Element.prototype.remove,Promise,fetch,HTMLPictureElement"></script>
@@ -51,6 +55,25 @@
 		<nav id="menu">
             <?php if (function_exists(clean_custom_menus())) clean_custom_menus(); ?>
 
+				<?php
+				$recent_posts = wp_get_recent_posts(array(
+					'numberposts' => 1, // Number of recent posts thumbnails to display
+					'post_status' => 'publish' // Show only the published posts
+				));
+				foreach($recent_posts as $post) : ?>
+					<div id="latestBlogRender">
+						<a href="<?php echo get_permalink($post['ID']) ?>" title="<?php echo $post['post_title'] ?>">
+							<h2><?php echo $post['post_title'] ?></h2>
+						</a>
+					</div>
+				<?php endforeach; wp_reset_query(); ?>
+
+				<script>
+					document.addEventListener('DOMContentLoaded', function(){
+						var container = document.getElementById('latestBlogRender')
+						document.getElementById('latestBlog').append(container);
+					});
+				</script>
 			<!--<?php wp_nav_menu( array( 
             'theme_location'    => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>-->
             <!--<div id="menu-icon" class="menu-icon right">

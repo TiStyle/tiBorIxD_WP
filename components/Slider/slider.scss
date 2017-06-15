@@ -1,5 +1,7 @@
 @import "../../sass/config";
 
+$slide-controll-size: $spacing * 1.5;
+
 #slider{
     height: 100%;
     width: 100%;
@@ -15,22 +17,46 @@
             align-items: center;
             background-color: $dark-overlay-background;
             display: flex;
+            flex-direction: column; 
             height: 100%;
+            justify-content: center;
             text-align: center;
             width: 100%;
-            &:hover{
-                h2{
-                    font-size: #{$golden-ratio * 2.1 + 'rem'};
-                    transition: .3s font-size cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                }
-            }
             h2{
                 color: $secondary-text-color;
                 font-family: $font-family-thin;
                 font-size: #{$golden-ratio * 2 + 'rem'};
                 margin: 0 auto;
                 transition: .2s font-size cubic-bezier(0.895, 0.03, 0.685, 0.22);
+                &:hover{
+                    font-size: #{$golden-ratio * 2.1 + 'rem'};
+                    transition: .3s font-size cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                }
             }
         }
+    }
+}
+
+.swiper-container{
+    background-color: $dark-gray;
+    height: 100%;
+    width: 100%;
+    .swiper-next,
+    .swiper-prev{
+        border-left: 1px solid $container-color;
+        border-top: 1px solid $container-color;
+        height: $slide-controll-size;
+        top: calc(50% - #{$spacing});
+        position: absolute;
+        width: $slide-controll-size;
+        z-index: 1;
+    }
+    .swiper-prev{
+        left: $spacing * 2;
+        transform: rotate(-45deg);
+    }
+    .swiper-next{
+        right: $spacing * 2;
+        transform: rotate(135deg);
     }
 }

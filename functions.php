@@ -52,7 +52,7 @@ function clean_custom_menus() {
         }
         $menu_list .= "\t\t\t\t". '</ul>' ."\n";
         $menu_list .= "\t\t\t\t". '<div id="menu-icon" class="menu-icon right"><div class="bar1"></div><div class="bar2"></div><div class="bar3"></div></div>' ."\n";
-        $menu_list .= "\t\t\t". '</div>' ."\n";
+        $menu_list .= "\t\t\t". '<div id="latestBlog"></div></div>' ."\n";
     } else {
         $menu_list = '<!-- no list defined -->';
     }
