@@ -49,20 +49,42 @@ $slide-controll-size: $spacing * 1.5;
     width: 100%;
     .swiper-next,
     .swiper-prev{
+        @media #{$small-and-down}{
+            display: none;
+        }
         border-left: 1px solid $container-color;
         border-top: 1px solid $container-color;
+        cursor: pointer;
         height: $slide-controll-size;
         top: calc(50% - #{$spacing});
         position: absolute;
         width: $slide-controll-size;
         z-index: 1;
+        &:before{
+            content: '';
+            height:100%;
+            left: -$padding;
+            padding: $padding;
+            position: absolute;
+            top: -$padding;
+            width: 100%;
+        }
+        &:hover{
+            transition: .1s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
     }
     .swiper-prev{
         left: $spacing * 2;
         transform: rotate(-45deg);
+        &:hover{
+            transform: scale(1.1) rotate(-45deg);
+        }
     }
     .swiper-next{
         right: $spacing * 2;
         transform: rotate(135deg);
+        &:hover{
+            transform: scale(1.1) rotate(135deg);
+        }
     }
 }

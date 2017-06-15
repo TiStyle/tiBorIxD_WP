@@ -34,6 +34,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				prevButton: '.swiper-prev',
 				spaceBetween: 20,
 				loop: true,
+				keyboardControl: true,
 				autoplay: 7500,
 				autoplayDisableOnInteraction: false
 			});
