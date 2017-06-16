@@ -52,7 +52,25 @@
 
 <header>
 	<div class="container">
+
+		<div id="brand" class="center hide">
+			<h1 class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ); // Link to the home page ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); // Title it with the blog name ?>" rel="home"><?php bloginfo( 'name' ); // Display the blog name ?></a>
+			</h1>
+			<h4 class="site-description">
+				<?php bloginfo( 'description' ); // Display the blog description, found in General Settings ?>
+			</h4>
+		</div><!-- /brand -->
+
+
 		<nav id="menu">
+
+			<div class="hexagon-container">
+				<div class="skew1"></div>
+				<div class="skew2"></div>
+				<div class="skew3"></div>
+			</div>
+			
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>
 
 			<?php
@@ -76,17 +94,6 @@
 			
         </nav><!-- .site-navigation .main-navigation -->
 	</div>
-
-		<div id="brand" class="center hide">
-			<h1 class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ); // Link to the home page ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); // Title it with the blog name ?>" rel="home"><?php bloginfo( 'name' ); // Display the blog name ?></a>
-			</h1>
-			<h4 class="site-description">
-				<?php bloginfo( 'description' ); // Display the blog description, found in General Settings ?>
-			</h4>
-		</div><!-- /brand -->
-		
-		<div class="clear"></div>
     
 </header><!-- #masthead .site-header -->
 

@@ -1,2 +1,8 @@
 @import "../../sass/config";
 
+.tag{
+    background-color: $primary-color;
+    color: $secondary-text-color;
+    font-size: .75rem;
+    padding: 0 #{$padding / 2};
+}

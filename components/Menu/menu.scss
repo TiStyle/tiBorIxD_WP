@@ -97,6 +97,15 @@ nav{
     top: auto;
     transition: .25s background-color ease-in-out;
     width: $menu-size * 3;
+    &:after{
+        content: '';
+        height: 100%;
+        left: -$padding;
+        padding: $padding;
+        position: absolute;
+        top: -$padding;
+        width: 100%;
+    }
     .bar1,
     .bar2,
     .bar3{
