@@ -1,5 +1,6 @@
 ﻿class Menu {
     constructor() {
+        this.createHamburger();
         this.hamburger = document.getElementById('menu-icon');
         this.menu = document.getElementById('menu');
         this.addEventListeners();
@@ -56,6 +57,25 @@
     }
 
 
+    createHamburger() {
+        // <div id="menu-icon" class="menu-icon right"><div class="bar1"></div><div class="bar2"></div><div class="bar3"></div>
+        var icon = document.createElement('div');
+        icon.id = 'menu-icon';
+        icon.classList.add('menu-icon');
+
+        var bar1 = document.createElement('div');
+        var bar2 = document.createElement('div');
+        var bar3 = document.createElement('div');
+        bar1.classList.add('bar1');
+        bar2.classList.add('bar2');
+        bar3.classList.add('bar3');
+
+        icon.append(bar1);
+        icon.append(bar2);
+        icon.append(bar3);
+
+        document.querySelector('.menu-primary-container').appendChild(icon);
+    }
 
 // TODO: refactor naar eigen Component
     createOverlay() {

@@ -53,34 +53,27 @@
 <header>
 	<div class="container">
 		<nav id="menu">
-            <?php if (function_exists(clean_custom_menus())) clean_custom_menus(); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>
 
-				<?php
-				$recent_posts = wp_get_recent_posts(array(
-					'numberposts' => 1, // Number of recent posts thumbnails to display
-					'post_status' => 'publish' // Show only the published posts
-				));
-				foreach($recent_posts as $post) : ?>
-					<div id="latestBlogRender">
-						<a href="<?php echo get_permalink($post['ID']) ?>" title="<?php echo $post['post_title'] ?>">
-							<h2><?php echo $post['post_title'] ?></h2>
-						</a>
-					</div>
-				<?php endforeach; wp_reset_query(); ?>
+			<?php
+			$recent_posts = wp_get_recent_posts(array(
+				'numberposts' => 1, // Number of recent posts thumbnails to display
+				'post_status' => 'publish' // Show only the published posts
+			));
+			foreach($recent_posts as $post) : ?>
+				<a id="latestBlog" href="<?php echo get_permalink($post['ID']) ?>" title="<?php echo $post['post_title'] ?>">
+					<span class="tag">Latest Blog</span>
+					<h2><?php echo $post['post_title'] ?></h2>
+				</a>
+			<?php endforeach; wp_reset_query(); ?>
 
-				<script>
-					document.addEventListener('DOMContentLoaded', function(){
-						var container = document.getElementById('latestBlogRender')
-						document.getElementById('latestBlog').append(container);
-					});
-				</script>
-			<!--<?php wp_nav_menu( array( 
-            'theme_location'    => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>-->
-            <!--<div id="menu-icon" class="menu-icon right">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-            </div>-->
+			<script>
+				document.addEventListener('DOMContentLoaded', function(){
+					var latestBlog = document.getElementById('latestBlog')
+					document.querySelector('.menu-primary-container').append(latestBlog);
+				});
+			</script>
+			
         </nav><!-- .site-navigation .main-navigation -->
 	</div>
 
@@ -95,12 +88,6 @@
 		
 		<div class="clear"></div>
     
-    <!--<?php if ( has_post_thumbnail() ) : ?>
-        <div class="page-image">
-            <?php { the_post_thumbnail(); } ?> 
-        </div>
-    <?php endif; ?>-->
-
 </header><!-- #masthead .site-header -->
 
 <main class="main-container"><!-- start the page containter -->

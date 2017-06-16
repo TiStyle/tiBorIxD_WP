@@ -8,6 +8,7 @@ button#go-to-top{
     position: fixed;
     right: 0;
     width: $spacing * 3;
+    z-index: 999;
     svg{
         fill: $secondary-text-color;
     }
