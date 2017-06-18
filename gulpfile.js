@@ -35,8 +35,8 @@ gulp.task('js', function () {
     console.log('js');
    
     return gulp
-        .src([//'App/js/HtmlExtensions.js', 'App/js/stringUtil.js', 'App/js/fileLoader.js', 'App/js/styleHelper.js', 'App/js/dateUtil.js', 
-        'Components/**/*.js'])
+        .src([//'App/js/HtmlExtensions.js', 'App/js/stringUtil.js', 'App/js/fileLoader.js', 'App/js/dateUtil.js', 
+        'js/styleHelper.js', 'Components/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(concat('tiborIxD.js'))
         .pipe(babel({ presets: ['es2015'] }))

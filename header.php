@@ -65,12 +65,6 @@
 
 		<nav id="menu">
 
-			<div class="hexagon-container">
-				<div class="skew1"></div>
-				<div class="skew2"></div>
-				<div class="skew3"></div>
-			</div>
-			
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>
 
 			<?php

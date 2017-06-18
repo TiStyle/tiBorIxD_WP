@@ -1,0 +1,14 @@
+@import '_config';
+
+.appear{
+    animation: appear .3s ease-in-out;
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

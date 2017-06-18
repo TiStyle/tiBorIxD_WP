@@ -1,5 +1,12 @@
-﻿class Menu {
+﻿// Overall OPSCHONEN
+
+class Menu {
     constructor() {
+        this.currentMenuElement = document.querySelector('.current-menu-item');
+        this.rect = this.currentMenuElement.getBoundingClientRect();
+        this.createCurrentMenuIcon(this.rect.top, this.rect.height);
+        this.currentMenuIcon = document.querySelector('.hexagon-container');
+
         this.createHamburger();
         this.hamburger = document.getElementById('menu-icon');
         this.menu = document.getElementById('menu');
@@ -11,12 +18,18 @@
     addEventListeners() {
         this.hamburger.addEventListener('click', this.toggleMenuVisibility.bind(this));
 
-        Array.from(this.menu.querySelectorAll("li:not(.profile-mobile)")).forEach(listitem => {
-            listitem.addEventListener('click', this.toggleMenuVisibility.bind(this));
+        Array.from(document.querySelectorAll('.menu-item')).forEach(menuItem => {
+            menuItem.addEventListener('mouseenter', function(element){
+                var selectedMenuPos = element.target.getBoundingClientRect();
+                document.querySelector('.hexagon-container').style.top = (selectedMenuPos.top - selectedMenuPos.height - 8) + 'px';
+            });
         });
 
         window.addEventListener('resize',this.bindMenuOpener.bind(this));
         this.bindMenuOpener();
+        
+        window.addEventListener("resize", this.updatePositionCurrentMenuIcon.bind(this));
+        this.menu.addEventListener("transitionend", this.updatePositionCurrentMenuIcon.bind(this, true), false);
     }
 
     bindMenuOpener() {
@@ -57,8 +70,8 @@
     }
 
 
+    //TODO: Refactor create icon functions
     createHamburger() {
-        // <div id="menu-icon" class="menu-icon right"><div class="bar1"></div><div class="bar2"></div><div class="bar3"></div>
         var icon = document.createElement('div');
         icon.id = 'menu-icon';
         icon.classList.add('menu-icon');
@@ -75,6 +88,37 @@
         icon.append(bar3);
 
         document.querySelector('.menu-primary-container').appendChild(icon);
+    }
+
+    createCurrentMenuIcon(rectTop, rectHeight) {
+        var container = document.createElement('div');
+        container.classList.add('hexagon-container');
+        container.style.top = (rectTop - rectHeight - 8) + 'px';
+
+        var skew1 = document.createElement('div');
+        var skew2 = document.createElement('div');
+        var skew3 = document.createElement('div');
+        skew1.classList.add('skew1');
+        skew2.classList.add('skew2');
+        skew3.classList.add('skew3');
+
+        container.append(skew1);
+        container.append(skew2);
+        container.append(skew3);
+
+        document.querySelector('.menu-primary-container').appendChild(container);
+    }
+    
+    updatePositionCurrentMenuIcon(event, firesOnes) {
+        if(firesOnes){
+            this.currentMenuIcon.classList.add('appear');
+        }
+        var updatePos = this.currentMenuElement.getBoundingClientRect();
+        this.currentMenuIcon.style.top = (updatePos.top - updatePos.height - 8) + 'px';
+        
+        if((updatePos.top - updatePos.height) < 0){
+            this.currentMenuIcon.classList.remove('appear');
+        }
     }
 
 // TODO: refactor naar eigen Component
