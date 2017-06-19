@@ -97,9 +97,6 @@ class Menu {
     createCurrentMenuIcon(rectTop, rectHeight) {
         var container = document.createElement('div');
         container.classList.add('hexagon-container');
-
-        console.log(rectTop - rectHeight - 16);
-
         container.style.top = (rectTop - rectHeight - 16) + 'px';
 
         var skew1 = document.createElement('div');
