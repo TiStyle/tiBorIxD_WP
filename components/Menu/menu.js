@@ -33,18 +33,9 @@ class Menu {
     }
 
     bindMenuOpener() {
-        // if (window.innerWidth <= 600 && !this.headerClickOpensMenu && document.querySelector("header")) {
-            // document.querySelector("header")
-            //     .addEventListener('click', this.toggleMenuVisibility.bind(this))
-
-            // this.headerClickOpensMenu = true;
-        // }
-      
-        // if (window.innerWidth > 600 && this.headerClickOpensMenu) {
-            document.querySelector("header")
-                .removeEventListener('click', this.toggleMenuVisibility)
-            this.headerClickOpensMenu = false;
-        // }
+        document.querySelector("header")
+            .removeEventListener('click', this.toggleMenuVisibility)
+        this.headerClickOpensMenu = false;
     }
 
     toggleMenuVisibility() {
@@ -109,7 +100,12 @@ class Menu {
         document.querySelector('.menu-primary-container').appendChild(container);
     }
     
-    updatePositionCurrentMenuIcon(event, firesOnes) {
+    updatePositionCurrentMenuIcon(firesOnes, event) {
+        if(event){
+            if(event.target != this.menu){
+                event.removeEventListener("transitionend", this.updatePositionCurrentMenuIcon.bind(this));
+            }
+        } 
         if(firesOnes){
             this.currentMenuIcon.classList.add('appear');
         }
