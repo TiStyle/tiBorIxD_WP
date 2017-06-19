@@ -26,13 +26,9 @@ class Menu {
 
                 if( currentSelectedPos > updatedSelectedPos ){
                     updatedSelectedPos = currentSelectedPos - updatedSelectedPos;
-
-                    console.log(updatedSelectedPos);
                     document.querySelector('.hexagon-container').style.transform = 'scale(0.3) translateY(-' + updatedSelectedPos * 3.3 + 'px)';
                 } else {
                     updatedSelectedPos = updatedSelectedPos - currentSelectedPos;
-                    
-                    console.log(updatedSelectedPos);
                     document.querySelector('.hexagon-container').style.transform = 'scale(0.3) translateY(' + updatedSelectedPos * 3.3 + 'px)';
                 }
             });
