@@ -17,6 +17,10 @@
 <!-- SWIPER -->
 <link rel="stylesheet" href="wp-content/themes/tiBorIxD_WP/wwwroot/css/swiper.min.css">
 
+<!-- TODO: REMOVE TEST LINKS -->
+<script src="wp-content/themes/tiBorIxD_WP/wwwroot/js/tiborixd.js"></script>
+<link rel="stylesheet" href="wp-content/themes/tiBorIxD_WP/wwwroot/css/tiborixd.css">
+
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -52,18 +56,17 @@
 
 <header>
 	<div class="container">
-
-		<div id="brand" class="center hide">
-			<h1 class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ); // Link to the home page ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); // Title it with the blog name ?>" rel="home"><?php bloginfo( 'name' ); // Display the blog name ?></a>
-			</h1>
-			<h4 class="site-description">
-				<?php bloginfo( 'description' ); // Display the blog description, found in General Settings ?>
-			</h4>
-		</div><!-- /brand -->
-
-
 		<nav id="menu">
+
+			<div id="brand" class="center">
+				<h1 class="site-title hide">
+					<a href="<?php echo esc_url( home_url( '/' ) ); // Link to the home page ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); // Title it with the blog name ?>" rel="home"><?php bloginfo( 'name' ); // Display the blog name ?></a>
+				</h1>
+				<h4 class="site-description hide">
+					<?php bloginfo( 'description' ); // Display the blog description, found in General Settings ?>
+				</h4>
+				<img src="<?php $custom_logo_id = get_theme_mod( 'custom_logo' ); $image = wp_get_attachment_image_src( $custom_logo_id , 'full' ); echo $image[0]; ?>" class="site-logo" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?> - <?php bloginfo( 'description' ); ?>" />
+			</div><!-- /brand -->
 
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); // Display the user-defined menu in Appearance > Menus ?>
 

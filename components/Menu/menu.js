@@ -20,8 +20,21 @@ class Menu {
 
         Array.from(document.querySelectorAll('.menu-item')).forEach(menuItem => {
             menuItem.addEventListener('mouseenter', function(element){
+                var currentSelectedPos = parseInt(document.querySelector('.hexagon-container').style.top);
                 var selectedMenuPos = element.target.getBoundingClientRect();
-                document.querySelector('.hexagon-container').style.top = (selectedMenuPos.top - selectedMenuPos.height - 8) + 'px';
+                var updatedSelectedPos = selectedMenuPos.top - selectedMenuPos.height - 16;
+
+                if( currentSelectedPos > updatedSelectedPos ){
+                    updatedSelectedPos = currentSelectedPos - updatedSelectedPos;
+
+                    console.log(updatedSelectedPos);
+                    document.querySelector('.hexagon-container').style.transform = 'scale(0.3) translateY(-' + updatedSelectedPos * 3.3 + 'px)';
+                } else {
+                    updatedSelectedPos = updatedSelectedPos - currentSelectedPos;
+                    
+                    console.log(updatedSelectedPos);
+                    document.querySelector('.hexagon-container').style.transform = 'scale(0.3) translateY(' + updatedSelectedPos * 3.3 + 'px)';
+                }
             });
         });
 
@@ -61,7 +74,7 @@ class Menu {
     }
 
 
-    //TODO: Refactor create icon functions
+//TODO: Refactor create icon functions
     createHamburger() {
         var icon = document.createElement('div');
         icon.id = 'menu-icon';
@@ -84,7 +97,10 @@ class Menu {
     createCurrentMenuIcon(rectTop, rectHeight) {
         var container = document.createElement('div');
         container.classList.add('hexagon-container');
-        container.style.top = (rectTop - rectHeight - 8) + 'px';
+
+        console.log(rectTop - rectHeight - 16);
+
+        container.style.top = (rectTop - rectHeight - 16) + 'px';
 
         var skew1 = document.createElement('div');
         var skew2 = document.createElement('div');
@@ -103,14 +119,14 @@ class Menu {
     updatePositionCurrentMenuIcon(firesOnes, event) {
         if(event){
             if(event.target != this.menu){
-                event.removeEventListener("transitionend", this.updatePositionCurrentMenuIcon.bind(this));
+                return;
             }
         } 
         if(firesOnes){
             this.currentMenuIcon.classList.add('appear');
         }
-        var updatePos = this.currentMenuElement.getBoundingClientRect();
-        this.currentMenuIcon.style.top = (updatePos.top - updatePos.height - 8) + 'px';
+        var updatePos = this.currentMenuElement.getBoundingClientRect();        
+        this.currentMenuIcon.style.top = (updatePos.top - updatePos.height - 16) + 'px';
         
         if((updatePos.top - updatePos.height) < 0){
             this.currentMenuIcon.classList.remove('appear');

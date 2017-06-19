@@ -34,6 +34,20 @@ register_nav_menus(
 );
 
 /*-----------------------------------------------------------------------------------*/
+/* Register custom logo support
+/*-----------------------------------------------------------------------------------*/
+function theme_prefix_setup() {
+	
+	add_theme_support( 'custom-logo', array(
+		'height'      => 100,
+		'width'       => 400,
+		'flex-width' => true,
+	) );
+
+}
+add_action( 'after_setup_theme', 'theme_prefix_setup' );
+
+/*-----------------------------------------------------------------------------------*/
 /* Activate sidebar for Wordpress use
 /*-----------------------------------------------------------------------------------*/
 function naked_register_sidebars() {

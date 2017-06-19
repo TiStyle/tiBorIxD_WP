@@ -22,8 +22,6 @@ nav{
         padding-top: $padding * 2;
         position: relative;
         width: 100%;
-        .menu{
-        }
     }
     ul{
         box-sizing: border-box;
@@ -34,7 +32,7 @@ nav{
         list-style: none;
         margin: 0;
         min-width: 50%;
-        padding: 0 #{$padding * 2};
+        padding: 0 #{$padding * 1.5};
         width: 50%;
         &:first-child{
             border-right: 1px solid $dark-gray;
@@ -47,8 +45,9 @@ nav{
             padding: ($spacing / 2) 0;
             position: relative;
             a{
-                font-size: 1.5rem;
                 color: $primary-text-color;
+                font-size: 2rem;
+                line-height: 1rem;
                 &:visited,
                 &:hover{
                     color: $primary-text-color;
@@ -139,15 +138,15 @@ nav{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: $padding * 2;
+    justify-content: center;
+    padding: $padding * 1.5;
     &:hover{
         h2{
-            font-size: 2.1rem;
+            font-size: 3.1rem;
             transition: font-size .3s cubic-bezier(.27,.79,.28,.97);
             &:after{
                 opacity: 1;
-                transform: translateX(0) translateY(1rem) rotate(135deg);
+                transform: translateX(0) translateY(1.5rem) rotate(135deg);
                 transition: opacity .3s cubic-bezier(.27,.79,.28,.97), transform .3s cubic-bezier(.27,.79,.28,.97);
             }
         }
@@ -156,18 +155,31 @@ nav{
         align-items: center;
         display: flex;
         flex-direction: row;
+        font-size: 3rem;
+        font-family: $font-family-thin;
+        line-height: 4.5rem;
         transition: font-size .3s cubic-bezier(.27,.79,.28,.97);
         &:after{
             border-left: 1px solid $dark-gray;
             border-top: 1px solid $dark-gray;
             content: '';
-            height: .75rem;
+            height: 1rem;
             opacity: 0;
             position: absolute;
-            transform: translateX(-1rem) translateY(1rem) rotate(135deg);
+            transform: translateX(-1rem) translateY(1.5rem) rotate(135deg);
             transition: opacity .3s cubic-bezier(.27,.79,.28,.97), transform .3s cubic-bezier(.27,.79,.28,.97);
-            width: .75rem;
+            width: 1rem;
             z-index: 1;
         }
     }
+}
+
+.site-logo{
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: -12px;
+    top: 7vh;
+    width: 7rem;
+    z-index: 1001;
 }
