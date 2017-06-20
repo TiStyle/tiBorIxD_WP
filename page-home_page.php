@@ -48,5 +48,32 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		</script>
 	</div>
 
+	<div class="container-full">
+		<div class="swiper-container">
+			<ul id="slider" class="swiper-wrapper">
+				<?php
+				$recent_project = wp_get_recent_posts(array(
+					'numberposts' => 5,
+					'post_status' => 'publish',
+					'post_type' => 'project',
+				));
+				foreach($recent_project as $project) : ?>
+					<li class="swiper-slide slide" style="background-image:url('<?php echo get_the_post_thumbnail_url($project['ID'], 'full'); ?>')">
+						<a href="<?php echo get_permalink($project['ID']) ?>">
+							
+							<h2><?php echo $project['post_title'] ?></h2>
+							<p>
+								<!--<?php echo $project['post_content'] ?>-->
+								<?php
+									echo wp_trim_words( $project['post_content'], 18, '...' );
+								?>
+							</p>
+						</a>
+					</li>
+				<?php endforeach; wp_reset_query(); ?>
+			</ul>
+		</div>
+	</div>
+
     
 <?php get_footer(); // This fxn gets the footer.php file and renders it ?>

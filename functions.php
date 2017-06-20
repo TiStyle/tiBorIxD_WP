@@ -92,9 +92,9 @@ add_action( 'wp_enqueue_scripts', 'tiborixd_scripts' ); // Register this fxn and
 function custom_post_type() {
  
     $labels = array(
-        'name'                => _x( 'portfolio', 'Post Type General Name', 'text_domain' ),
-        'singular_name'       => _x( 'Portfolio', 'Post Type Singular Name', 'text_domain' ),
-        'menu_name'           => __( 'Portfolio', 'text_domain' ),
+        'name'                => _x( 'project', 'Post Type General Name', 'text_domain' ),
+        'singular_name'       => _x( 'Project', 'Post Type Singular Name', 'text_domain' ),
+        'menu_name'           => __( 'Projects', 'text_domain' ),
         'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
         'all_items'           => __( 'All Items', 'text_domain' ),
         'view_item'           => __( 'View Item', 'text_domain' ),
@@ -107,7 +107,7 @@ function custom_post_type() {
         'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
     );
     $args = array(
-        'label'               => __( 'Portfolio', 'text_domain' ),
+        'label'               => __( 'Project', 'text_domain' ),
         'description'         => __( 'Post Type Description', 'text_domain' ),
         'labels'              => $labels,
         'supports'            => array(
@@ -134,7 +134,7 @@ function custom_post_type() {
         'publicly_queryable'  => true,
         'capability_type'     => 'page',
     );
-    register_post_type( 'Portfolio', $args );
+    register_post_type( 'Project', $args );
 }
 
 add_action( 'init', 'custom_post_type' );
