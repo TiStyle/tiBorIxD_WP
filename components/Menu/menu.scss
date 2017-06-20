@@ -25,6 +25,7 @@ nav{
     }
     ul{
         box-sizing: border-box;
+        // clip-path: 1000px 2px 3px 4px;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -35,7 +36,7 @@ nav{
         padding: 0 #{$padding * 1.5};
         width: 50%;
         &:first-child{
-            border-right: 1px solid $dark-gray;
+            // border-right: 1px solid $dark-gray;
             li{
                 text-align: right;
             }
@@ -175,11 +176,36 @@ nav{
 }
 
 .site-logo{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 4.3rem;
     left: 0;
     margin: 0 auto;
     position: absolute;
     right: -12px;
-    top: 7vh;
+    top: 10vh;
     width: 7rem;
     z-index: 1001;
+    &:before{
+        background-color: $dark-gray;
+        content: '';
+        height: 3vh;
+        left: -13px;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        top: -4vh;
+        width: 1px;
+    }
+    &:after{
+        background-color: $dark-gray;
+        content: '';
+        height: 77vh;
+        left: -13px;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        top: 9vh;
+        width: 1px;
+    }
 }
