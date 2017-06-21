@@ -25,6 +25,8 @@ class ScrollToNext{
     }
 
     scrollToNextPosition(){
+        if(this.lastScrollPos < window.scrollY){
+            console.log('down');
             this.nextScrollPoints = this.scrollPointsList.find(e => e.offsetTop > this.lastScrollPos);
 
             if(this.nextScrollPoints){
@@ -33,5 +35,16 @@ class ScrollToNext{
             } else {
                 this.lastScrollPos = 0;
             }
+        } else {
+            console.log('up');
+            this.nextScrollPoints = this.scrollPointsList.find(e => e.offsetTop < this.lastScrollPos);
+
+            if(this.nextScrollPoints){
+                scrollToY(this.nextScrollPoints.offsetTop, 1500, 'easeInOutQuint');
+                this.lastScrollPos = this.nextScrollPoints.offsetTop;
+            } else {
+                this.lastScrollPos = 0;
+            }
+        }
     }
 }
