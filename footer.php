@@ -7,7 +7,7 @@
 
 </main><!-- / end page container, begun in the header -->
 
-<footer class="site-footer scroll-point">
+<footer class="site-footer container-full scroll-point">
 	<div class="site-info container">
 		
 		<p>

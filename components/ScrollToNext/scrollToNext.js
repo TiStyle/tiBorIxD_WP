@@ -13,7 +13,7 @@ class ScrollToNext{
     }
     addEventListeners(){
         this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
-        window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1400));
+        window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1500));
         
     }
 
@@ -27,24 +27,18 @@ class ScrollToNext{
     scrollToNextPosition(){
         if(this.lastScrollPos < window.scrollY){
             console.log('down');
-            this.nextScrollPoints = this.scrollPointsList.find(e => e.offsetTop > this.lastScrollPos);
-
-            if(this.nextScrollPoints){
-                scrollToY(this.nextScrollPoints.offsetTop, 1500, 'easeInOutQuint');
-                this.lastScrollPos = this.nextScrollPoints.offsetTop;
-            } else {
-                this.lastScrollPos = 0;
+            this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
+            if(this.nextScrollPoints.length){
+                scrollToY(this.nextScrollPoints[0].offsetTop, 1500, 'easeInOutQuint');
+                this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
             }
         } else {
             console.log('up');
-            this.nextScrollPoints = this.scrollPointsList.find(e => e.offsetTop < this.lastScrollPos);
-
-            if(this.nextScrollPoints){
-                scrollToY(this.nextScrollPoints.offsetTop, 1500, 'easeInOutQuint');
-                this.lastScrollPos = this.nextScrollPoints.offsetTop;
-            } else {
-                this.lastScrollPos = 0;
-            }
+            this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop < this.lastScrollPos);
+            if(this.nextScrollPoints.length){
+                scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 1500, 'easeInOutQuint');
+                this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
+            } 
         }
     }
 }
