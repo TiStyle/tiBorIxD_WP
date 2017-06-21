@@ -21,9 +21,6 @@
             goToTopElement.classList.add('fade-out');
             goToTopElement.classList.remove('shadow-z3');
             goToTopElement.remove();
-
-            //ToDo: add animation
-            // goToTopElement.addEventListener('animationend', e => e.target.remove());
         }
     }
 

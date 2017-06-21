@@ -100,3 +100,18 @@ function scrollToY(scrollTargetY, speed, easing) {
     // call it once to get started
     tick();
 }  	 	
+
+// This technique helps with checking if we are at a specific part of the page. 
+// Given the size of the page, it takes many seconds to scroll through content. 
+// This enables throttling to fire the event only once at any given interval. 
+// Event throttling will make the scrolling experience smoother and guarantee execution.
+// Below is a poor manʼs event throttler in vanilla JavaScript:
+function throttle(fn, wait) {
+  var time = Date.now();
+  return function() {
+    if ((time + wait - Date.now()) < 0) {
+      fn();
+      time = Date.now();
+    }
+  }
+}
