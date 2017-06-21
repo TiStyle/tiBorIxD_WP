@@ -41,6 +41,6 @@
 
         document.body.append(goToTopElement);
 
-        goToTopElement.addEventListener('click', () => window.scrollTo(0, 0));
+        goToTopElement.addEventListener('click', () => scrollToY(0, 1500, 'easeInOutQuint'));
     }
 }

@@ -7,8 +7,8 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
     <script src="wp-content/themes/tiBorIxD_WP/wwwroot/js/swiper.min.js"></script>
 
-	<div class="container-full">
-		<div class="swiper-container">
+	<div class="container-full scroll-point">
+		<div id="blogs" class="swiper-container">
 			<ul id="slider" class="swiper-wrapper">
 				<?php
 				$recent_posts = wp_get_recent_posts(array(
@@ -30,13 +30,13 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					</li>
 				<?php endforeach; wp_reset_query(); ?>
 			</ul>
-			<div class="swiper-next"></div>
-        	<div class="swiper-prev"></div>
+			<div id="blogNext" class="swiper-next"></div>
+        	<div id="blogPrev" class="swiper-prev"></div>
 		</div>
 		<script>
-			var swiper = new Swiper('.swiper-container', {
-				nextButton: '.swiper-next',
-				prevButton: '.swiper-prev',
+			var swiper = new Swiper('#blogs', {
+				nextButton: '#blogNext',
+				prevButton: '#blogPrev',
 				spaceBetween: 20,
 				loop: true,
 				speed: 800,
@@ -48,8 +48,8 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		</script>
 	</div>
 
-	<div class="container-full">
-		<div class="swiper-container">
+	<div class="container-full scroll-point">
+		<div id="projects" class="swiper-container">
 			<ul id="slider" class="swiper-wrapper">
 				<?php
 				$recent_project = wp_get_recent_posts(array(
@@ -72,8 +72,26 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					</li>
 				<?php endforeach; wp_reset_query(); ?>
 			</ul>
+			<div id="projNext" class="swiper-next"></div>
+        	<div id="projPrev" class="swiper-prev"></div>
 		</div>
+		<script>
+			var swiper = new Swiper('#projects', {
+				nextButton: '#projNext',
+				prevButton: '#projPrev',
+				spaceBetween: 20,
+				slidesPerView: 'auto',
+				loop: true,
+				speed: 800,
+				parallax: true,
+				keyboardControl: true,
+			});
+		</script>
 	</div>
 
-    
+    <script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var x = new ScrollToNext();
+		});
+	</script>	
 <?php get_footer(); // This fxn gets the footer.php file and renders it ?>

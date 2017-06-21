@@ -1,0 +1,28 @@
+@import "../../sass/config";
+
+$page-scroll-size: $spacing * 1.5;
+
+
+.scroll-to-next{
+    border-left: 1px solid $container-color;
+    border-top: 1px solid $container-color;
+    bottom: $spacing * 2;
+    cursor: pointer;
+    height: $page-scroll-size;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: fixed;
+    transform: rotate(-135deg);
+    width: $page-scroll-size;
+    z-index: 1;
+    &:before{
+        content: '';
+        height:100%;
+        left: -$padding;
+        padding: $padding;
+        position: absolute;
+        top: -$padding;
+        width: 100%;
+    }
+}
