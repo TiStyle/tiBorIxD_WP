@@ -39,7 +39,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				prevButton: '#blogPrev',
 				spaceBetween: 20,
 				loop: true,
-				speed: 800,
+				speed: 1500,
 				parallax: true,
 				keyboardControl: true,
 				autoplay: 7500,

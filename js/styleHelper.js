@@ -92,7 +92,7 @@ function scrollToY(scrollTargetY, speed, easing) {
 
             window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
         } else {
-            console.log('scroll done');
+            // console.log('scroll done');
             window.scrollTo(0, scrollTargetY);
         }
     }
@@ -107,11 +107,11 @@ function scrollToY(scrollTargetY, speed, easing) {
 // Event throttling will make the scrolling experience smoother and guarantee execution.
 // Below is a poor manʼs event throttler in vanilla JavaScript:
 function throttle(fn, wait) {
-  var time = Date.now();
-  return function() {
-    if ((time + wait - Date.now()) < 0) {
-      fn();
-      time = Date.now();
+    var time = Date.now();
+    return function() {
+        if ((time + wait - Date.now()) < 0) {
+            fn();
+            time = Date.now();
+        }
     }
-  }
 }
