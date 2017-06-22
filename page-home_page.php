@@ -60,13 +60,26 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				foreach($recent_project as $project) : ?>
 					<li class="swiper-slide slide" style="background-image:url('<?php echo get_the_post_thumbnail_url($project['ID'], 'full'); ?>')">
 						<a href="<?php echo get_permalink($project['ID']) ?>">
-							
-							<h2><?php echo $project['post_title'] ?></h2>
-							<p>
-								<!--<?php echo $project['post_content'] ?>-->
-								<?php
-									echo wp_trim_words( $project['post_content'], 18, '...' );
-								?>
+
+							<?php if( get_field('slogan', $project['ID']) ): ?>
+								<h2><?php the_field('slogan', $project['ID']); ?></h2>
+							<?php endif; ?>
+
+							<?php if( get_field('category', $project['ID']) ): ?>
+								<h2><?php the_field('category', $project['ID']); ?></h2>
+							<?php endif; ?>
+
+							<?php if( get_field('customer', $project['ID']) ): ?>
+								<h2><?php the_field('customer', $project['ID']); ?></h2>
+							<?php endif; ?>
+
+							<?php if( get_field('customer_logo', $project['ID']) ): ?>
+								<h2><?php the_field('customer_logo', $project['ID']); ?></h2>
+							<?php endif; ?>
+
+							<h2 class="hide"><?php echo $project['post_title'] ?></h2>
+							<p class="hide">
+								<?php echo wp_trim_words( $project['post_content'], 18, '...' ); ?>
 							</p>
 						</a>
 					</li>

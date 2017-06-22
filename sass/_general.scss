@@ -17,47 +17,6 @@ html{
     }
 }
 
-// HEXAGON
-.hexagon-container{
-    display: table;
-    height: 6.5rem;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: -1px;
-    transform: scale(.3);
-    transition: .3s transform ease-in-out;
-    width: 5.3rem;
-    .skew1{
-        top: 2.8rem;
-        left: 2.3rem;
-        border: 1px solid $dark-gray;
-        height: 2.55rem;
-        position: absolute;
-        transform: rotate(-90deg) translate(0, 0) skew(30deg, 0deg);
-        width: 3rem;
-    }
-    .skew2{
-        top: 2.8rem;
-        left: -.3rem;
-        border: 1px solid $dark-gray;
-        height: 2.55rem;
-        position: absolute;
-        transform: rotate(30deg) translate(0, 0) skew(30deg, 0deg);
-        width: 3rem;
-    }
-    .skew3{
-        top: .5rem;
-        left: 1rem;
-        
-        border: 1px solid $dark-gray;
-        height: 2.55rem;
-        position: absolute;
-        transform: rotate(150deg) translate(0, 0) skew(30deg, 0deg);
-        width: 3rem;
-    }
-}
-
 // CONTAINERS
 header{
     &.card{

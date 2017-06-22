@@ -16,6 +16,9 @@ $page-scroll-size: $spacing * 1.5;
     transform: rotate(-135deg);
     width: $page-scroll-size;
     z-index: 1;
+    @media #{$small-and-down}{
+        display: none;
+    }
     &:before{
         content: '';
         height:100%;

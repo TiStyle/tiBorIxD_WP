@@ -22,10 +22,17 @@ nav{
         padding-top: $padding * 2;
         position: relative;
         width: 100%;
+        @media #{$small-and-down}{
+            flex-direction: column;
+            ul{
+                height: auto;
+                padding-top: 17vh;
+                width:100%;
+            }
+        }
     }
     ul{
         box-sizing: border-box;
-        // clip-path: 1000px 2px 3px 4px;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -36,7 +43,6 @@ nav{
         padding: 0 #{$padding * 1.5};
         width: 50%;
         &:first-child{
-            // border-right: 1px solid $dark-gray;
             li{
                 text-align: right;
             }
@@ -207,5 +213,55 @@ nav{
         right: 0;
         top: 9vh;
         width: 1px;
+    }
+    @media #{$small-and-down}{
+        &:before,
+        &:after{
+            content: none;
+        }
+    }
+}
+
+// HEXAGON
+.hexagon-container{
+    display: table;
+    height: 6.5rem;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: -1px;
+    transform: scale(.3);
+    transition: .3s transform ease-in-out;
+    width: 5.3rem;
+    @media #{$small-and-down}{
+        right: auto;
+    }
+    .skew1{
+        top: 2.8rem;
+        left: 2.3rem;
+        border: 1px solid $dark-gray;
+        height: 2.55rem;
+        position: absolute;
+        transform: rotate(-90deg) translate(0, 0) skew(30deg, 0deg);
+        width: 3rem;
+    }
+    .skew2{
+        top: 2.8rem;
+        left: -.3rem;
+        border: 1px solid $dark-gray;
+        height: 2.55rem;
+        position: absolute;
+        transform: rotate(30deg) translate(0, 0) skew(30deg, 0deg);
+        width: 3rem;
+    }
+    .skew3{
+        top: .5rem;
+        left: 1rem;
+        
+        border: 1px solid $dark-gray;
+        height: 2.55rem;
+        position: absolute;
+        transform: rotate(150deg) translate(0, 0) skew(30deg, 0deg);
+        width: 3rem;
     }
 }
