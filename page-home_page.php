@@ -17,7 +17,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				));
 				foreach($recent_posts as $post) : ?>
 					<li class="swiper-slide slide" style="background-image:url('<?php echo get_the_post_thumbnail_url($post['ID'], 'full'); ?>')">
-						<a href="<?php echo get_permalink($post['ID']) ?>">
+						<a href="<?php echo get_permalink($post['ID']) ?>" class="blog-link">
 							
 							<h2><?php echo $post['post_title'] ?></h2>
 							<p>
@@ -59,29 +59,27 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				));
 				foreach($recent_project as $project) : ?>
 					<li class="swiper-slide slide" style="background-image:url('<?php echo get_the_post_thumbnail_url($project['ID'], 'full'); ?>')">
-						<a href="<?php echo get_permalink($project['ID']) ?>">
-
+						<!--<a href="<?php echo get_permalink($project['ID']) ?>">-->
+						<div class="project-container">
 							<?php if( get_field('slogan', $project['ID']) ): ?>
 								<h2><?php the_field('slogan', $project['ID']); ?></h2>
 							<?php endif; ?>
 
-							<?php if( get_field('category', $project['ID']) ): ?>
-								<h2><?php the_field('category', $project['ID']); ?></h2>
-							<?php endif; ?>
+							<div class="project-info">
+								<?php if( get_field('category', $project['ID']) ): ?>
+									<p><?php the_field('category', $project['ID']); ?></p>
+								<?php endif; ?>
 
-							<?php if( get_field('customer', $project['ID']) ): ?>
-								<h2><?php the_field('customer', $project['ID']); ?></h2>
-							<?php endif; ?>
-
-							<?php if( get_field('customer_logo', $project['ID']) ): ?>
-								<h2><?php the_field('customer_logo', $project['ID']); ?></h2>
-							<?php endif; ?>
-
-							<h2 class="hide"><?php echo $project['post_title'] ?></h2>
-							<p class="hide">
-								<?php echo wp_trim_words( $project['post_content'], 18, '...' ); ?>
-							</p>
-						</a>
+								<?php if( get_field('customer_logo', $project['ID']) ): ?>
+									<img src="<?php the_field('customer_logo', $project['ID']); ?>" alt="<?php the_field('customer', $project['ID']); ?>" width="200" />
+								<?php endif; ?>
+								<div class="actions">
+									<a href="google.nl" class="secondary-action">Bekijk project</a>
+									<a href="google.nl" class="secondary-action">Bekijk alle projecten</a>
+								</div>
+							</div>
+						</div>
+						<!--</a>-->
 					</li>
 				<?php endforeach; wp_reset_query(); ?>
 			</ul>
