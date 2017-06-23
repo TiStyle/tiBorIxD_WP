@@ -74,8 +74,8 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 									<img src="<?php the_field('customer_logo', $project['ID']); ?>" alt="<?php the_field('customer', $project['ID']); ?>" width="200" />
 								<?php endif; ?>
 								<div class="actions">
-									<a href="google.nl" class="secondary-action">Bekijk project</a>
-									<a href="google.nl" class="secondary-action">Bekijk alle projecten</a>
+									<a href="google.nl" class="secondary-action">See project</a>
+									<a href="google.nl" class="secondary-action">See all projects</a>
 								</div>
 							</div>
 						</div>

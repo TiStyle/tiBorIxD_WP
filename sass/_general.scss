@@ -111,8 +111,11 @@ ul{
 // FOOTER
 footer{
     position: relative;
-    max-width: $container;
     width: 100%;
-    display: table;
     margin:0 auto;
+}
+body:not(.home){
+    footer{
+        height:20rem;
+    }
 }

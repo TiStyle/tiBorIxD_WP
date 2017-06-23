@@ -57,10 +57,10 @@ $slide-controll-size: $spacing * 1.5;
             transition: .3s box-shadow ease-in-out;
         }
         &:nth-child(1n+2){
-            width: calc(66vw - 20px) !important;
+            width: calc(60vw - 20px) !important;
         }
         &:nth-child(2n+2){
-            width: 34vw !important;
+            width: 40vw !important;
         }
         @media #{$medium-and-down}{
             &:nth-child(1n+2){

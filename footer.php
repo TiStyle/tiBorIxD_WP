@@ -8,13 +8,33 @@
 </main><!-- / end page container, begun in the header -->
 
 <footer class="site-footer container-full scroll-point">
-	<div class="site-info container">
-		
-		<p>
-			Theme by: <a href="http://ti-bor.nl" rel="theme" target="_blank">tiBor</a>
-		</p>
-		
-	</div><!-- .site-info -->
+	<div id="contact">
+		<?php
+		$contact_info = wp_get_recent_posts(array(
+			'numberposts' => 1,
+			'post_status' => 'publish',
+			'post_type' => 'contact',
+		));
+		foreach($contact_info as $contact) : ?>
+			<div class="contact-container" style="background-image:url('<?php echo get_the_post_thumbnail_url($contact['ID'], 'full'); ?>')">
+				<div class="contact-content">
+					<h2><?php echo $contact['post_title'] ?></h2>
+					
+					<?php if( get_field('email', $contact['ID']) ): ?>
+						<h4><?php the_field('email', $contact['ID']); ?></h4>
+					<?php endif; ?>
+
+					<?php if( get_field('phone', $contact['ID']) ): ?>
+						<h4><?php the_field('phone', $contact['ID']); ?></h4>
+					<?php endif; ?>
+					
+					<a href="google.nl" class="secondary-action-light">Let's have a chat!</a>
+
+					<p>&copy; 2014 – <?php echo date('Y'); ?> Theme by: <a href="http://ti-bor.nl" rel="theme" target="_blank">tiBor</a></p>
+				</div>
+			</div>
+		<?php endforeach; wp_reset_query(); ?>
+	</div>
 </footer><!-- #colophon .site-footer -->
 
 <script>
