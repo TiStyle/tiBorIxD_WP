@@ -106,7 +106,7 @@ class Menu {
         container.append(skew2);
         container.append(skew3);
 
-        document.querySelector('.menu-primary-container').appendChild(container);
+        document.querySelector('.menu-primary-container').append(container);
     }
     
     updatePositionCurrentMenuIcon(firesOnes, event) {

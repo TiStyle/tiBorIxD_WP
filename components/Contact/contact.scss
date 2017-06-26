@@ -27,5 +27,49 @@
             color: $secondary-text-color;
             font-family: $font-family-light;
         }
+        #conversationFormButton{
+            margin: #{$spacing * 2} 0;
+        }
+        p{
+            bottom: $spacing;
+            position: absolute;
+        }
+    }
+}
+
+.form-container{
+    background-color: transparentize($container-color, .1);
+    cursor: pointer;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+    form{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        pointer-events: none;
+        input,
+        textarea{
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid $dark-gray;
+            border-radius: 0;
+            color: $primary-text-color;
+            height: 3rem;
+            font-size: 2rem;
+            font-family: $font-family-light;
+            outline: none;
+            pointer-events: all;
+            width: 75vw;
+            &[data-visible='']{
+                display: none;
+                opacity: 0;
+            }
+        }
     }
 }

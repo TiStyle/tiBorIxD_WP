@@ -28,9 +28,9 @@
 						<h4><?php the_field('phone', $contact['ID']); ?></h4>
 					<?php endif; ?>
 					
-					<a href="google.nl" class="secondary-action-light">Let's have a chat!</a>
+					<a href="javascript:void(0)" id="conversationFormButton" class="secondary-action-light">Let's have a chat!</a>
 
-					<p>&copy; 2014 – <?php echo date('Y'); ?> Theme by: <a href="http://ti-bor.nl" rel="theme" target="_blank">tiBor</a></p>
+					<p>&copy; 2014 – <?php echo date('Y'); ?> | <a href="http://ti-bor.nl" rel="theme" target="_blank">tiBor interAction deSign</a></p>
 				</div>
 			</div>
 		<?php endforeach; wp_reset_query(); ?>
@@ -41,6 +41,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         var a = new ScrollToTop(10);
         var b = new Menu();
+		var conversation = new Conversation();
     });
 </script>
 

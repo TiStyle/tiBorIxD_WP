@@ -2,8 +2,7 @@ class ScrollToNext{
     constructor(){
         this.windowHeight = window.innerHeight;
         this.scrollArrowDownBarier = 10;
-        this.createArrowDown();
-        this.scroller = document.querySelector('.scroll-to-next');
+        this.updateArrowDown();
 
         this.lastScrollPos = 0;
         this.scrollPoints = document.querySelectorAll('.scroll-point');
@@ -13,7 +12,6 @@ class ScrollToNext{
         this.addEventListeners();
     }
     addEventListeners(){
-        this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
         window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1700));
         window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));
     }
@@ -37,6 +35,8 @@ class ScrollToNext{
         }
         if(this.scrollArrowDownBarier > window.scrollY && !document.querySelector('.scroll-to-next')){
             this.createArrowDown();
+            this.scroller = document.querySelector('.scroll-to-next');
+            this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
         }
     }
 
