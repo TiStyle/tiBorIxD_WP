@@ -1,6 +1,7 @@
 class ScrollToNext{
     constructor(){
         this.windowHeight = window.innerHeight;
+        this.scrollArrowDownBarier = 10;
         this.createArrowDown();
         this.scroller = document.querySelector('.scroll-to-next');
 
@@ -14,7 +15,7 @@ class ScrollToNext{
     addEventListeners(){
         this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
         window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1700));
-        
+        window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));
     }
 
     createArrowDown(){
@@ -22,22 +23,37 @@ class ScrollToNext{
         element.classList.add('scroll-to-next');
 
         document.body.append(element);
+        
+        this.scroller = document.querySelector('.scroll-to-next');
+        this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
+    }
+    removeArrowDown(){
+        document.querySelector('.scroll-to-next').remove();
+    }
+
+    updateArrowDown(){
+        if(this.scrollArrowDownBarier < window.scrollY && document.querySelector('.scroll-to-next')){
+            this.removeArrowDown();
+        }
+        if(this.scrollArrowDownBarier > window.scrollY && !document.querySelector('.scroll-to-next')){
+            this.createArrowDown();
+        }
     }
 
     scrollToNextPosition(){
-        if(this.lastScrollPos < window.scrollY){
-            console.log('down');
-            console.log('Last Position: ', this.lastScrollPos);
-            console.log('Window Scroll Y: ', window.scrollY);
+        if(this.lastScrollPos < window.scrollY || this.lastScrollPos <= window.scrollY){
+            // console.log('down');
+            // console.log('Last Position: ', this.lastScrollPos);
+            // console.log('Window Scroll Y: ', window.scrollY);
             this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
             if(this.nextScrollPoints.length){
                 scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeInOutQuint');
                 this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
             }
         } else {
-            console.log('up');
-            console.log('Last Position: ', this.lastScrollPos);
-            console.log('Window Scroll Y: ', window.scrollY);
+            // console.log('up');
+            // console.log('Last Position: ', this.lastScrollPos);
+            // console.log('Window Scroll Y: ', window.scrollY);
             this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop < this.lastScrollPos);
             if(this.nextScrollPoints.length){
                 scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeInOutQuint');

@@ -91,8 +91,8 @@ $slide-controll-size: $spacing * 1.5;
             text-align: center;
             &:hover{
                 h2{
-                    font-size: 1.5rem;
-                    transform: translateY(100%);
+                    font-size: 2rem;
+                    transform: translateY(50%);
                     transition: .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
                 }
                 .project-info{
@@ -102,8 +102,9 @@ $slide-controll-size: $spacing * 1.5;
             }
             h2{
                 color: $secondary-text-color;
-                font-size: 1.5rem;
+                font-size: 2rem;
                 font-family: $font-family-medium;
+                height: 50%;
                 transform: translateY(0);
                 transition: .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
                 will-change: transition;
@@ -139,6 +140,7 @@ $slide-controll-size: $spacing * 1.5;
                     margin-bottom: $spacing;
                     a{
                         box-sizing: border-box;
+                        padding:($padding / $golden-ratio) ($padding * ($golden-ratio / 2));
                         width: calc(50% - #{$padding * 2});
                     }
                 }
