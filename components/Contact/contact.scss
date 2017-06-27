@@ -60,7 +60,7 @@
             border-bottom: 1px solid $dark-gray;
             border-radius: 0;
             color: $primary-text-color;
-            height: 3rem;
+            min-height: 3rem;
             font-size: 2rem;
             font-family: $font-family-light;
             outline: none;
@@ -69,6 +69,12 @@
             &[data-visible='']{
                 display: none;
                 opacity: 0;
+            }
+            &.error{
+                &::placeholder{
+                    color: $error-color;
+                }
+                border-color: $error-color;
             }
         }
     }

@@ -3,7 +3,12 @@
 class Menu {
     constructor() {
         this.currentMenuElement = document.querySelector('.current-menu-item');
-        this.rect = this.currentMenuElement.getBoundingClientRect();
+        if(this.currentMenuElement != null){
+            this.rect = this.currentMenuElement.getBoundingClientRect();
+        } else{
+            this.currentMenuElement = document.querySelector('.menu-item-home');
+            this.rect = this.currentMenuElement.getBoundingClientRect();
+        }
         this.createCurrentMenuIcon(this.rect.top, this.rect.height);
         this.currentMenuIcon = document.querySelector('.hexagon-container');
 

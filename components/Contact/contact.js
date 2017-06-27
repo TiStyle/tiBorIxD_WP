@@ -51,12 +51,15 @@ class Conversation{
 
             this.name.type = 'text';
             this.email.type = 'email';
-            this.message.rows = '4';
+            this.message.rows = '2';
             this.submit.type = 'submit';
 
             this.name.placeholder = 'What is your name?';
+            this.name.id = 'name';
             this.email.placeholder = 'On what email adress can I contact you?';
+            this.email.id = 'email';
             this.message.placeholder = 'Tell me, what do you want to talk about?';
+            this.message.id = 'message';
 
             this.name.autofocus = true;
 
@@ -79,7 +82,6 @@ class Conversation{
     }
 
     toggleMenuVisibility() {
-        console.log('test');
         if (this.isVisible()) {
             this.close();
         } else {
@@ -106,17 +108,47 @@ class Conversation{
         const currentQuestion = event.target;
         const nextQuestion = event.target.nextSibling;
 
-        currentQuestion.dataset.visible = "";
-        currentQuestion.autofocus = false;
+        if(currentQuestion.value != ''){
+            console.log('not empty');
+            
+            currentQuestion.dataset.visible = "";
+            currentQuestion.autofocus = false;
+            currentQuestion.classList.remove('error');            
 
-        if(nextQuestion.dataset.visible == ""){
-            nextQuestion.dataset.visible = 'visible';
-            nextQuestion.autofocus = true;
+            if(nextQuestion.dataset.visible == ""){
+                nextQuestion.dataset.visible = 'visible';
+                nextQuestion.autofocus = true;
+            } else {
+                console.log('no more questions');
+                return this.sendForm = true;
+            }
         } else {
-            console.log('no more questions');
-            return this.sendForm = true;
+            console.log('empty');
+            currentQuestion.classList.add('error');
+            currentQuestion.focus();
+            this.replacePlaceholder();
+            currentQuestion.placeholder = this.placeholderText;
         }
     }
+
+    replacePlaceholder(){
+        this.placeholderText = '';
+
+        switch(event.target.id){
+            case 'name':
+                this.placeholderText = 'I would love to know your name...';
+            break;
+            case 'email':
+                this.placeholderText = 'I could try telepathy, an email would be easier...';
+            break;
+            case 'message':
+                this.placeholderText = 'Don\'t be shy, tell me your secrets.. Or share what you want to talk about... ';
+            break;
+        }
+
+        return this.placeholderText;
+    }
+
     previousQuestion(){
         const currentQuestion = event.target;
         const prevQuestion = event.target.previousSibling;
@@ -124,11 +156,15 @@ class Conversation{
         currentQuestion.dataset.visible = "";
         currentQuestion.autofocus = false;
 
-        if(prevQuestion.dataset.visible == ""){
+        if(prevQuestion != null){
+            console.log('not null');
             prevQuestion.dataset.visible = 'visible';
             prevQuestion.autofocus = true;
+            prevQuestion.focus();
         } else {
-            console.log('no more questions');
+            console.log('first question');
+            currentQuestion.dataset.visible = "visible";
+            currentQuestion.autofocus = true;
         }
     }
 
