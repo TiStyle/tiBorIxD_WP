@@ -22,8 +22,11 @@ class Conversation{
 
         this.form.addEventListener('keydown', (event)=>{
             var charCode = event.which || event.keyCode;
-            if(charCode == 9 || charCode == 13){
+            if(charCode == 9 || charCode == 13 || charCode == 39){
                 this.nextQuestion(event);
+            } 
+            if(charCode == 37){
+                this.previousQuestion(event);
             }
             if(this.sendForm){
                 this.submitForm();
@@ -76,10 +79,11 @@ class Conversation{
     }
 
     toggleMenuVisibility() {
+        console.log('test');
         if (this.isVisible()) {
             this.close();
         } else {
-            this.show();
+            this.show();            
         }
     }
 
@@ -90,8 +94,7 @@ class Conversation{
     show(){
         this.formContainer.style.display = '';
         document.documentElement.style.overflow = 'hidden';
-
-        this.nextQuestion();
+        document.querySelector('form input[data-visible="visible"]').focus();
     }
 
     close(){
@@ -103,10 +106,10 @@ class Conversation{
         const currentQuestion = event.target;
         const nextQuestion = event.target.nextSibling;
 
-        currentQuestion.dataset.visible = '';
+        currentQuestion.dataset.visible = "";
         currentQuestion.autofocus = false;
 
-        if(nextQuestion.dataset.visible == ''){
+        if(nextQuestion.dataset.visible == ""){
             nextQuestion.dataset.visible = 'visible';
             nextQuestion.autofocus = true;
         } else {
@@ -114,8 +117,29 @@ class Conversation{
             return this.sendForm = true;
         }
     }
+    previousQuestion(){
+        const currentQuestion = event.target;
+        const prevQuestion = event.target.previousSibling;
+
+        currentQuestion.dataset.visible = "";
+        currentQuestion.autofocus = false;
+
+        if(prevQuestion.dataset.visible == ""){
+            prevQuestion.dataset.visible = 'visible';
+            prevQuestion.autofocus = true;
+        } else {
+            console.log('no more questions');
+        }
+    }
 
     submitForm(){
         console.log('submit');
+        this.resetForm();
+    }
+
+    resetForm(){
+        this.formContainer.remove();
+        this.toggleMenuVisibility();
+        var a = new Conversation();
     }
 }
