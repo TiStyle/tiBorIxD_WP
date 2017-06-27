@@ -5,6 +5,8 @@ class Conversation{
 
         this.questions = document.querySelectorAll('form *[data-visible]');
 
+        this.sendForm = false;
+
         this.addEventListeners();
 
     }
@@ -17,13 +19,15 @@ class Conversation{
             }
         });
 
-        this.questions.forEach(question => {
-            document.querySelector('form *[data-visible="visible"]').addEventListener('keydown', (event)=>{
-                var charCode = event.which || event.keyCode;
-                if(charCode == 9){
-                    this.nextQuestion(event);
-                }
-            });
+
+        this.form.addEventListener('keydown', (event)=>{
+            var charCode = event.which || event.keyCode;
+            if(charCode == 9 || charCode == 13){
+                this.nextQuestion(event);
+            }
+            if(this.sendForm){
+                this.submitForm();
+            }
         });
     }
 
@@ -95,12 +99,23 @@ class Conversation{
         document.documentElement.style.overflow = '';
     }
 
-    // TABBINGS 
     nextQuestion(){
-        console.log('tab');
-        // console.log(event.target.nextSibling.dataset);
-        event.target.dataset.visible = '';
-        event.target.nextSibling.dataset.visible = 'visible';
-        return;
+        const currentQuestion = event.target;
+        const nextQuestion = event.target.nextSibling;
+
+        currentQuestion.dataset.visible = '';
+        currentQuestion.autofocus = false;
+
+        if(nextQuestion.dataset.visible == ''){
+            nextQuestion.dataset.visible = 'visible';
+            nextQuestion.autofocus = true;
+        } else {
+            console.log('no more questions');
+            return this.sendForm = true;
+        }
+    }
+
+    submitForm(){
+        console.log('submit');
     }
 }
