@@ -66,13 +66,20 @@
             outline: none;
             pointer-events: all;
             width: 75vw;
+            &[type=submit]{
+                border: 1px solid $dark-gray;
+                font-size: 1rem;
+                margin-top: $spacing / 2;
+                min-height: 2rem;
+                width: auto;
+            }
             &[data-visible='']{
                 display: none;
                 opacity: 0;
             }
             &.error{
                 &::placeholder{
-                    color: $error-color;
+                    // color: $error-color;
                 }
                 border-color: $error-color;
             }

@@ -46,12 +46,19 @@ class Conversation{
             this.name = document.createElement('input');
             this.email = document.createElement('input');
             this.message = document.createElement('textarea');
-            this.submit = document.createElement('button');
-            this.submit.classList.add('primary-action');
+            this.submit = document.createElement('input');
+            this.submit.classList.add('secondary-action');
+
+            this.form.method = "POST";
+            this.form.name = "contactform";
+            this.form.action = "wp-content/themes/tiBorIxD_WP/contact-form-handler.php";
 
             this.name.type = 'text';
-            this.email.type = 'email';
+            this.name.name = 'name';
+            this.email.type = 'text';
+            this.email.name = 'email';
             this.message.rows = '2';
+            this.message.name = 'message';
             this.submit.type = 'submit';
 
             this.name.placeholder = 'What is your name?';
@@ -60,6 +67,7 @@ class Conversation{
             this.email.id = 'email';
             this.message.placeholder = 'Tell me, what do you want to talk about?';
             this.message.id = 'message';
+            this.submit.value = 'Send message';
 
             this.name.autofocus = true;
 
@@ -95,12 +103,14 @@ class Conversation{
 
     show(){
         this.formContainer.style.display = '';
+        this.formContainer.classList.add('appear');
         document.documentElement.style.overflow = 'hidden';
         document.querySelector('form input[data-visible="visible"]').focus();
     }
 
     close(){
         this.formContainer.style.display = 'none';
+        this.formContainer.classList.remove('appear');
         document.documentElement.style.overflow = '';
     }
 
@@ -142,7 +152,7 @@ class Conversation{
                 this.placeholderText = 'I could try telepathy, an email would be easier...';
             break;
             case 'message':
-                this.placeholderText = 'Don\'t be shy, tell me your secrets.. Or share what you want to talk about... ';
+                this.placeholderText = 'Don\'t be shy, tell me your secrets.. Or you can just share what you want to talk about... ';
             break;
         }
 

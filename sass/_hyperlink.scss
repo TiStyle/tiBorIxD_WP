@@ -56,6 +56,7 @@ button:not(.pswp__button),
         margin-right: $spacing;
     }
 }
+button.secondary-action,
 .secondary-action{
     @extend .primary-action;
     background-color:transparent;
