@@ -16,7 +16,10 @@ node_modules
 
 .DS_Store
 
-wwwroot
+dist/css/tiBorIxD.css
+dist/css/tiBorIxD.css.map
+dist/js/tiBorIxD.js
+dist/js/tiBorIxD.js.map
 
 /.htaccess
 /license.txt

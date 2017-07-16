@@ -10,17 +10,17 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 
 var filesToWatch = [
-    "sass/*.scss",
-    "js/*.js",
+    "src/sass/*.scss",
+    "src/js/*.js",
     "Components/**/*.scss",
     "Components/**/*.js"
 ];
 
 var filesToClean = [
-    "wwwroot/css/tiborixd.css",
-    "wwwroot/css/tiborixd.css.map",
-    "wwwroot/js/tiborixd.js",
-    "wwwroot/js/tiborixd.js.map",
+    "dist/css/tiborixd.css",
+    "dist/css/tiborixd.css.map",
+    "dist/js/tiborixd.js",
+    "dist/js/tiborixd.js.map",
 ];
 
 gulp.task('default', ['js', 'scss']);
@@ -36,20 +36,20 @@ gulp.task('js', function () {
    
     return gulp
         .src([//'App/js/HtmlExtensions.js', 'App/js/stringUtil.js', 'App/js/fileLoader.js', 'App/js/dateUtil.js', 
-        'js/styleHelper.js', 'Components/**/*.js'])
+        'src/js/styleHelper.js', 'Components/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(concat('tiborIxD.js'))
         .pipe(babel({ presets: ['es2015'] }))
         //.pipe(babelminify({unsafe:false}))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('wwwroot/js'));
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('scss', function () {
     console.log('scss');
 
     return gulp
-        .src('sass/tiBorIxD.scss')
+        .src('src/sass/tiBorIxD.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle :'compressed'}).on('error', sass.logError))
         .pipe(autoprefixer({
@@ -57,7 +57,7 @@ gulp.task('scss', function () {
             cascade: false
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('wwwroot/css'));
+        .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('watch', function () {

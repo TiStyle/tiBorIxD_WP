@@ -5,7 +5,7 @@
 */
 get_header(); // This fxn gets the header.php file and renders it ?>
 
-    <script src="wp-content/themes/tiBorIxD_WP/wwwroot/js/swiper.min.js"></script>
+    <script src="wp-content/themes/tiBorIxD_WP/dist/js/swiper.min.js"></script>
 
 	<div class="container-full scroll-point">
 		<div id="blogs" class="swiper-container">
