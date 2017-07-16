@@ -20,18 +20,23 @@ class Conversation{
         });
 
 
-        this.form.addEventListener('keydown', (event)=>{
-            var charCode = event.which || event.keyCode;
-            if(charCode == 9 || charCode == 13 || charCode == 39){
-                this.nextQuestion(event);
-            } 
-            if(charCode == 37){
-                this.previousQuestion(event);
-            }
-            if(this.sendForm){
-                this.submitForm();
-            }
-        });
+        // TODO: Next + Previous question functionality
+
+        // this.nextButton.addEventListener('click', this.nextQuestion.bind(this));
+
+
+        // this.form.addEventListener('keydown', (event)=>{
+        //     var charCode = event.which || event.keyCode;
+        //     if(charCode == 9 || charCode == 13 || charCode == 39){
+        //         this.nextQuestion(event);
+        //     } 
+        //     if(charCode == 37){
+        //         this.previousQuestion(event);
+        //     }
+        //     if(this.sendForm){
+        //         this.submitForm();
+        //     }
+        // });
     }
 
     conversationInit(){
@@ -46,6 +51,9 @@ class Conversation{
             this.name = document.createElement('input');
             this.email = document.createElement('input');
             this.message = document.createElement('textarea');
+            this.previousButton = document.createElement('input');
+            // this.previousButton.classList.add('hide');
+            // this.nextButton = document.createElement('input');
             this.submit = document.createElement('input');
             this.submit.classList.add('secondary-action');
 
@@ -59,6 +67,8 @@ class Conversation{
             this.email.name = 'email';
             this.message.rows = '2';
             this.message.name = 'message';
+            // this.previousButton.type = 'button';
+            // this.nextButton.type = 'button';
             this.submit.type = 'submit';
 
             this.name.placeholder = 'What is your name?';
@@ -67,6 +77,8 @@ class Conversation{
             this.email.id = 'email';
             this.message.placeholder = 'Tell me, what do you want to talk about?';
             this.message.id = 'message';
+            // this.previousButton.value = '<';
+            // this.nextButton.value = '>';
             this.submit.value = 'Send message';
 
             this.name.autofocus = true;
@@ -75,13 +87,16 @@ class Conversation{
             this.email.required = true;
             this.message.required = true;
 
-            this.name.dataset.visible = 'visible';
-            this.email.dataset.visible = '';
-            this.message.dataset.visible = '';
+            // this.name.dataset.visible = 'visible';
+            // this.email.dataset.visible = '';
+            // this.message.dataset.visible = '';
 
+            this.form.insertAdjacentHTML('afterBegin', closeIcon());
             this.form.append(this.name);
             this.form.append(this.email);
             this.form.append(this.message);
+            // this.form.append(this.previousButton);
+            // this.form.append(this.nextButton);
             this.form.append(this.submit);
 
             this.formContainer.append(this.form);
@@ -115,6 +130,7 @@ class Conversation{
     }
 
     nextQuestion(){
+        console.log(event);
         const currentQuestion = event.target;
         const nextQuestion = event.target.nextSibling;
 

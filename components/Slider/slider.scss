@@ -107,7 +107,7 @@ $slide-controll-size: $spacing * 1.5;
                 height: 50%;
                 transform: translateY(0);
                 transition: .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
-                will-change: transition;
+                will-change: transform;
             }
             .project-info{
                 align-self: center;
@@ -121,7 +121,7 @@ $slide-controll-size: $spacing * 1.5;
                 transform: translateY(100%);
                 transition: .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
                 width: 100%;
-                will-change: transition;
+                will-change: transform;
                 @media #{$small-and-down}{
                     left: $spacing;
                     transform: translateY(0);
