@@ -22,6 +22,17 @@ add_theme_support( 'automatic-feed-links' );
 /*-----------------------------------------------------------------------------------*/
 add_theme_support( 'post-thumbnails' ); 
 
+
+/*-----------------------------------------------------------------------------------*/
+/* Permalinks
+/*-----------------------------------------------------------------------------------*/
+function reset_permalinks() {
+    global $wp_rewrite;
+    $wp_rewrite->set_permalink_structure( '/%postname%/' );
+}
+add_action( 'init', 'reset_permalinks' );
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Register main menu for Wordpress use
 /*-----------------------------------------------------------------------------------*/
@@ -46,6 +57,22 @@ function theme_prefix_setup() {
 
 }
 add_action( 'after_setup_theme', 'theme_prefix_setup' );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Add plugins if they don't exsist
+/*-----------------------------------------------------------------------------------*/
+// Run this code on 'after_theme_setup', when plugins have already been loaded.
+add_action('after_setup_theme', 'load_plugin');
+// This function loads the plugin.
+function load_plugin() {
+	if (!class_exists('acf')) {
+		// load Social if not already loaded
+		// include_once(TEMPLATEPATH.'plugins/advanced-custom-fields/acf.php');
+		include_once( get_stylesheet_directory() . '/plugins/advanced-custom-fields/acf.php' );
+	}
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Activate sidebar for Wordpress use
