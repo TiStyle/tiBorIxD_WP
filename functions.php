@@ -101,13 +101,13 @@ add_action( 'widgets_init', 'naked_register_sidebars' );
 function tiborixd_scripts()  { 
 
 	// get the theme directory tiborIxD.css and link to it in the header
-	wp_enqueue_style('tiborIxD.css', get_stylesheet_directory_uri() . '/wwwroot/css/tiborIxD.css');
+	wp_enqueue_style('tiborIxD.css', get_stylesheet_directory_uri() . '/dist/css/tiborIxD.css');
 	
 	// add fitvid
 	wp_enqueue_script( 'tiborIxD-fitvid', get_template_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), TIBORIXD_VERSION, true );
 	
 	// add theme scripts
-	wp_enqueue_script( 'tiborIxD', get_template_directory_uri() . '/wwwroot/js/tiborIxD.js', array(), TIBORIXD_VERSION, true );
+	wp_enqueue_script( 'tiborIxD', get_template_directory_uri() . '/dist/js/tiborIxD.js', array(), TIBORIXD_VERSION, true );
   
 }
 add_action( 'wp_enqueue_scripts', 'tiborixd_scripts' ); // Register this fxn and allow Wordpress to call it automatcally in the header
