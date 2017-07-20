@@ -47,6 +47,7 @@ class Conversation{
             this.name = document.createElement('input');
             this.email = document.createElement('input');
             this.message = document.createElement('textarea');
+            this.siteUrl = document.createElement('input');
 
             // this.buttonContainer = document.createElement('div');
             // this.buttonContainer.classList.add('button-container');
@@ -66,6 +67,10 @@ class Conversation{
             this.email.name = 'email';
             this.message.rows = '2';
             this.message.name = 'message';
+
+            this.siteUrl.type = 'hidden';
+            this.siteUrl.name = 'siteUrl';
+            this.siteUrl.value = window.location.href;
 
             // this.previousButton.type = 'button';
             // this.nextButton.type = 'button';
@@ -97,6 +102,7 @@ class Conversation{
             this.form.append(this.name);
             this.form.append(this.email);
             this.form.append(this.message);
+            this.form.append(this.siteUrl);
             
             // this.buttonContainer.append(this.previousButton);
             // this.buttonContainer.append(this.nextButton);
