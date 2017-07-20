@@ -33,12 +33,13 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							?>
 							
 							<?php wp_link_pages(); // This will display pagination links, if applicable to the post ?>
+							
+							<div class="meta clearfix">
+								<div class="category"><?php echo get_the_category_list(); // Display the categories this post belongs to, as links ?></div>
+								<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); // Display the tags this post has, as links separated by spaces and pipes ?></div>
+							</div><!-- Meta -->
 						</div><!-- the-content -->
 						
-						<div class="meta clearfix">
-							<div class="category"><?php echo get_the_category_list(); // Display the categories this post belongs to, as links ?></div>
-							<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); // Display the tags this post has, as links separated by spaces and pipes ?></div>
-						</div><!-- Meta -->
 
 						<div class="image" style="background-image:url('<?php the_post_thumbnail_url( 'full' ); ?> ')">
 						</div>
