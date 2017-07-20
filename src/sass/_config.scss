@@ -21,31 +21,6 @@ $image-default-background-color: #dadada;
 $correct-color: #64dd17;
 $error-color: #f44336;
 
-$kring-color: #DB5C1E;
-
-// DOCHTER COLORS
-$company-color-alliade:#b2d235;
-$company-color-meriant:#319bd1;
-$company-color-talant:#eb008b;
-$company-color-reik:#003e7e;
-
-$company-color-alliade-secundair: #013e7d;
-
-// APPLICATION COLORS
-$application-color-kennr:#209B97;
-$application-color-webop:#EB008B;
-$application-color-zorgleefplan:#00ADEE;
-
-
-// GENERAL COLORS
-$kring-header: #DB5C1E;
-$chat-color: #7CB55C;
-$mededeling-color: #630662;
-$betrokkenen-color: #D71345;
-$photoalbum-color: #546F9F;
-$agenda-color: #724A93;
-$agenda-color-light: transparentize($agenda-color, .5);
-$agenda-color-lighter: transparentize($agenda-color, .9);
 
 // GENERAL SETTINGS
 $golden-ratio: 1.61803398875;
@@ -91,6 +66,8 @@ $kring-disabled-color: $disabled-background-color;
 // MENU SETTINGS
 $menu-size: $spacing * 2;
 
+// FOOTER HEIGHT
+$footer-height: 25rem;
 
 // MODAL SETTINGS
 $modal-background:$overlay-background;
