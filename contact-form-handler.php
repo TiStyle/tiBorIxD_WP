@@ -17,6 +17,8 @@ if (!preg_match(
 $email_address))
 {
     $errors .= "\n Error: Invalid email address";
+	//redirect to the 'thank you' page
+	header('Location: /');
 }
 
 if( empty($errors))

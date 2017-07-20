@@ -19,20 +19,16 @@ class Conversation{
             }
         });
 
+        this.submit.addEventListener('click', this.checkIfRequered.bind(this));
 
-        // TODO: Next + Previous question functionality
-
-        // this.nextButton.addEventListener('click', this.nextQuestion.bind(this));
-
+        // this.nextButton.addEventListener('click', this.nextQuestion.bind(this, true));
+        // this.previousButton.addEventListener('click', this.previousQuestion.bind(this, true));
 
         // this.form.addEventListener('keydown', (event)=>{
         //     var charCode = event.which || event.keyCode;
-        //     if(charCode == 9 || charCode == 13 || charCode == 39){
+        //     if(charCode == 9 || charCode == 13){
         //         this.nextQuestion(event);
         //     } 
-        //     if(charCode == 37){
-        //         this.previousQuestion(event);
-        //     }
         //     if(this.sendForm){
         //         this.submitForm();
         //     }
@@ -51,9 +47,12 @@ class Conversation{
             this.name = document.createElement('input');
             this.email = document.createElement('input');
             this.message = document.createElement('textarea');
-            this.previousButton = document.createElement('input');
-            // this.previousButton.classList.add('hide');
+
+            // this.buttonContainer = document.createElement('div');
+            // this.buttonContainer.classList.add('button-container');
+            // this.previousButton = document.createElement('input');
             // this.nextButton = document.createElement('input');
+            
             this.submit = document.createElement('input');
             this.submit.classList.add('secondary-action');
 
@@ -67,8 +66,10 @@ class Conversation{
             this.email.name = 'email';
             this.message.rows = '2';
             this.message.name = 'message';
+
             // this.previousButton.type = 'button';
             // this.nextButton.type = 'button';
+            
             this.submit.type = 'submit';
 
             this.name.placeholder = 'What is your name?';
@@ -77,8 +78,10 @@ class Conversation{
             this.email.id = 'email';
             this.message.placeholder = 'Tell me, what do you want to talk about?';
             this.message.id = 'message';
+
             // this.previousButton.value = '<';
             // this.nextButton.value = '>';
+            
             this.submit.value = 'Send message';
 
             this.name.autofocus = true;
@@ -91,16 +94,23 @@ class Conversation{
             // this.email.dataset.visible = '';
             // this.message.dataset.visible = '';
 
-            this.form.insertAdjacentHTML('afterBegin', closeIcon());
             this.form.append(this.name);
             this.form.append(this.email);
             this.form.append(this.message);
-            // this.form.append(this.previousButton);
-            // this.form.append(this.nextButton);
+            
+            // this.buttonContainer.append(this.previousButton);
+            // this.buttonContainer.append(this.nextButton);
+
+            // this.form.append(this.buttonContainer);
+            
             this.form.append(this.submit);
 
+            this.formContainer.insertAdjacentHTML('afterBegin', closeIcon());
             this.formContainer.append(this.form);
             document.body.append(this.formContainer);
+
+            document.querySelector('.close-icon').classList.add('center');
+            document.querySelector('.close-icon').addEventListener('click', this.resetForm.bind(this));
         }
     }
 
@@ -120,7 +130,7 @@ class Conversation{
         this.formContainer.style.display = '';
         this.formContainer.classList.add('appear');
         document.documentElement.style.overflow = 'hidden';
-        document.querySelector('form input[data-visible="visible"]').focus();
+        this.name.focus();
     }
 
     close(){
@@ -129,38 +139,51 @@ class Conversation{
         document.documentElement.style.overflow = '';
     }
 
-    nextQuestion(){
-        console.log(event);
-        const currentQuestion = event.target;
-        const nextQuestion = event.target.nextSibling;
+    // nextQuestion(buttonPressed){
+    //     if(buttonPressed){
+    //         var currentQuestion = document.querySelector('input[data-visible=\'visible\']') || document.querySelector('textarea[data-visible=\'visible\']');
+    //         var nextQuestion = currentQuestion.nextSibling;
+    //     } else {
+    //         var currentQuestion = event.target;
+    //         var nextQuestion = event.target.nextSibling;
+    //     }
 
-        if(currentQuestion.value != ''){
-            console.log('not empty');
+    //     if(currentQuestion.value != ''){
+    //         console.log('not empty');
             
-            currentQuestion.dataset.visible = "";
-            currentQuestion.autofocus = false;
-            currentQuestion.classList.remove('error');            
+    //         currentQuestion.dataset.visible = "";
+    //         currentQuestion.autofocus = false;
+    //         currentQuestion.classList.remove('error');            
 
-            if(nextQuestion.dataset.visible == ""){
-                nextQuestion.dataset.visible = 'visible';
-                nextQuestion.autofocus = true;
-            } else {
-                console.log('no more questions');
-                return this.sendForm = true;
-            }
-        } else {
-            console.log('empty');
-            currentQuestion.classList.add('error');
-            currentQuestion.focus();
-            this.replacePlaceholder();
-            currentQuestion.placeholder = this.placeholderText;
-        }
-    }
+    //         if(nextQuestion.dataset.visible == ""){
+    //             nextQuestion.dataset.visible = 'visible';
+    //             nextQuestion.autofocus = true;
+    //             console.log(nextQuestion.nextSibling)
+    //             if( nextQuestion.nextSibling == document.querySelector('.button-container') ){
+    //                 console.log('Last questions');
+    //                 this.nextButton.classList.add('hide');
+    //             }
+    //         } else {
+    //             console.log('no more questions');
+    //             return this.sendForm = true;
+    //         }
+    //     } else {
+    //         console.log('empty');
+    //         if(!currentQuestion.classList.contains('error')){
+    //             currentQuestion.classList.add('error');
+    //             currentQuestion.focus();
+    //             this.replacePlaceholder(currentQuestion.id);
+    //             currentQuestion.placeholder = this.placeholderText;
+    //         } else {
+    //             return;
+    //         }
+    //     }
+    // }
 
-    replacePlaceholder(){
+    replacePlaceholder(questionId){
         this.placeholderText = '';
 
-        switch(event.target.id){
+        switch(questionId){
             case 'name':
                 this.placeholderText = 'I would love to know your name...';
             break;
@@ -175,29 +198,49 @@ class Conversation{
         return this.placeholderText;
     }
 
-    previousQuestion(){
-        const currentQuestion = event.target;
-        const prevQuestion = event.target.previousSibling;
-
-        currentQuestion.dataset.visible = "";
-        currentQuestion.autofocus = false;
-
-        if(prevQuestion != null){
-            console.log('not null');
-            prevQuestion.dataset.visible = 'visible';
-            prevQuestion.autofocus = true;
-            prevQuestion.focus();
-        } else {
-            console.log('first question');
-            currentQuestion.dataset.visible = "visible";
-            currentQuestion.autofocus = true;
-        }
+    checkIfRequered(){
+        Array.from(document.querySelectorAll('form >*[required]'))
+            .forEach(field => {
+                if(field.value === ''){
+                    this.replacePlaceholder(field.id);
+                    field.classList.add('error');
+                    field.placeholder = this.placeholderText;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
     }
 
-    submitForm(){
-        console.log('submit');
-        this.resetForm();
-    }
+    // previousQuestion(buttonPressed){
+    //     if(buttonPressed){
+    //         var currentQuestion = document.querySelector('input[data-visible=\'visible\']') || document.querySelector('textarea[data-visible=\'visible\']');
+    //         var prevQuestion = currentQuestion.previousSibling;
+    //         console.log(currentQuestion);
+    //         console.log(prevQuestion);
+    //     } else {
+    //         var currentQuestion = event.target;
+    //         var prevQuestion = event.target.previousSibling;
+    //     }
+
+    //     currentQuestion.dataset.visible = "";
+    //     currentQuestion.autofocus = false;
+
+    //     if(prevQuestion.dataset.visible === ""){
+    //         console.log('not null');
+    //         prevQuestion.dataset.visible = 'visible';
+    //         prevQuestion.autofocus = true;
+    //         prevQuestion.focus();
+    //     } else {
+    //         console.log('first question');
+    //         currentQuestion.dataset.visible = "visible";
+    //         currentQuestion.autofocus = true;
+    //     }
+    // }
+
+    // submitForm(){
+    //     console.log('submit');
+    //     this.resetForm();
+    // }
 
     resetForm(){
         this.formContainer.remove();

@@ -1,4 +1,4 @@
-@import "../../sass/config";
+@import "../../src/sass/config";
 
 #contact{
     display: flex;
@@ -89,6 +89,12 @@
                     color: $error-color;
                 }
                 border-color: $error-color;
+            }
+        }
+        .button-container{
+            input[type="button"]{
+                margin-left: $spacing / 2;
+                margin-right: $spacing / 2;
             }
         }
     }
