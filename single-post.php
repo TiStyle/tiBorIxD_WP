@@ -18,7 +18,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				?>
 
 					<article class="post">
-					
 						<h1 class="title center"><?php the_title(); // Display the title of the post ?></h1>
 						<div class="post-meta center">
 							<?php the_time('m.d.Y'); // Display the time it was published ?>
@@ -27,6 +26,13 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 						</div><!--/post-meta -->
 						
 						<div class="the-content">
+							<div id="accessibilityCheck">
+								<input type="radio" name="accessibility" id="whiteBg" value="white" checked />
+								<label for="whiteBg"></label>
+								
+								<input type="radio" name="accessibility" id="blackBg" value="black" />
+								<label for="blackBg"></label>
+							</div>
 							<?php the_content(); 
 							// This call the main content of the post, the stuff in the main text box while composing.
 							// This will wrap everything in p tags
@@ -34,9 +40,9 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							
 							<?php wp_link_pages(); // This will display pagination links, if applicable to the post ?>
 							
-							<div class="meta clearfix">
+							<div class="meta center">
 								<div class="category"><?php echo get_the_category_list(); // Display the categories this post belongs to, as links ?></div>
-								<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); // Display the tags this post has, as links separated by spaces and pipes ?></div>
+								<div class="author"><?php echo get_the_author(); ?></div>
 							</div><!-- Meta -->
 						</div><!-- the-content -->
 						
@@ -44,6 +50,12 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 						<div class="image" style="background-image:url('<?php the_post_thumbnail_url( 'full' ); ?> ')">
 						</div>
 					</article>
+
+					<script>
+						document.addEventListener("DOMContentLoaded", function () {
+							var access = new Accessibility();
+						});
+					</script>
 
 				<?php endwhile; // OK, let's stop the post loop once we've displayed it ?>
 				
