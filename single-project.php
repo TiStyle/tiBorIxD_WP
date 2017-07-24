@@ -5,10 +5,8 @@
  */
 
 get_header(); // This fxn gets the header.php file and renders it ?>
-
-	PROJECT
-
 	<div id="primary" class="row-fluid">
+	Post
 		<div id="content" role="main" class="span8 offset2">
 
 			<?php if ( have_posts() ) : 
@@ -20,43 +18,51 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				?>
 
 					<article class="post">
-					
-						<h1 class="title"><?php the_title(); // Display the title of the post ?></h1>
-						<div class="post-meta">
+						<h1 class="title center"><?php the_title(); // Display the title of the post ?></h1>
+						<div class="post-meta center">
 							<?php the_time('m.d.Y'); // Display the time it was published ?>
 							<?php // the_author(); Uncomment this and it will display the post author ?>
 						
 						</div><!--/post-meta -->
 						
 						<div class="the-content">
+							<div id="accessibilityCheck">
+								<input type="radio" name="accessibility" id="whiteBg" value="white" checked />
+								<label for="whiteBg"></label>
+								
+								<input type="radio" name="accessibility" id="blackBg" value="black" />
+								<label for="blackBg"></label>
+							</div>
 							<?php the_content(); 
 							// This call the main content of the post, the stuff in the main text box while composing.
 							// This will wrap everything in p tags
 							?>
 							
 							<?php wp_link_pages(); // This will display pagination links, if applicable to the post ?>
+							
+							<div class="meta center">
+								<div class="category"><?php echo get_the_category_list(); // Display the categories this post belongs to, as links ?></div>
+								<div class="author"><?php echo get_the_author(); ?></div>
+							</div><!-- Meta -->
 						</div><!-- the-content -->
 						
-						<div class="meta clearfix">
-							<div class="category"><?php echo get_the_category_list(); // Display the categories this post belongs to, as links ?></div>
-							<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); // Display the tags this post has, as links separated by spaces and pipes ?></div>
-						</div><!-- Meta -->
-						
+
+						<div class="image" style="background-image:url('<?php the_post_thumbnail_url( 'full' ); ?> ')">
+						</div>
 					</article>
+
+					<script>
+						document.addEventListener("DOMContentLoaded", function () {
+							var access = new Accessibility();
+						});
+					</script>
 
 				<?php endwhile; // OK, let's stop the post loop once we've displayed it ?>
 				
-				<?php
-					// If comments are open or we have at least one comment, load up the default comment template provided by Wordpress
-					if ( comments_open() || '0' != get_comments_number() )
-						comments_template( '', true );
-				?>
-
-
 			<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) ?>
 				
 				<article class="post error">
-					<h1 class="404">Nothing has been posted like that yet</h1>
+					<h1 class="404">404 Nothing has been posted like that yet</h1>
 				</article>
 
 			<?php endif; // OK, I think that takes care of both scenarios (having a post or not having a post to show) ?>
