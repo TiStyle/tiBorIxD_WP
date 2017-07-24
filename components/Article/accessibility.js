@@ -8,7 +8,6 @@ class Accessibility{
 
     addEventListeners(){
         this.accChecker.forEach(item => item.addEventListener('click', () => {
-                console.log(this.article.className)
             if(!this.article.classList.contains(item.value)){
                 this.article.className = 'post';
             } 
