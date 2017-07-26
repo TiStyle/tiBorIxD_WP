@@ -103,6 +103,12 @@ function tiborixd_scripts()  {
 	// get the theme directory tiborIxD.css and link to it in the header
 	wp_enqueue_style('tiborIxD.css', get_stylesheet_directory_uri() . '/dist/css/tiborIxD.css');
 	
+	// add swiper CSS
+	wp_enqueue_style('swiper.min.css', get_stylesheet_directory_uri() . '/dist/css/swiper.min.css');
+
+	// add swiper JS
+	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/dist/js/swiper.min.js', array(), TIBORIXD_VERSION, true );
+
 	// add fitvid
 	wp_enqueue_script( 'tiborIxD-fitvid', get_template_directory_uri() . '/src/js/jquery.fitvids.js', array( 'jquery' ), TIBORIXD_VERSION, true );
 	

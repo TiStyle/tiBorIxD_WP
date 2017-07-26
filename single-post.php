@@ -6,8 +6,7 @@
 
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<div id="primary" class="row-fluid">
-	Post
-		<div id="content" role="main" class="span8 offset2">
+		<div id="content" role="main">
 
 			<?php if ( have_posts() ) : 
 			// Do we have any posts in the databse that match our query?
@@ -56,6 +55,9 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							var access = new Accessibility();
 						});
 					</script>
+
+					<!-- TODO:Archive link maken -->
+					<a href="<?php get_post_type_archive_link( 'post' ); ?>" class="secondary-action-light center">See All Blogs</a>
 
 				<?php endwhile; // OK, let's stop the post loop once we've displayed it ?>
 				

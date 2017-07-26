@@ -1,7 +1,6 @@
 @import "../../src/sass/config";
 
 article.post{
-    border-bottom: 1px solid white;
     padding-top: $padding * 3;
     &.black{
         .the-content{
@@ -10,8 +9,11 @@ article.post{
             transition: .3s background-color ease-in-out, .3s color ease-in-out;
         }
     }
-    h1{
+    h1, h2{
         color: $secondary-text-color;
+    }
+    h1 {
+        font-family: $font-family-thin;
     }
     .post-meta{
         color: $secondary-text-color;
@@ -52,6 +54,7 @@ article.post{
             }
             label{
                 display: inline-block;
+                cursor: pointer;
                 height: 1rem;
                 width: 1rem;
                 &:after{
@@ -103,5 +106,8 @@ article.post{
             height: 100%;
             width: 100%;
         }
+    }
+    #projectPhotos{
+        height: 25rem;
     }
 }

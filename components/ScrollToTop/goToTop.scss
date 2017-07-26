@@ -9,6 +9,9 @@ button#go-to-top{
     right: 0;
     width: $spacing * 3;
     z-index: 999;
+    &:after{
+        display: none;
+    }
     svg{
         fill: $secondary-text-color;
     }

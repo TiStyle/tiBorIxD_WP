@@ -6,8 +6,8 @@
 
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<div id="primary" class="row-fluid">
-	Post
-		<div id="content" role="main" class="span8 offset2">
+	PROJECT
+		<div id="content" role="main">
 
 			<?php if ( have_posts() ) : 
 			// Do we have any posts in the databse that match our query?
@@ -18,7 +18,8 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				?>
 
 					<article class="post">
-						<h1 class="title center"><?php the_title(); // Display the title of the post ?></h1>
+						<h2 class="title center"><?php the_title(); ?></h2>
+						<h1 class="title center"><?php the_field('slogan'); ?></h1>
 						<div class="post-meta center">
 							<?php the_time('m.d.Y'); // Display the time it was published ?>
 							<?php // the_author(); Uncomment this and it will display the post author ?>
@@ -33,11 +34,43 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 								<input type="radio" name="accessibility" id="blackBg" value="black" />
 								<label for="blackBg"></label>
 							</div>
+
+							<img src="<?php the_field('customer_logo'); ?>" class="center" alt="<?php the_title(); ?>" />
+
 							<?php the_content(); 
 							// This call the main content of the post, the stuff in the main text box while composing.
 							// This will wrap everything in p tags
 							?>
 							
+
+							
+							<br>
+							<?php the_field('category'); ?>
+							<br>
+							<?php the_field('skills'); ?>
+							<br>
+							<?php the_field('customer'); ?>
+							<br>
+							
+
+
+							<div id="projectPhotos" class="swiper-container">
+								<ul id="slider" class="swiper-wrapper">
+									<?php for ($x = 1; $x <= 5; $x++) {
+                                
+										$value = get_field( "slide_".$x."" );
+										
+										if( $value ) {
+											echo '<li class="swiper-slide slide" style="background-image:url('.$value.')"></li>';
+										} else {
+											echo ''; 
+										}
+									}?>
+								</ul>
+								<div id="next" class="swiper-next"></div>
+								<div id="prev" class="swiper-prev"></div>
+							</div>
+
 							<?php wp_link_pages(); // This will display pagination links, if applicable to the post ?>
 							
 							<div class="meta center">
@@ -54,6 +87,18 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					<script>
 						document.addEventListener("DOMContentLoaded", function () {
 							var access = new Accessibility();
+
+							var swiper = new Swiper('#projectPhotos', {
+								nextButton: '#next',
+								prevButton: '#prev',
+								spaceBetween: 20,
+								loop: true,
+								speed: 1500,
+								parallax: true,
+								keyboardControl: true,
+								autoplay: 7500,
+								autoplayDisableOnInteraction: false
+							});
 						});
 					</script>
 
