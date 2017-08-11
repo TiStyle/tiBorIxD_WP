@@ -7,7 +7,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
     <script src="wp-content/themes/tiBorIxD_WP/dist/js/swiper.min.js"></script>
 
-	<div class="container-full scroll-point">
+	<section class="container-full scroll-point">
 		<div id="blogs" class="swiper-container">
 			<ul id="slider" class="swiper-wrapper">
 				<?php
@@ -46,9 +46,9 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				autoplayDisableOnInteraction: false
 			});
 		</script>
-	</div>
+	</section>
 
-	<div class="container-full scroll-point">
+	<section class="container-full scroll-point">
 		<div id="projects" class="swiper-container">
 			<ul id="slider" class="swiper-wrapper">
 				<?php
@@ -98,7 +98,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				keyboardControl: true,
 			});
 		</script>
-	</div>
+	</section>
 
     <script>
 		document.addEventListener("DOMContentLoaded", function () {
