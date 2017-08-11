@@ -1,21 +1,31 @@
 @import "../../src/sass/config";
 
-.main-content{
+#content{
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
     margin: 0 auto;
+    padding: 0 $padding;
     max-width: $container;
     width: 100%;
-}
-
-article.post{
-    max-width: 750px;
-    padding-top: $padding * 3;
-    &.black{
-        .the-content{
-            background-color: transparentize(black, .4);
-            color: transparentize($secondary-text-color, .1);
-            transition: .3s background-color ease-in-out, .3s color ease-in-out;
+    & > *:nth-child(1){
+        margin-right: .5rem;
+    }
+    & > *:nth-child(2){
+        margin-left: .5rem;
+    }
+    &.post{
+        flex-direction: column;
+        margin-bottom: $margin * 3;
+        max-width: 750px;
+        & > *:nth-child(1){
+            margin-right: 0;
         }
     }
+}
+
+section.header{
+    padding-top: $padding * 3;
     h1, h2{
         color: $secondary-text-color;
     }
@@ -24,17 +34,46 @@ article.post{
     }
     .post-meta{
         color: $secondary-text-color;
-        margin-bottom: $spacing;
+        margin-top: $margin / 2;
+        margin-bottom: $margin;
+        .day{
+            font-family: $font-family-thin;
+            font-size: 3rem;
+            line-height: 2.2rem;
+        }
+        .month{
+            font-family: $font-family-extra-bold;
+            font-size: 1.5rem;
+            line-height: 2rem;
+            text-transform: lowercase;
+        }
+        .year{
+            font-family: $font-family-thin;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+        }
+    }
+}
+
+article.post{
+    padding-top: $padding * 3;
+    &.black{
+        .the-content{
+            background-color: transparentize(black, .4);
+            color: transparentize($secondary-text-color, .1);
+            transition: .3s background-color ease-in-out, .3s color ease-in-out;
+        }
     }
     .the-content{
         background-color: transparentize($container-color, .1);
+        box-sizing: border-box;
         line-height: unquote($golden-ratio + "rem");
         margin: 0 auto;
-        margin-bottom: $spacing * 3;
-        padding: #{$padding} #{$padding * 1.5} 0 #{$padding * 1.5};
+        margin-bottom: $margin * 3;
+        padding: #{$padding} #{$padding * 1.5};
         position: relative;
         transition: .3s background-color ease-in-out, .3s color ease-in-out;
-        width:60vw;
+        width: 100%;
         will-change: background-color, color;
         @media #{$small-and-down}{
             box-sizing: border-box;
@@ -121,6 +160,32 @@ article.post{
     }
 }
 
+article.project{
+    @extend .post;
+    max-width: calc(750px - .5rem);
+
+}
+
 aside{
-    max-width: 450px;
+    background-color: transparentize($container-color, .1);
+    box-sizing: border-box;
+    margin-top: $margin * 3;
+    max-width: calc(450px - .5rem);
+    padding: #{$padding} #{$padding * 1.5};
+    transition: .3s background-color ease-in-out, .3s color ease-in-out;
+    .black + &{
+        background-color: transparentize(black, .4);
+        color: transparentize($secondary-text-color, .1);
+        transition: .3s background-color ease-in-out, .3s color ease-in-out;
+    }
+    &.project-meta{
+        .customer-image{
+            display: block;
+            margin: 0 auto;
+        }
+        .customer{
+            font-size: .75rem;
+            text-align: center;
+        }
+    }
 }

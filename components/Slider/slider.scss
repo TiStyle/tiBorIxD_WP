@@ -12,7 +12,7 @@ $slide-controll-size: $spacing * 1.5;
         box-sizing: border-box;
         height: 100%;
         padding: $padding;
-        width: 100%;
+        width: 100% !important;
         .blog-link{
             align-items: center;
             background-color: $dark-overlay-background;

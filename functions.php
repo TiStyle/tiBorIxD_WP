@@ -100,20 +100,26 @@ add_action( 'widgets_init', 'naked_register_sidebars' );
 
 function tiborixd_scripts()  { 
 
+    $themecsspath = get_stylesheet_directory() . '/dist/css/tiborIxD.css';
+    $themejspath = get_stylesheet_directory() . '/dist/js/tiborIxD.js';
+
 	// get the theme directory tiborIxD.css and link to it in the header
-	wp_enqueue_style('tiborIxD.css', get_stylesheet_directory_uri() . '/dist/css/tiborIxD.css');
+	wp_enqueue_style('tiborIxD.css', get_stylesheet_directory_uri() . '/dist/css/tiborIxD.css', array(), filemtime( $themecsspath ), false);
 	
 	// add swiper CSS
 	wp_enqueue_style('swiper.min.css', get_stylesheet_directory_uri() . '/dist/css/swiper.min.css');
 
 	// add swiper JS
-	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/dist/js/swiper.min.js', array(), array(), filemtime( $themecsspath ), true );
+	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/dist/js/swiper.min.js' );
 
 	// add fitvid
 	wp_enqueue_script( 'tiborIxD-fitvid', get_template_directory_uri() . '/src/js/jquery.fitvids.js', array( 'jquery' ), TIBORIXD_VERSION, true );
 	
 	// add theme scripts
-	wp_enqueue_script( 'tiborIxD', get_template_directory_uri() . '/dist/js/tiborIxD.js', array(), array(), filemtime( $themecsspath ), true );
+	wp_enqueue_script( 'tiborIxD', get_template_directory_uri() . '/dist/js/tiborIxD.js', array(), array(), filemtime( $themejspath ), true );
+
+
+
   
 }
 add_action( 'wp_enqueue_scripts', 'tiborixd_scripts' ); // Register this fxn and allow Wordpress to call it automatcally in the header

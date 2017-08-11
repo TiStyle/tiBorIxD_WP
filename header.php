@@ -14,13 +14,6 @@
 	<?php is_front_page() ? bloginfo('description') : wp_title(''); // if we're on the home page, show the description, from the site's settings - otherwise, show the title of the post or page ?>
 </title>
 
-<!-- SWIPER -->
-<!-- <link rel="stylesheet" href="../wp-content/themes/tiBorIxD_WP/dist/css/swiper.min.css"> -->
-
-<!-- TODO: REMOVE TEST LINKS -->
- <script src="wp-content/themes/tiBorIxD_WP/dist/js/tiborixd.js"></script> 
- <link rel="stylesheet" href="wp-content/themes/tiBorIxD_WP/dist/css/tiborixd.css"> 
-
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
