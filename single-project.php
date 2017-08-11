@@ -7,7 +7,7 @@
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<div id="primary" class="row-fluid">
 	PROJECT
-		<div id="content" role="main">
+		<div id="main-content" role="main">
 
 			<?php if ( have_posts() ) : 
 			// Do we have any posts in the databse that match our query?
@@ -35,25 +35,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 								<label for="blackBg"></label>
 							</div>
 
-							<img src="<?php the_field('customer_logo'); ?>" class="center" alt="<?php the_title(); ?>" />
-
-							<?php the_content(); 
-							// This call the main content of the post, the stuff in the main text box while composing.
-							// This will wrap everything in p tags
-							?>
-							
-
-							
-							<br>
-							<?php the_field('category'); ?>
-							<br>
-							<?php the_field('skills'); ?>
-							<br>
-							<?php the_field('customer'); ?>
-							<br>
-							
-
-
 							<div id="projectPhotos" class="swiper-container">
 								<ul id="slider" class="swiper-wrapper">
 									<?php for ($x = 1; $x <= 5; $x++) {
@@ -71,6 +52,22 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 								<div id="prev" class="swiper-prev"></div>
 							</div>
 
+							<img src="<?php the_field('customer_logo'); ?>" class="center" alt="<?php the_title(); ?>" />
+
+							<?php the_content(); 
+							// This call the main content of the post, the stuff in the main text box while composing.
+							// This will wrap everything in p tags
+							?>
+							
+							<br>
+							<?php the_field('category'); ?>
+							<br>
+							<?php the_field('skills'); ?>
+							<br>
+							<?php the_field('customer'); ?>
+							<br>
+							
+
 							<?php wp_link_pages(); // This will display pagination links, if applicable to the post ?>
 							
 							<div class="meta center">
@@ -83,6 +80,10 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 						<div class="image" style="background-image:url('<?php the_post_thumbnail_url( 'full' ); ?> ')">
 						</div>
 					</article>
+
+					<aside>
+						sidebar info
+					</aside>
 
 					<script>
 						document.addEventListener("DOMContentLoaded", function () {

@@ -1,6 +1,13 @@
 @import "../../src/sass/config";
 
+.main-content{
+    margin: 0 auto;
+    max-width: $container;
+    width: 100%;
+}
+
 article.post{
+    max-width: 750px;
     padding-top: $padding * 3;
     &.black{
         .the-content{
@@ -24,7 +31,6 @@ article.post{
         line-height: unquote($golden-ratio + "rem");
         margin: 0 auto;
         margin-bottom: $spacing * 3;
-        max-width: 750px;
         padding: #{$padding} #{$padding * 1.5} 0 #{$padding * 1.5};
         position: relative;
         transition: .3s background-color ease-in-out, .3s color ease-in-out;
@@ -109,5 +115,12 @@ article.post{
     }
     #projectPhotos{
         height: 25rem;
+        margin-left: -$margin * 1.5;
+        margin-top: -$margin;
+        width: calc(100% + 3rem);
     }
+}
+
+aside{
+    max-width: 450px;
 }

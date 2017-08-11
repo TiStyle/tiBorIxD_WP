@@ -40,9 +40,10 @@ $grid: 12;
 $grid-number: $grid;
 
 // SPACING SETTINGS
-$padding: 1rem;
 $spacing: 1rem;
 $spacing-bottom: 1rem;
+$padding: $spacing;
+$margin: $spacing;
 
 // SHADOW SETTINGS
 $z-levels: 5;
