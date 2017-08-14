@@ -38,6 +38,14 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
 							<div id="projectPhotos" class="swiper-container">
 								<ul id="slider" class="swiper-wrapper">
+									<?php 
+										if(get_field("has_video") && get_field("video_link")){
+
+											$video_link = get_field("video_link");
+
+											print_r('<li class="swiper-slide slide video">'.$video_link.'</li>');
+										}
+									?>
 									<?php for ($x = 1; $x <= 5; $x++) {
                                 
 										$value = get_field( "slide_".$x."" );
@@ -51,6 +59,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 								</ul>
 								<div id="next" class="swiper-next"></div>
 								<div id="prev" class="swiper-prev"></div>
+								<div class="swiper-pagination"></div>
 							</div>
 
 
@@ -86,13 +95,15 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							var swiper = new Swiper('#projectPhotos', {
 								nextButton: '#next',
 								prevButton: '#prev',
+								pagination: '.swiper-pagination',
+								paginationClickable: true,
 								spaceBetween: 20,
 								loop: true,
 								speed: 1500,
 								parallax: true,
 								keyboardControl: true,
-								autoplay: 7500,
-								autoplayDisableOnInteraction: false
+								// autoplay: 7500,
+								autoplayDisableOnInteraction: true
 							});
 						});
 					</script>

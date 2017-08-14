@@ -79,6 +79,17 @@ article.post{
             box-sizing: border-box;
             width: calc(100% - 2rem);
         }
+        .swiper-container{
+            .slide{
+                &.video{
+                    padding: 0 !important;
+                    iframe{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
         #accessibilityCheck{
             background-color: transparentize($container-color, .1);
             display: inline-flex;
@@ -163,7 +174,7 @@ article.post{
 article.project{
     @extend .post;
     max-width: calc(750px - .5rem);
-
+    width: 100%;
 }
 
 aside{
