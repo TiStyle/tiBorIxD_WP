@@ -5,7 +5,8 @@
 	/*-----------------------------------------------------------------------------------*/
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<!-- TODO: remove style margin top when finalizing -->
+<html <?php language_attributes(); ?> style="margin-top: 0 !important;">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />

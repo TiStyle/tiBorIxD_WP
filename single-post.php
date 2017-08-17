@@ -59,10 +59,11 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 						});
 					</script>
 
-					<!-- TODO:Archive link maken -->
-					<a href="<?php get_post_type_archive_link( 'post' ); ?>" class="secondary-action-light center">See All Blogs</a>
-
 				</section><!-- #content .site-content -->
+
+				<!-- TODO:Archive link maken -->
+				<a href="<?php get_post_type_archive_link( 'post' ); ?>" class="secondary-action-light center">See All Blogs</a>
+
 			<?php endwhile; // OK, let's stop the post loop once we've displayed it ?>
 			
 		<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) ?>

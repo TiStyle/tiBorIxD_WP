@@ -4,8 +4,6 @@ class Accessibility{
         this.article = document.querySelector('article#post');
         this.articleClass = document.querySelector('article#post').className;
         
-        console.log(this.articleClass)
-
         this.addEventListeners();
     }
 

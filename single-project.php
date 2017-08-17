@@ -6,7 +6,6 @@
 
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<div id="primary" class="row-fluid">
-	PROJECT
 
 		<?php if ( have_posts() ) : 
 		// Do we have any posts in the databse that match our query?
@@ -74,18 +73,72 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					</article>
 
 					<aside class="project-meta">
-						<img src="<?php the_field('customer_logo'); ?>" class="customer-image" alt="<?php the_title(); ?>" />
-						<div class="customer">
-							<?php the_field('customer'); ?>
-						</div>
-						<div class="category">
-							<label>Categorie:</label>
-							<?php the_field('category'); ?>
-						</div>
-						<div class="skills">
-							<label>Skills:</label>
-							<?php the_field('skills'); ?>
-						</div>
+						<section class="meta-info">
+							<img src="<?php the_field('customer_logo'); ?>" class="customer-image" alt="<?php the_title(); ?>" />
+							<div class="customer">
+								<?php the_field('customer'); ?>
+							</div>
+							<hr/>
+							<div class="category">
+								<label>Categorie:</label>
+								<!-- GET TAGS -> separate by comma
+								<?php	
+									$tags = wp_get_post_tags($post->ID);
+									echo $tags->slug;
+								?> -->
+								<?php the_field('category'); ?>
+							</div>
+							<div class="skills">
+								<label>Skills:</label>
+								<?php the_field('skills'); ?>
+							</div>
+						</section>
+						<section class="related-projects">
+							<ul>
+								<?php
+									//for use in the loop, list 5 post titles related to first tag on current post
+									$tags = wp_get_post_tags($post->ID);
+
+									if ($tags) {
+										
+										$tag_ids = array();
+										
+										foreach($tags as $tag) $tag_ids[] = $tag->term_id;
+										
+										$args = array(
+											'post_type' => 'project',
+											'tag__in' => $tag_ids,
+											'post__not_in' => array($post->ID),
+											'posts_per_page'=> -1, // Number of related posts to display.
+											'caller_get_posts'=> 1
+										);
+										$my_query = new WP_Query($args);
+										if( $my_query->have_posts() ) {
+											while ($my_query->have_posts()) : $my_query->the_post(); ?>
+
+												<li class="project-item">
+													<a href="<?php the_permalink() ?>" title="Navigate to: <?php the_title_attribute(); ?>">
+														<!-- <div class="image b-lazy" data-src="<?php echo get_the_post_thumbnail_url( null, 'tiborIxD-related'); ?>"></div> -->
+														<div class="image b-lazy" style="background-image:url('<?php echo get_the_post_thumbnail_url( null, 'tiborIxD-related'); ?>');"></div>
+														<h4><?php the_title(); ?></h4>
+													</a>
+												</li>
+												
+											<?php
+											endwhile;
+										} 
+										else {
+											echo '<li class="no-content">No related projects available...</li>';
+										}
+										
+										wp_reset_query();
+									} 
+									else {
+										echo '<li class="no-content">No related projects available...</li>';
+									}
+								?>
+							</ul>
+						</section>
 					</aside>
 
 					<script>
@@ -109,6 +162,10 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					</script>
 
 				</section><!-- #content .site-content -->
+				
+				<!-- TODO:Archive link maken -->
+				<a href="<?php get_post_type_archive_link( 'post' ); ?>" class="secondary-action-light center">See All Projects</a>
+				
 			<?php endwhile; // OK, let's stop the post loop once we've displayed it ?>
 			
 		<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) ?>

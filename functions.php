@@ -60,6 +60,15 @@ add_action( 'after_setup_theme', 'theme_prefix_setup' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* Add Thumbnail support for posts and pages
+/*-----------------------------------------------------------------------------------*/
+add_theme_support( 'post-thumbnails' ); 
+
+add_image_size( 'tiborIxD-related', 150, 100, true );
+
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Add plugins if they don't exsist
 /*-----------------------------------------------------------------------------------*/
 // Run this code on 'after_theme_setup', when plugins have already been loaded.

@@ -1,5 +1,31 @@
 @import '_config';
 
+
+// TODO: Remove when finalizing || POSIBLE SUGGESTION FOR DEV WP ADMIN BAR
+#wpadminbar{
+    opacity: .1;
+    transform: translateY(-100%);
+    transition: .3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity, transform;
+    &:after{
+        content: 'wordpress menu';
+        display: block;
+        font-size: .5rem;
+        height: 33%;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 100%;
+        width: 100%;
+    }
+    &:hover{
+        opacity: 1;
+        transform: translateY(0);
+        transition: .3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
+        will-change: opacity, transform;
+    }
+}
+
 // CENTRAL STYLING
 html{
     // background-color:$background-color;

@@ -8,24 +8,46 @@
     padding: 0 $padding;
     max-width: $container;
     width: 100%;
+    @media #{$small-and-down}{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
     & > *:nth-child(1){
         margin-right: .5rem;
     }
     & > *:nth-child(2){
         margin-left: .5rem;
+        @media #{$small-and-down}{
+            margin-left: $margin;
+            margin-right: $margin;
+            margin-top: 0;
+            width: calc(100% - 2rem);
+        }
     }
     &.post{
         flex-direction: column;
-        margin-bottom: $margin * 3;
         max-width: 750px;
         & > *:nth-child(1){
             margin-right: 0;
         }
     }
+    & + .secondary-action-light{
+        margin-bottom: $margin * 3;
+    }
 }
 
 section.header{
     padding-top: $padding * 3;
+    @media #{$small-and-down}{
+        padding-left: $padding;
+        padding-right: $padding;
+        h1{
+            font-size: 2.5rem;
+            line-height: normal;
+            margin: #{$margin} 0 #{$margin * 2};
+        }
+    }
     h1, h2{
         color: $secondary-text-color;
     }
@@ -77,7 +99,18 @@ article.post{
         will-change: background-color, color;
         @media #{$small-and-down}{
             box-sizing: border-box;
+            margin-bottom: $margin;
+            padding: $padding;
             width: calc(100% - 2rem);
+            #projectPhotos{
+                margin-left: -$margin;
+                margin-right: -$margin * 5;
+                width: calc(100% + 2rem);
+                .swiper-next,
+                .swiper-prev{
+                    display: block;
+                }
+            }
         }
         .swiper-container{
             .slide{
@@ -178,25 +211,120 @@ article.project{
 }
 
 aside{
-    background-color: transparentize($container-color, .1);
-    box-sizing: border-box;
     margin-top: $margin * 3;
     max-width: calc(450px - .5rem);
-    padding: #{$padding} #{$padding * 1.5};
-    transition: .3s background-color ease-in-out, .3s color ease-in-out;
-    .black + &{
-        background-color: transparentize(black, .4);
-        color: transparentize($secondary-text-color, .1);
-        transition: .3s background-color ease-in-out, .3s color ease-in-out;
-    }
     &.project-meta{
-        .customer-image{
-            display: block;
-            margin: 0 auto;
+        section{
+            background-color: transparentize($container-color, .1);
+            box-sizing: border-box;
+            padding: #{$padding} #{$padding * 1.5};
+            margin-bottom: $margin;
+            transition: .3s background-color ease-in-out, .3s color ease-in-out;
+            &:last-child{
+                margin-bottom: $margin * 3;            
+            }
+            .customer-image{
+                background-color: transparent;
+                display: block;
+                margin: 0 auto;
+                padding: $padding;
+                transition: .3s background-color cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+            .customer{
+                font-size: .75rem;
+                margin: #{$margin / 2} 0;
+                text-align: center;
+                &:before,
+                &:after{
+                    content: '---';
+                }
+            }
+            label{
+                display: block;
+                color: transparentize($primary-text-color, .75);
+                // color: $primary-text-color;
+                font-family: $font-family-light;
+                font-size: 1.2rem;
+                margin-top: #{$margin};
+            }
         }
-        .customer{
-            font-size: .75rem;
-            text-align: center;
+    }
+    .black + &{
+        section{
+            background-color: transparentize(black, .4);
+            color: transparentize($secondary-text-color, .1);
+            transition: .3s background-color ease-in-out, .3s color ease-in-out;
+            label{
+                color: transparentize($secondary-text-color, .1);
+            }
+            .customer-image{
+                background-color: $container-color;
+                transition: .3s background-color cubic-bezier(0.165, 0.84, 0.44, 1);
+                will-change: background-color;
+            }
+            &.related-projects{
+                ul{
+                    .project-item{
+                        a{
+                            h4{
+                                color: $secondary-text-color;
+                                transition: .3s color ease-in-out;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .related-projects{
+        ul{
+            .project-item{
+                margin-bottom: $margin;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                a{
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    &:hover{
+                        &:after{
+                            opacity: 1;
+                            transform: translate(0, 2px) rotate(135deg);
+                            transition: opacity .3s cubic-bezier(.27,.79,.28,.97), transform .3s cubic-bezier(.27,.79,.28,.97);
+                        }
+                    }
+                    &:after{
+                        border-left: 1px solid $dark-gray;
+                        border-top: 1px solid $dark-gray;
+                        content: '';
+                        height: .5rem;
+                        opacity: 0;
+                        position: absolute;
+                        right: 0;
+                        transform: translate(-1rem, 2px) rotate(135deg);
+                        transition: opacity .3s cubic-bezier(.27,.79,.28,.97), transform .3s cubic-bezier(.27,.79,.28,.97);
+                        width: .5rem;
+                        z-index: 1;
+                    }
+                    .image{
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 3rem;
+                        max-width: 4rem;
+                        width: 100%;
+                    }
+                    h4{
+                        margin-left: $margin;
+                        max-width: calc(100% - 5rem);
+                        transition: .3s color ease-in-out;
+                        width: 100%;
+                        will-change: color;
+                    }
+                }
+            }
         }
     }
 }
