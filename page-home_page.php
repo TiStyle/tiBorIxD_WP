@@ -100,6 +100,10 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		</script>
 	</section>
 
+	<section class="container-full scroll-point">
+		<div class="container-full" style="background-image:url('http://lorempixel.com/1200/800/')"></div>
+	</section>
+
     <script>
 		document.addEventListener("DOMContentLoaded", function () {
 			var x = new ScrollToNext();
