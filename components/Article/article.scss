@@ -213,6 +213,7 @@ article.project{
 aside{
     margin-top: $margin * 3;
     max-width: calc(450px - .5rem);
+    width: 100%;
     &.project-meta{
         section{
             background-color: transparentize($container-color, .1);
@@ -266,9 +267,17 @@ aside{
                 ul{
                     .project-item{
                         a{
-                            h4{
-                                color: $secondary-text-color;
-                                transition: .3s color ease-in-out;
+                            .right-side{
+                                h4{
+                                    color: $secondary-text-color;
+                                    transition: .3s color ease-in-out;
+                                    will-change: color;
+                                }
+                                .tags{
+                                    color: $secondary-text-color;
+                                    transition: .3s color ease-in-out;
+                                    will-change: color;
+                                }
                             }
                         }
                     }
@@ -316,12 +325,21 @@ aside{
                         max-width: 4rem;
                         width: 100%;
                     }
-                    h4{
+                    .right-side{
                         margin-left: $margin;
                         max-width: calc(100% - 5rem);
-                        transition: .3s color ease-in-out;
                         width: 100%;
-                        will-change: color;
+                        h4{
+                            transition: .3s color ease-in-out;
+                            will-change: color;
+                        }
+                        .tags{
+                            color: $primary-text-color;
+                            font-size: .75rem;
+                            font-family: $font-family-thin;
+                            transition: .3s color ease-in-out;
+                            will-change: color;
+                        }
                     }
                 }
             }

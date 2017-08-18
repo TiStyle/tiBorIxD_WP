@@ -80,16 +80,24 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							</div>
 							<hr/>
 							<div class="category">
-								<label>Categorie:</label>
+								<label><?php 
+									$category_object = get_field_object('category');
+									echo $category_object['label'];
+								?>:</label>
 								<!-- GET TAGS -> separate by comma
 								<?php	
-									$tags = wp_get_post_tags($post->ID);
-									echo $tags->slug;
+									$post_tags = wp_get_post_tags($post->ID);
+									$post_tags_names = array_column($post_tags, 'name');
+									$tags_names = implode(', ', $post_tags_names);
+
 								?> -->
 								<?php the_field('category'); ?>
 							</div>
 							<div class="skills">
-								<label>Skills:</label>
+								<label><?php 
+									$skills_object = get_field_object('skills');
+									echo $skills_object['label'];
+								?>:</label>
 								<?php the_field('skills'); ?>
 							</div>
 						</section>
@@ -114,13 +122,26 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 										);
 										$my_query = new WP_Query($args);
 										if( $my_query->have_posts() ) {
-											while ($my_query->have_posts()) : $my_query->the_post(); ?>
+											while ($my_query->have_posts()) : $my_query->the_post(); 
+												
+												$related_post_tags = wp_get_post_tags($post->ID);
+												$related_post_tag_names_array = array_column($related_post_tags, 'name');
+												$tag_names = implode(', ', $related_post_tag_names_array);
+												
+												?>
 
 												<li class="project-item">
-													<a href="<?php the_permalink() ?>" title="Navigate to: <?php the_title_attribute(); ?>">
+													<a href="<?php the_permalink() ?>" title="Project: <?php the_title_attribute(); ?> - Category: <?php echo $tag_names; ?>">
 														<!-- <div class="image b-lazy" data-src="<?php echo get_the_post_thumbnail_url( null, 'tiborIxD-related'); ?>"></div> -->
 														<div class="image b-lazy" style="background-image:url('<?php echo get_the_post_thumbnail_url( null, 'tiborIxD-related'); ?>');"></div>
-														<h4><?php the_title(); ?></h4>
+														<div class="right-side">
+															<h4><?php the_title(); ?></h4>
+															<div class="tags">
+																<?php
+																	echo $tag_names;
+																?>
+															</div>
+														</div>
 													</a>
 												</li>
 												
