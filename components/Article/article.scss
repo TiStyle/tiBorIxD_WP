@@ -214,6 +214,9 @@ aside{
     margin-top: $margin * 3;
     max-width: calc(450px - .5rem);
     width: 100%;
+    @media #{$small-and-down}{
+        max-width: 100%;
+    }
     &.project-meta{
         section{
             background-color: transparentize($container-color, .1);
@@ -226,10 +229,13 @@ aside{
             }
             .customer-image{
                 background-color: transparent;
+                box-sizing: border-box;
                 display: block;
                 margin: 0 auto;
+                max-width: 12rem;
                 padding: $padding;
                 transition: .3s background-color cubic-bezier(0.165, 0.84, 0.44, 1);
+                width: 100%;
             }
             .customer{
                 font-size: .75rem;
