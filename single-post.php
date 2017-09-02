@@ -17,7 +17,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				<section class="header">
 					<h1 class="title center"><?php the_title(); // Display the title of the post ?></h1>
 					<div class="post-meta center">
-					<div class="post-meta center">
 						<div class="day"><?php echo get_the_date('d'); ?></div>
 						<div class="month"><?php echo get_the_date('M'); ?></div>
 						<div class="year"><?php echo get_the_date('Y'); ?></div>

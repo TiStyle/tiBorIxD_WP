@@ -100,8 +100,25 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		</script>
 	</section>
 
-	<section class="container-full scroll-point">
-		<div class="container-full" style="background-image:url('http://lorempixel.com/1200/800/')"></div>
+	<section class="container-full scroll-point skills">
+		
+		<?php
+			$skills = wp_get_recent_posts(array(
+				'numberposts' => 1,
+				'post_status' => 'publish',
+				'post_type' => 'page',
+				'type' => 'skills',
+			));
+			foreach($skills as $skill) : ?>
+
+				<div class="container-full" style="background-image:url('<?php echo get_the_post_thumbnail_url($skill['ID'], 'tiborIxD-cover'); ?>')">
+					<div class="content">
+						<p class="center"><?php echo $skill['post_content'] ?></p>
+					</div>					
+				</div>
+			
+			<?php endforeach; wp_reset_query(); ?>
+		
 	</section>
 
     <script>

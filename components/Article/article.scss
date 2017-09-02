@@ -25,7 +25,8 @@
             width: calc(100% - 2rem);
         }
     }
-    &.post{
+    &.post,
+    &.skills{
         flex-direction: column;
         max-width: 750px;
         & > *:nth-child(1){
@@ -208,6 +209,43 @@ article.project{
     @extend .post;
     max-width: calc(750px - .5rem);
     width: 100%;
+}
+
+article.skills{
+    @extend .post;
+
+    // TODO: change the way of colering
+    color: white !important;
+
+    width: 100%;
+    .the-content{
+        background-color: transparent;
+        width: 100%;
+        .skill{
+            float: left;
+            width: calc((100% / 3) - 1px);
+            h3{
+                color: white !important;
+                font-family: $font-family-thin;
+            }
+            .skill-bar{
+                border: 1px solid $container-color;
+                box-sizing: border-box;
+                height: 1rem;
+                padding: 1px;
+                .value{
+                    background-color: $container-color;
+                    height: 100%;
+                    float: left;
+                    margin-right: .5%;
+                    width: .5%;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 aside{

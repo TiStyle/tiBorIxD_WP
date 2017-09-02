@@ -65,7 +65,25 @@ add_action( 'after_setup_theme', 'theme_prefix_setup' );
 add_theme_support( 'post-thumbnails' ); 
 
 add_image_size( 'tiborIxD-related', 150, 100, true );
+add_image_size( 'tiborIxD-cover', 1600, 900, true );
 
+
+/*-----------------------------------------------------------------------------------*/
+/* Register type support for pages
+/*-----------------------------------------------------------------------------------*/
+add_action( 'init', 'create_page_tax' );
+
+function create_page_tax() {
+	register_taxonomy(
+		'Type',
+		'page',
+		array(
+			'label' => __( 'Type' ),
+			'rewrite' => array( 'slug' => 'type' ),
+			'hierarchical' => true,
+		)
+	);
+}
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -186,6 +204,60 @@ function project_post_type() {
 }
 
 add_action( 'init', 'project_post_type' );
+
+/*-----------------------------------------------------------------------------------*/
+/* Create custom post type: SKILLS
+/*-----------------------------------------------------------------------------------*/
+
+function skill_post_type() {
+    
+       $labels = array(
+           'name'                => _x( 'skill', 'Post Type General Name', 'text_domain' ),
+           'singular_name'       => _x( 'Skill', 'Post Type Singular Name', 'text_domain' ),
+           'menu_name'           => __( 'Skills', 'text_domain' ),
+           'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+           'all_items'           => __( 'All Items', 'text_domain' ),
+           'view_item'           => __( 'View Item', 'text_domain' ),
+           'add_new_item'        => __( 'Add New Item', 'text_domain' ),
+           'add_new'             => __( 'Add New', 'text_domain' ),
+           'edit_item'           => __( 'Edit Item', 'text_domain' ),
+           'update_item'         => __( 'Update Item', 'text_domain' ),
+           'search_items'        => __( 'Search Item', 'text_domain' ),
+           'not_found'           => __( 'Not found', 'text_domain' ),
+           'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+       );
+       $args = array(
+           'label'               => __( 'Skill', 'text_domain' ),
+           'description'         => __( 'Post Type Description', 'text_domain' ),
+           'labels'              => $labels,
+           'supports'            => array(
+                                   'title',
+                                   'editor',
+                                   'excerpt',
+                                   'trackbacks',
+                                   'revisions',
+                                   'thumbnail',
+                                   'page-attributes', 
+                                 ),
+           'taxonomies'          => array( 'category', 'post_tag' ),
+           'hierarchical'        => false,
+           'public'              => true,
+           'show_ui'             => true,
+           'show_in_menu'        => true,
+           'show_in_nav_menus'   => true,
+           'show_in_admin_bar'   => true,
+           'menu_position'       => 5,
+           'menu_icon'           => 'dashicons-art',
+           'can_export'          => true,
+           'has_archive'         => true,
+           'exclude_from_search' => false,
+           'publicly_queryable'  => true,
+           'capability_type'     => 'page',
+       );
+       register_post_type( 'Skill', $args );
+   }
+   
+   add_action( 'init', 'skill_post_type' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Create custom post type: CONTACT
