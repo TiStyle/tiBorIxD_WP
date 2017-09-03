@@ -48,6 +48,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 										<?php 
 											if( get_field('skill_value', $skill['ID']) ) :
 											$skill_value = get_field('skill_value', $skill['ID']);
+											// echo str_repeat('<div class="value" data-id="'.$skill['ID'].'"></div>', $skill_value);
 											echo str_repeat('<div class="value"></div>', $skill_value);
 										
 											endif; 
@@ -76,7 +77,9 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
 					<script>
 						document.addEventListener("DOMContentLoaded", function () {
-							var access = new Accessibility();
+							var skillsBar = Array.from(document.querySelectorAll('.skill-bar'));
+							skillsBar.forEach(skillbar => i = new Skill(skillbar));
+							// var skill = new Skill();
 						});
 					</script>
 

@@ -285,7 +285,6 @@ article.skills{
                 .value{
                     $value-max-amount: 5;
 
-                    animation: .5s bar-appear cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     background-color: $container-color;
                     height: 100%;
                     float: left;
@@ -293,6 +292,10 @@ article.skills{
                     opacity: 1;
                     transform: translateX(0);
                     width: calc(#{100% / $value-max-amount} - 1px);
+                    &.appear{
+                        animation: .5s bar-appear cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        animation-delay: .1s;
+                    }
                     &:last-child{
                         margin-right: 0;
                     }
