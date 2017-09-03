@@ -27,20 +27,41 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							<!-- SKILLS QUERY HERE -->
 							<?php
 								$skills = wp_get_recent_posts(array(
-									'numberposts' => 1,
+									'numberposts' => -1,
 									'post_status' => 'publish',
+									'orderby' => 'menu_order',
+									'order' => 'ASC',
 									'post_type' => 'skill',
 								));
 								foreach($skills as $skill) : ?>
 
 								<div class="skill">
-									<h3><?php echo $skill['post_title'] ?></h3>
-
+									<div class="skill-icon">
+										<?php
+											if( get_field('skill_icon', $skill['ID'])) :
+												echo the_field('skill_icon', $skill['ID']);
+											endif;
+										?>
+									</div>
+									
 									<div class="skill-bar">
-										<div class="value"></div>
-										<div class="value"></div>
-										<div class="value"></div>
-										<div class="value"></div>
+										<?php 
+											if( get_field('skill_value', $skill['ID']) ) :
+											$skill_value = get_field('skill_value', $skill['ID']);
+											echo str_repeat('<div class="value"></div>', $skill_value);
+										
+											endif; 
+										?>
+									</div>
+
+									<div class="skill-meta">
+										<h3><?php echo $skill['post_title']; ?></h3>
+										
+										<hr>
+
+										<div class="skill-info">
+											<?php echo $skill['post_content']; ?>
+										</div>
 									</div>
 								</div>
 								
