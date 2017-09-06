@@ -283,18 +283,28 @@ article.skills{
                 padding: 1px;
                 z-index: 1;
                 .value{
+                    $value-min-amount: 0;
                     $value-max-amount: 5;
 
                     background-color: $container-color;
                     height: 100%;
                     float: left;
                     margin-right: 1px;
-                    opacity: 1;
-                    transform: translateX(0);
+                    opacity: 0;
+                    transform: translateX(2rem);
+                    transition: .3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     width: calc(#{100% / $value-max-amount} - 1px);
+                    will-change: opacity, transform;
                     &.appear{
-                        animation: .5s bar-appear cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                        animation-delay: .1s;
+                        @while $value-max-amount >= $value-min-amount{
+                            &:nth-child(#{$value-min-amount}n){
+                                opacity: 1;
+                                transform: translateX(0);
+                                transition: .3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                                transition-delay: unquote("." + $value-min-amount + "s");
+                            }
+                            $value-min-amount: $value-min-amount + 1;
+                        }
                     }
                     &:last-child{
                         margin-right: 0;
@@ -302,17 +312,6 @@ article.skills{
                 }
             }
         }
-    }
-}
-
-@keyframes bar-appear{
-    0%{
-        opacity: 0;
-        transform: translateX(2rem);
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(0);
     }
 }
 
