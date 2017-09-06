@@ -120,6 +120,7 @@ $slide-controll-size: $spacing * 1.5;
                 flex-direction: column;
                 height: 50%;
                 justify-content: space-between;
+                left: 0;
                 position: absolute;
                 transform: translateY(100%);
                 transition: .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
