@@ -22,7 +22,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							<h2><?php echo $post['post_title'] ?></h2>
 							<p>
 								<!--<?php echo $post['post_content'] ?>-->
-								Testing
 								<?php
 									echo wp_trim_words( $post['post_content'], 18, '...' );
 								?>
