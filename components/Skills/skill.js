@@ -5,7 +5,7 @@ class Skill{
         console.log(values)
 
         values.forEach(function(value){
-            value.classList.add('appear')
+            value.classList.add('appear');
         })
         // const values = Array.from(document.querySelectorAll('.value'));
         

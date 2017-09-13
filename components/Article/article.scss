@@ -231,9 +231,14 @@ article.skills{
             display: inline-flex;
             flex-direction: column;
             margin: 0 calc(#{ 1rem / $skill-in-a-row} + 3rem + 1px) $margin;
-            // padding: 0 #{$padding * $skill-in-a-row};
             position: relative;
             width: calc((100% / #{$skill-in-a-row}) - 1px - #{$spacing * 7});
+            @media #{$medium-and-down}{
+                $skill-in-a-row: 2;
+
+                margin: 0 calc(#{ 1rem / $skill-in-a-row} + 3rem + 1px) $margin;
+                width: calc((100% / #{$skill-in-a-row}) - 1px - #{$spacing * 7});
+            }
             &:hover{
                 z-index: 99;
                 .skill-meta{
@@ -280,34 +285,48 @@ article.skills{
                 border: 1px solid $container-color;
                 box-sizing: border-box;
                 height: 1rem;
+                overflow: hidden;
                 padding: 1px;
                 z-index: 1;
                 .value{
                     $value-min-amount: 0;
                     $value-max-amount: 5;
 
+                    animation: .6s fadeIn cubic-bezier(0.95, 0.05, 0.795, 0.035);
+                    animation-fill-mode: both;
                     background-color: $container-color;
                     height: 100%;
                     float: left;
                     margin-right: 1px;
                     opacity: 0;
-                    transform: translateX(2rem);
-                    transition: .3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     width: calc(#{100% / $value-max-amount} - 1px);
-                    will-change: opacity, transform;
                     &.appear{
                         @while $value-max-amount >= $value-min-amount{
                             &:nth-child(#{$value-min-amount}n){
-                                opacity: 1;
-                                transform: translateX(0);
-                                transition: .3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                                transition-delay: unquote("." + $value-min-amount + "s");
+                                animation-delay: unquote(".")+$value-min-amount * 12+unquote("s");
                             }
                             $value-min-amount: $value-min-amount + 1;
                         }
+                        // &:nth-child(1n){
+                        //     opacity: 1;
+                        //     transform: translateX(0);
+                        //     transition: 2.3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
+                        //     transition-delay: 3;
+                        // }
                     }
                     &:last-child{
                         margin-right: 0;
+                    }
+                }
+                @keyframes fadeIn {
+                    0%{
+                        opacity: 0;
+                        transform: translateX(2rem);
+                    }
+                    100%{
+                        opacity: 1;
+                        transform: translateX(0);
+
                     }
                 }
             }
