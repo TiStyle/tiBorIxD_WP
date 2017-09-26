@@ -12,10 +12,10 @@ class ScrollToNext{
         this.addEventListeners();
 
 
-        // this.scrollPointsList.forEach(e => console.log(e.offsetTop));
     }
     addEventListeners(){
-        window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1500));
+        window.addEventListener('scroll', throttle(this.scrollToPosition.bind(this), 1000));
+        // window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1800));
         window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));
     }
 
@@ -44,13 +44,14 @@ class ScrollToNext{
     }
 
     scrollToNextPosition(event){
-        if(this.lastScrollPos < window.scrollY || this.lastScrollPos <= window.scrollY){
+        if(this.lastScrollPos <= window.scrollY){
             // console.log('down');
             // console.log('Last Position: ', this.lastScrollPos);
             // console.log('Window Scroll Y: ', window.scrollY);
             this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
             if(this.nextScrollPoints.length){
-                scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeInOutQuint');
+                console.log(this.nextScrollPoints[0].offsetTop)
+                // scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeInOutQuint');
                 this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
             }
         } else {
@@ -59,9 +60,32 @@ class ScrollToNext{
             // console.log('Window Scroll Y: ', window.scrollY);
             this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop < this.lastScrollPos);
             if(this.nextScrollPoints.length){
-                scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeInOutQuint');
+                console.log(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop)
+                // scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeInOutQuint');
                 this.lastScrollPos = this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop;
             } 
         }
+    }
+
+    scrollToPosition(){
+        // const nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
+        // console.log(this.scrollPointsList);
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    if(entry.intersectionRatio > 0 && entry.intersectionRatio < 0.5){
+                        console.log(entry.target.offsetTop);
+                        scrollToY(entry.target.offsetTop, 250, 'easeInOutQuint');
+                    }
+                    // scrollToY(entry.target.nextElementSibling, 250, 'easeInOutQuint')
+                }
+                // console.log(entry)
+            })
+        })
+
+        this.scrollPointsList.forEach(scrollPoint => {
+            observer.observe(scrollPoint);
+        })
     }
 }
