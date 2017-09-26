@@ -115,49 +115,18 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					<div class="content">
 						<p class="center"><?php echo $skill['post_content'] ?></p>
 
-						<?php
-								$skills = wp_get_recent_posts(array(
-									'numberposts' => -1,
-									'post_status' => 'publish',
-									'orderby' => 'menu_order',
-									'order' => 'ASC',
-									'post_type' => 'skill',
-								));
-								foreach($skills as $skill) : ?>
+						<?php require_once 'skills.php'; ?>
 
-								<div class="skill">
-									<h3><?php echo $skill['post_title']; ?></h3>
-
-									<div class="skill-info">
-										<?php echo $skill['post_content']; ?>
-									</div>
-
-									<div class="skill-icon">
-										<?php
-											if( get_field('skill_icon', $skill['ID'])) :
-												echo the_field('skill_icon', $skill['ID']);
-											endif;
-										?>
-									</div>
-									
-									<div class="skill-bar">
-										<?php 
-											if( get_field('skill_value', $skill['ID']) ) :
-											$skill_value = get_field('skill_value', $skill['ID']);
-											echo str_repeat('<div class="value"></div>', $skill_value);
-										
-											endif; 
-										?>
-									</div>
-								</div>
-								
-								<?php endforeach; wp_reset_query(); ?>
 					</div>					
 				</div>
 			
 			<?php endforeach; wp_reset_query(); ?>
 		
 	</section>
+
+	<!-- <section class="container-full scroll-point">
+		testing
+	</section> -->
 
     <script>
 		document.addEventListener("DOMContentLoaded", function () {

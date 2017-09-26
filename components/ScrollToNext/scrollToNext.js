@@ -10,9 +10,12 @@ class ScrollToNext{
         this.scrollPoints.forEach(scrollPoint => this.scrollPointsList.push(scrollPoint));
 
         this.addEventListeners();
+
+
+        // this.scrollPointsList.forEach(e => console.log(e.offsetTop));
     }
     addEventListeners(){
-        window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1700));
+        window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1500));
         window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));
     }
 
@@ -40,7 +43,7 @@ class ScrollToNext{
         }
     }
 
-    scrollToNextPosition(){
+    scrollToNextPosition(event){
         if(this.lastScrollPos < window.scrollY || this.lastScrollPos <= window.scrollY){
             // console.log('down');
             // console.log('Last Position: ', this.lastScrollPos);

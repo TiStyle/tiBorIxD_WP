@@ -39,9 +39,44 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var a = new ScrollToTop(10);
-        var b = new Menu();
+        var scrollToTop = new ScrollToTop(10);
+        var menu = new Menu();
 		var conversation = new Conversation();
+
+
+		// Intersection Observer example!!!
+
+		function onEntry(entry) {
+			entry.forEach((change) => {
+				// console.log(change.isIntersecting);
+				// console.log(change.intersectionRatio);
+				if(change.isIntersecting) {
+					change.target.classList.add('observed');
+				} else{
+					change.target.classList.remove('observed');
+				}
+			});
+		}
+		
+		// list of options
+		let options = {
+			threshold: [0]
+		};
+
+		
+		
+		// instantiate a new Intersection Observer
+		let observer = new IntersectionObserver(onEntry, options);
+		
+		// list of paragraphs
+		let elements = document.querySelectorAll('.skills');
+		
+		// loop through all elements
+		// pass each element to observe method
+		// ES2015 for-of loop can traverse through DOM Elements
+		for (let elm of elements) {
+			observer.observe(elm);
+		}
     });
 </script>
 

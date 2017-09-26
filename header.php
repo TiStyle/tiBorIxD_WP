@@ -18,7 +18,7 @@
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=String.prototype.endsWith,String.prototype.startsWith,Element.prototype.prepend,Element.prototype.append,Array.from,Array.prototype.find,Element.prototype.remove,Promise,fetch,HTMLPictureElement"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=String.prototype.endsWith,String.prototype.startsWith,Element.prototype.prepend,Element.prototype.append,Array.from,Array.prototype.find,Element.prototype.remove,Promise,fetch,HTMLPictureElement,IntersectionObserver,IntersectionObserverEntry"></script>
 
 <?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
 <!--[if lt IE 9]>
