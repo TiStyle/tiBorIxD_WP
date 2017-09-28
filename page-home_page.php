@@ -113,10 +113,11 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
 				<div class="container-full" style="background-image:url('<?php echo get_the_post_thumbnail_url($skill['ID'], 'tiborIxD-cover'); ?>')">
 					<div class="content">
-						<p class="center"><?php echo $skill['post_content'] ?></p>
+						<article>
+							<p class="center"><?php echo $skill['post_content'] ?></p>
 
-						<?php require_once 'skills.php'; ?>
-
+							<?php require_once 'skills.php'; ?>
+						</article>
 					</div>					
 				</div>
 			
