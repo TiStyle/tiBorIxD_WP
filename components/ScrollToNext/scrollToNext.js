@@ -16,7 +16,7 @@ class ScrollToNext{
     addEventListeners(){
         this.scrollToNextBlockFN = throttle(this.scrollToNextBlock.bind(this), 1500);
         window.addEventListener('scroll', this.scrollToNextBlockFN);
-        window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));
+        window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));        
     }
 
     createArrowDown(){
@@ -44,72 +44,65 @@ class ScrollToNext{
     }
 
     scrollToNextBlock(){
-        console.log(this.lastScrollPos)
+        setTimeout(_=>{
+            if(this.lastScrollPos < window.scrollY){
+                // console.log('down');
+                this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
+                if(this.nextScrollPoints.length){
 
-        if(this.lastScrollPos < window.scrollY){
-            // console.log('down');
-            this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
-            if(this.nextScrollPoints.length){
-
-                document.body.style.overflow = 'hidden'
-                window.removeEventListener('scroll', this.scrollToNextBlockFN);
-                
-                scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeInOutSine', ()=>{
-                    this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
-                    window.addEventListener('scroll', this.scrollToNextBlockFN)
-                    document.body.style.overflow = ''
-                });
-            }
-        } 
-        if(this.lastScrollPos > window.scrollY){
-            // console.log('up');
-            this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop < this.lastScrollPos);
-            if(this.nextScrollPoints.length){
-                
-                document.body.style.overflow = 'hidden'
-                window.removeEventListener('scroll', this.scrollToNextBlockFN);
-                
-                scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeInOutSine', ()=>{
-                    this.lastScrollPos = this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop;
-                    window.addEventListener('scroll', this.scrollToNextBlockFN)
-                    document.body.style.overflow = ''
-                });
+                    document.body.style.overflow = 'hidden'
+                    window.removeEventListener('scroll', this.scrollToNextBlockFN);
+        
+                    
+                    scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeOutSine', ()=>{
+                        this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
+                        window.addEventListener('scroll', this.scrollToNextBlockFN)
+                        document.body.style.overflow = ''
+                        this.blockIsVisible();
+                    });
+                }
             } 
-        }
+            if(this.lastScrollPos > window.scrollY){
+                // console.log('up');
+                this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop < this.lastScrollPos);
+                if(this.nextScrollPoints.length){
+                    
+                    document.body.style.overflow = 'hidden'
+                    window.removeEventListener('scroll', this.scrollToNextBlockFN);
+                    
+                    scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeOutSine', ()=>{
+                        this.lastScrollPos = this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop;
+                        window.addEventListener('scroll', this.scrollToNextBlockFN)
+                        document.body.style.overflow = ''
+                        this.blockIsVisible();
+                    });
+                } 
+            }
+        }, 100);
     }
 
-    scrollToPosition(){
-        // const nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
-        // console.log(this.scrollPointsList);
-
-        const observer = new IntersectionObserver(entries => {
+    blockIsVisible(){
+        let scrollPointsList = Array.from(document.querySelectorAll('.scroll-point'));
+        
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    if(entry.intersectionRatio > 0 && entry.intersectionRatio < 0.8){
-                        console.log(entry.target.offsetTop);
-
-                        scrollToY(entry.target.offsetTop, 250, 'easeInOutQuint');
-                        // this.createTempOverlay();
-                        
+                if(entry.isIntersecting && entry.intersectionRatio === 1){
+                    if(entry.target.classList.contains('skills')){
+                        const skillsBars = Array.from(document.querySelectorAll('.skill-bar .value'));
+                        skillsBars.forEach(skillbar => {
+                            skillbar.classList.add('appear')
+                        });
+                    } else{
+                        const skillsBars = Array.from(document.querySelectorAll('.skill-bar .value'));
+                        skillsBars.forEach(skillbar => {
+                            skillbar.classList.remove('appear')
+                        });
                     }
-                    // scrollToY(entry.target.nextElementSibling, 250, 'easeInOutQuint')
                 }
-                // console.log(entry)
             })
         })
-
-        this.scrollPointsList.forEach(scrollPoint => {
+        scrollPointsList.forEach(scrollPoint => {
             observer.observe(scrollPoint);
         })
-    }
-
-    createTempOverlay(){
-        if(!document.querySelector('temp-overlay')){
-            document.body.classList.add('temp-overlay');
-            document.body.style.overflow = 'hidden';
-        } else{
-            document.body.classList.remove('temp-overlay');
-            document.body.style.overflow = '';
-        }
     }
 }

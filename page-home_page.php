@@ -124,10 +124,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 		
 	</section>
 
-	<section class="container-full scroll-point">
-		testing
-	</section>
-
     <script>
 		document.addEventListener("DOMContentLoaded", function () {
 			var x = new ScrollToNext();

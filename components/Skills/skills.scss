@@ -98,8 +98,6 @@
             $value-min-amount: 0;
             $value-max-amount: 5;
 
-            animation: .6s fadeIn cubic-bezier(0.95, 0.05, 0.795, 0.035);
-            animation-fill-mode: both;
             background-color: $container-color;
             height: 100%;
             float: left;
@@ -107,18 +105,15 @@
             opacity: 0;
             width: calc(#{100% / $value-max-amount} - 1px);
             &.appear{
+                animation: .6s fadeIn cubic-bezier(0.95, 0.05, 0.795, 0.035);
+                animation-fill-mode: both;
+            
                 @while $value-max-amount >= $value-min-amount{
                     &:nth-child(#{$value-min-amount}n){
                         animation-delay: unquote(".")+$value-min-amount * 12+unquote("s");
                     }
                     $value-min-amount: $value-min-amount + 1;
                 }
-                // &:nth-child(1n){
-                //     opacity: 1;
-                //     transform: translateX(0);
-                //     transition: 2.3s opacity cubic-bezier(0.165, 0.84, 0.44, 1), .3s transform cubic-bezier(0.165, 0.84, 0.44, 1);
-                //     transition-delay: 3;
-                // }
             }
             &:last-child{
                 margin-right: 0;

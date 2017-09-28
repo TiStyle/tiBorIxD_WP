@@ -45,9 +45,10 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var skillsBar = Array.from(document.querySelectorAll('.skill-bar'));
-            skillsBar.forEach(skillbar => i = new Skill(skillbar));
-            // var skill = new Skill();
+            if(!document.body.classList.contains('home')){
+                var skillsBar = Array.from(document.querySelectorAll('.skill-bar'));
+                skillsBar.forEach(skillbar => i = new Skill(skillbar));
+            }
         });
     </script>
 <!-- SKILLS QUERY END -->
