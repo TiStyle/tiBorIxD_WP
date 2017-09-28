@@ -14,8 +14,8 @@ class ScrollToNext{
 
     }
     addEventListeners(){
-        window.addEventListener('scroll', throttle(this.scrollToPosition.bind(this), 1000));
-        // window.addEventListener('scroll', throttle(this.scrollToNextPosition.bind(this), 1800));
+        this.scrollToNextBlockFN = throttle(this.scrollToNextBlock.bind(this), 1500);
+        window.addEventListener('scroll', this.scrollToNextBlockFN);
         window.addEventListener('scroll', throttle(this.updateArrowDown.bind(this), 100));
     }
 
@@ -26,7 +26,7 @@ class ScrollToNext{
         document.body.append(element);
         
         this.scroller = document.querySelector('.scroll-to-next');
-        this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
+        this.scroller.addEventListener('click', this.scrollToNextBlock.bind(this));
     }
     removeArrowDown(){
         document.querySelector('.scroll-to-next').remove();
@@ -39,30 +39,41 @@ class ScrollToNext{
         if(this.scrollArrowDownBarier > window.scrollY && !document.querySelector('.scroll-to-next')){
             this.createArrowDown();
             this.scroller = document.querySelector('.scroll-to-next');
-            this.scroller.addEventListener('click', this.scrollToNextPosition.bind(this));
+            this.scroller.addEventListener('click', this.scrollToNextBlock.bind(this));
         }
     }
 
-    scrollToNextPosition(event){
-        if(this.lastScrollPos <= window.scrollY){
+    scrollToNextBlock(){
+        console.log(this.lastScrollPos)
+
+        if(this.lastScrollPos < window.scrollY){
             // console.log('down');
-            // console.log('Last Position: ', this.lastScrollPos);
-            // console.log('Window Scroll Y: ', window.scrollY);
             this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop > this.lastScrollPos);
             if(this.nextScrollPoints.length){
-                console.log(this.nextScrollPoints[0].offsetTop)
-                // scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeInOutQuint');
-                this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
+
+                document.body.style.overflow = 'hidden'
+                window.removeEventListener('scroll', this.scrollToNextBlockFN);
+                
+                scrollToY(this.nextScrollPoints[0].offsetTop, 250, 'easeInOutSine', ()=>{
+                    this.lastScrollPos = this.nextScrollPoints[0].offsetTop;
+                    window.addEventListener('scroll', this.scrollToNextBlockFN)
+                    document.body.style.overflow = ''
+                });
             }
-        } else {
+        } 
+        if(this.lastScrollPos > window.scrollY){
             // console.log('up');
-            // console.log('Last Position: ', this.lastScrollPos);
-            // console.log('Window Scroll Y: ', window.scrollY);
             this.nextScrollPoints = this.scrollPointsList.filter(e => e.offsetTop < this.lastScrollPos);
             if(this.nextScrollPoints.length){
-                console.log(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop)
-                // scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeInOutQuint');
-                this.lastScrollPos = this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop;
+                
+                document.body.style.overflow = 'hidden'
+                window.removeEventListener('scroll', this.scrollToNextBlockFN);
+                
+                scrollToY(this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop, 250, 'easeInOutSine', ()=>{
+                    this.lastScrollPos = this.nextScrollPoints[this.nextScrollPoints.length - 1].offsetTop;
+                    window.addEventListener('scroll', this.scrollToNextBlockFN)
+                    document.body.style.overflow = ''
+                });
             } 
         }
     }
@@ -74,9 +85,12 @@ class ScrollToNext{
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if(entry.isIntersecting){
-                    if(entry.intersectionRatio > 0 && entry.intersectionRatio < 0.5){
+                    if(entry.intersectionRatio > 0 && entry.intersectionRatio < 0.8){
                         console.log(entry.target.offsetTop);
+
                         scrollToY(entry.target.offsetTop, 250, 'easeInOutQuint');
+                        // this.createTempOverlay();
+                        
                     }
                     // scrollToY(entry.target.nextElementSibling, 250, 'easeInOutQuint')
                 }
@@ -87,5 +101,15 @@ class ScrollToNext{
         this.scrollPointsList.forEach(scrollPoint => {
             observer.observe(scrollPoint);
         })
+    }
+
+    createTempOverlay(){
+        if(!document.querySelector('temp-overlay')){
+            document.body.classList.add('temp-overlay');
+            document.body.style.overflow = 'hidden';
+        } else{
+            document.body.classList.remove('temp-overlay');
+            document.body.style.overflow = '';
+        }
     }
 }

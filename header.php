@@ -34,7 +34,7 @@
 
 </head>
 
-<body 
+<body
 	<?php body_class(); 
 	// This will display a class specific to whatever is being loaded by Wordpress
 	// i.e. on a home page, it will return [class="home"]

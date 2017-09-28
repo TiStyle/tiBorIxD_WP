@@ -49,7 +49,7 @@ window.requestAnimFrame = (function(){
 })();
 
 // main function
-function scrollToY(scrollTargetY, speed, easing) {
+function scrollToY(scrollTargetY, speed, easing, cb) {
     // scrollTargetY: the target scrollY property of the window
     // speed: time in pixels per second
     // easing: easing equation to use
@@ -92,8 +92,9 @@ function scrollToY(scrollTargetY, speed, easing) {
 
             window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
         } else {
-            // console.log('scroll done');
+            console.log('scroll done');
             window.scrollTo(0, scrollTargetY);
+            cb()
         }
     }
 
