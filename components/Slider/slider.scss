@@ -152,6 +152,58 @@ $slide-controll-size: $spacing * 1.5;
             }
         }
     }
+    &.overview{
+        #slider{
+            display: table;
+            .slide{
+                display: inline-table;
+                height: 60vh;
+                width: 33.33vw !important;
+                .project-container{
+                    position: relative;
+                    h2{
+                        font-size: 1.2rem;
+                    }
+                    .project-info{
+                        left: 0;
+                        transform: translateY(0);
+                        width: 100%;
+                        img{
+                            max-width: 100px;
+                            width: 50%;
+                        }
+                        .actions{
+                            a{
+                                font-size: .8rem;
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media #{$medium-and-down}{
+            #slider{
+                .slide{
+                    margin-bottom: $margin * 2;
+                    width: 50vw !important;
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                    .project-container{
+                        box-sizing: content-box;
+                    }
+                }
+            }
+        }
+        @media #{$small-and-down}{
+            #slider{
+                .slide{
+                    width: 100vw !important;
+                }
+            }
+        }
+    }
 }
 
 .swiper-container{

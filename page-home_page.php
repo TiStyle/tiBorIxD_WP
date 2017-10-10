@@ -75,7 +75,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 								<div class="actions">
 									<a href="<?php echo get_permalink($project['ID']) ?>" class="secondary-action">See project</a>
 									<!-- ToDo: link to all projects -->
-									<a href="google.nl" class="secondary-action">See all projects</a>
+									<a href="projects" class="secondary-action">See all projects</a>
 								</div>
 							</div>
 						</div>
