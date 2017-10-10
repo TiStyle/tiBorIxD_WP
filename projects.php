@@ -1,6 +1,6 @@
 <?php 
 /**
- * 	Template Name: Main Homepage
+ * 	Template Name: Projects Overview
  *
 */
 get_header(); // This fxn gets the header.php file and renders it ?>

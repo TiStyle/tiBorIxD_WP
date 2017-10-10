@@ -61,7 +61,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				</section><!-- #content .site-content -->
 
 				<!-- TODO:Archive link maken -->
-				<a href="<?php get_post_type_archive_link( 'post' ); ?>" class="secondary-action-light center">See All Blogs</a>
+				<a href="./blogs" class="secondary-action-light center">See All Blogs</a>
 
 			<?php endwhile; // OK, let's stop the post loop once we've displayed it ?>
 			
