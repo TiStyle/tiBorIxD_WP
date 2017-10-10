@@ -185,11 +185,7 @@ $slide-controll-size: $spacing * 1.5;
         @media #{$medium-and-down}{
             #slider{
                 .slide{
-                    margin-bottom: $margin * 2;
                     width: 50vw !important;
-                    &:last-child{
-                        margin-bottom: 0;
-                    }
                     .project-container{
                         box-sizing: content-box;
                     }
@@ -199,7 +195,11 @@ $slide-controll-size: $spacing * 1.5;
         @media #{$small-and-down}{
             #slider{
                 .slide{
+                    margin-bottom: $margin * 2;
                     width: 100vw !important;
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
                 }
             }
         }
