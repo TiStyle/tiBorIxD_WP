@@ -102,6 +102,24 @@ function load_plugin() {
 
 
 /*-----------------------------------------------------------------------------------*/
+/* ???????? */
+/* No Self Pings by http://w3guy.com*/
+/*-----------------------------------------------------------------------------------*/
+//Pass the variable by reference to the function, so the function can modify the variable.
+function no_self_ping (&$links) {
+    $home = get_option( 'home' );
+    foreach ( $links as $l => $link )
+        //Find the position of the first occurrence of a substring in a string.
+        //($a === $b) Identical operator. TRUE if $a is equal to $b, and they are of the same type.
+        if ( 0 === strpos( $link, $home ) )
+            //Unset the variable
+            unset($links[$l]);
+}
+//Hooks the function to the specific action (pre_ping)
+add_action( 'pre_ping', 'no_self_ping' );
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Activate sidebar for Wordpress use
 /*-----------------------------------------------------------------------------------*/
 function naked_register_sidebars() {

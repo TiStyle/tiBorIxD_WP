@@ -85,6 +85,7 @@ class ScrollToNext{
         let scrollPointsList = Array.from(document.querySelectorAll('.scroll-point'));
         
         const observer = new IntersectionObserver((entries) => {
+            
             entries.forEach(entry => {
                 if(entry.isIntersecting && entry.intersectionRatio === 1){
                     if(entry.target.classList.contains('skills')){
