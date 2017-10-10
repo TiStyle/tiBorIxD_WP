@@ -59,7 +59,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				));
 				foreach($recent_project as $project) : ?>
 					<li class="swiper-slide slide" style="background-image:url('<?php echo get_the_post_thumbnail_url($project['ID'], 'full'); ?>')">
-						<!--<a href="<?php echo get_permalink($project['ID']) ?>">-->
 						<div class="project-container">
 							<?php if( get_field('slogan', $project['ID']) ): ?>
 								<h2><?php the_field('slogan', $project['ID']); ?></h2>
@@ -75,11 +74,11 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 								<?php endif; ?>
 								<div class="actions">
 									<a href="<?php echo get_permalink($project['ID']) ?>" class="secondary-action">See project</a>
+									<!-- ToDo: link to all projects -->
 									<a href="google.nl" class="secondary-action">See all projects</a>
 								</div>
 							</div>
 						</div>
-						<!--</a>-->
 					</li>
 				<?php endforeach; wp_reset_query(); ?>
 			</ul>
@@ -116,8 +115,18 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 						<article>
 							<p class="center"><?php echo $skill['post_content'] ?></p>
 
-							<?php require_once 'skills.php'; ?>
+							<?php
+								/*
+								* Show a max of 6 skills
+								*/
+								$max_skill_amount = 6; require_once 'skills.php'; 
+							?>
+
 						</article>
+						<div class="actions">
+							<!-- ToDo: link to all skills -->
+							<a href="skills" class="secondary-action-light center">See all my skills</a>
+						</div>
 					</div>					
 				</div>
 			

@@ -1,7 +1,17 @@
 <!-- SKILLS QUERY HERE -->
 <?php
+
+    /*
+    * Check if a maximum is defined, otherwise show all items
+    */ 
+    if($max_skill_amount){
+        $max_skill_amount = $max_skill_amount;
+    } else{
+        $max_skill_amount = -1;
+    }
+
     $skills = wp_get_recent_posts(array(
-        'numberposts' => -1,
+        'numberposts' => $max_skill_amount,
         'post_status' => 'publish',
         'orderby' => 'menu_order',
         'order' => 'ASC',
