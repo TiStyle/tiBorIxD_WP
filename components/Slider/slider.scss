@@ -145,8 +145,12 @@ $slide-controll-size: $spacing * 1.5;
                     a{
                         box-sizing: border-box;
                         color: $primary-text-color;
-                        padding:($padding / $golden-ratio) ($padding * ($golden-ratio / 2));
+                        padding:($padding / $golden-ratio) ($padding * $golden-ratio);
                         width: calc(50% - #{$padding * 2});
+                        @media #{$medium-and-down}{
+                            font-size: .8rem;
+                            padding:($padding / $golden-ratio) ($padding * ($golden-ratio / 2));
+                        }                    
                     }
                 }
             }
@@ -161,12 +165,17 @@ $slide-controll-size: $spacing * 1.5;
                 width: 33.33vw !important;
                 .project-container{
                     position: relative;
+                    &:hover{
+                        .project-info{
+                            transform: translateY(0);
+                        }
+                    }
                     h2{
                         font-size: 1.2rem;
                     }
                     .project-info{
                         left: 0;
-                        transform: translateY(0);
+                        transform: translateY(calc(100% + #{$padding}));
                         width: 100%;
                         img{
                             max-width: 100px;
@@ -174,7 +183,6 @@ $slide-controll-size: $spacing * 1.5;
                         }
                         .actions{
                             a{
-                                font-size: .8rem;
                                 width: auto;
                             }
                         }
@@ -188,6 +196,14 @@ $slide-controll-size: $spacing * 1.5;
                     width: 50vw !important;
                     .project-container{
                         box-sizing: content-box;
+                        .project-info{
+                            transform: translateY(0);
+                            .actions{
+                                a{
+                                    font-size: .8rem;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -200,6 +216,20 @@ $slide-controll-size: $spacing * 1.5;
                     &:last-child{
                         margin-bottom: 0;
                     }
+                }
+            }
+        }
+    }
+}
+#blogs{
+    &.overview{
+        #slider{
+            flex-direction: column;
+            .slide{
+                display: flex;
+                min-height: 50vh;
+                .blog-link{
+                    height: auto;
                 }
             }
         }

@@ -6,7 +6,7 @@
 get_header(); // This fxn gets the header.php file and renders it ?>
 
 <section class="">
-	<div id="blogs" class="swiper-container">
+	<div id="blogs" class="swiper-container overview">
 		<ul id="slider" class="swiper-wrapper">
 			<?php
 			$recent_posts = wp_get_recent_posts(array(
